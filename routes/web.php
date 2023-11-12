@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventPdtController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/events/create', [EventPdtController::class, 'create'])->name('events.createKegiatan');
+Route::post('/events', [EventPdtController::class, 'store'])->name('events.store');
