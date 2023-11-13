@@ -18,4 +18,16 @@ class EventPdt extends Model
         'waktu_mulai',
         'waktu_akhir',
     ];
+
+
+    public function approvedDonationsSum()
+    {
+        $donations = $this->donations()
+            ->where('status', 'disetujui')
+            ->whereBetween('created_at', [$this->waktu_mulai, $this->waktu_akhir])
+            ->get();
+
+        return $donations->sum('nominal');
+    }
+
 }
