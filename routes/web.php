@@ -35,3 +35,5 @@ Route::get('admin/donations', [DonationController::class, 'viewDonasi'])->name('
 
 Route::get('/admin/donations/approved', [DonationController::class, 'approvedDonationSum'])
     ->name('donations.approvedSum');
+Route::get('/admin/total-donasi/bulan', [DonationController::class, 'totalApprovedDonationPerMonth'])
+    ->name('donations.totalApprovedDonationPerMonth');

@@ -8,11 +8,16 @@
             <div class="row">
                 @foreach ($events as $event)
                     <div class="col-md-4 mb-4">
-                        <div class="card">
+                        <div class="card h-100 border-primary"> <!-- Added 'h-100' to make all cards the same height and 'border-primary' for an attractive border color -->
                             <div class="card-body">
                                 <h5 class="card-title">{{ $event->title }}</h5>
-                                <p class="card-text"> {{ $event->description }}</p>
-                                <a href="{{ route('events.donation') }}">Ikut berdonasi</a>
+                                <p class="card-text">{{ $event->description }}</p>
+                                <p>{{ $event->waktu_mulai->format('d F Y') }} &mdash; {{ $event->waktu_akhir->format('d F Y') }}</p>
+                                @if($event->lokasi == 'Daring')
+                                    <a href="{{ route('events.donation') }}" class="btn btn-primary">Ikut berdonasi</a>
+                                @else
+                                    <span class="text-muted"></span>
+                                @endif
                             </div>
                         </div>
                     </div>

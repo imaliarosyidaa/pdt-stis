@@ -33,7 +33,7 @@
                     <td>{{ $donation->id }}</td>
                     <td>{{ $donation->nominal }}</td>
                     <td>{{$donation->created_at->format('Y-m-d')}}</td>
-                    <td>{{ $donation->status }}</td>
+                    <td>{{ $donation->status}}</td>
                 </tr>
             @endforeach
         </tbody>

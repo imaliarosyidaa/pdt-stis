@@ -20,9 +20,7 @@ class createDonationsTable extends Migration
             $table->string('pesan',500)->nullable();
             $table->string('nama',500)->nullable()->default('Anonymous');
             $table->string('metode');
-            $table->enum('status', ['belum dikonfirmasi', 'diterima', 'ditolak'])->default('belum dikonfirmasi');
-            $table->unsignedBigInteger('event_pdt_id')->nullable();
-            $table->foreign('event_pdt_id')->references('id')->on('event_pdts');
+            $table->enum('status', ['belum dikonfirmasi', 'disetujui', 'ditolak'])->default('belum dikonfirmasi');
             $table->timestamps();
         });
     }
@@ -33,9 +31,6 @@ class createDonationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('donations', function (Blueprint $table) {
-            $table->dropForeign(['event_pdt_id']);
-            $table->dropColumn('event_pdt_id');
-        });
+        Schema::dropIfExists('donations');
     }
 };

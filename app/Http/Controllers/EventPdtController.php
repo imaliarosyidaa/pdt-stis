@@ -19,7 +19,7 @@ class EventPdtController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'quota' => 'required|numeric',
+            'quota' => 'required|integer|min:0',
             'lokasi' => 'required',
             'waktu_mulai' => 'required|date|after_or_equal:'. Carbon::today(),
             'waktu_akhir' => 'required|date|after:waktu_mulai|after_or_equal:'. Carbon::today(),
@@ -28,10 +28,14 @@ class EventPdtController extends Controller
         $existingEvent = EventPdt::where(function($query) use ($validatedData) {
             $query->where('waktu_mulai', $validatedData['waktu_mulai'])
                 ->orWhere('waktu_akhir', $validatedData['waktu_akhir']);
-        })->first();
+        })
+        ->where(function($query) use ($validatedData) {
+            $query->where('lokasi', $validatedData['lokasi']);
+        })
+        ->first();
         
         if ($existingEvent) {
-            return redirect()->back()->withInput()->with('error', 'Error: Event with the same start or end time already exists.')->withErrors(['waktu_mulai' => 'Donation is already exists.']);
+            return redirect()->back()->withInput()->with('error', 'Error: Event with the same start or end time already exists.')->withErrors(['waktu_mulai' => 'Event already exists.']);
         }
 
         EventPdt::create($validatedData);

@@ -10,6 +10,10 @@ class EventPdt extends Model
     use HasFactory;
     
     protected $table = 'event_pdt';
+    protected $casts = [
+        'waktu_mulai' => 'datetime',
+        'waktu_akhir' => 'datetime',
+    ];
     protected $fillable = [
         'title',
         'description',

@@ -12,6 +12,10 @@
                 </ul>
             </div>
         @endif
+        <p class="mb-0 text-right">
+            <span class="text-danger" id="i4" aria-label="Required question">*</span>
+            <span class="ml-2 text-danger">Wajib diisi</span>
+        </p>
         <form action="{{ route('donations.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
@@ -20,17 +24,26 @@
             </div>
 
             <div class="mb-3">
-                <label for="nominal" class="form-label">Nominal:</label>
+                <label for="nominal" class="form-label">
+                    Nominal:
+                    <span class="text-danger vnumgf" id="i4" aria-label="Required question">*</span>
+                </label> 
                 <input type="number" class="form-control" name="nominal" value="{{ old('nominal') }}" required>
             </div>
 
             <div class="mb-3">
-                <label for="file" class="form-label">Upload File:</label>
+                <label for="file" class="form-label">
+                    Upload Bukti pembayaran:
+                    <span class="text-danger vnumgf" id="i4" aria-label="Required question">*</span>
+                </label>
                 <input type="file" class="form-control" name="file" accept=".jpg, .png, .jpeg">
             </div>
 
             <div class="mb-3">
-                <label for="payment_method" class="form-label">Metode Pembayaran:</label>
+                <label for="payment_method" class="form-label">
+                    Metode Pembayaran:
+                    <span class="text-danger vnumgf" id="i4" aria-label="Required question">*</span>
+                </label>
                 <select class="form-control" name="payment_method" required>
                     <option value="BNI">BNI</option>
                     <option value="BRI">BRI</option>

@@ -34,8 +34,25 @@
                         <td>{{ $donation->id }}</td>
                         <td>{{ $donation->nominal }}</td>
                         <td>
-                            <img src="{{ asset($donation->link) }}" alt="Donation Image" style="max-width: 100px; max-height: 100px;">
-                        </td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal{{$donation->id}}">
+                                View Image
+                            </button>
+                            <div class="modal fade" id="imageModal{{$donation->id}}" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel{{$donation->id}}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="imageModalLabel{{$donation->id}}">Donation Image</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="{{ asset($donation->link) }}" alt="Donation Image" style="max-width: 100%;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>                        
                         <td>{{ $donation->status }}</td>
                         <td>
                             <form action="{{ route('donations.updateStatus', $donation->id) }}" method="POST">
