@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
     @if (session('success'))
         <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
@@ -54,8 +54,10 @@
         <p>Tidak ada kegiatan.</p>
     @endif
 
-    <a href="{{ route('events.createKegiatan') }}">
-        <button class="btn btn-primary">+</button>
-    </a>
+    <div class="text-right">
+        <a href="{{ route('events.createKegiatan') }}">
+            <button class="btn btn-primary rounded-circle" style="width: 40px; height: 40px; font-size: 18px; line-height: 1;">+</button>
+        </a>
+    </div>      
 
 @endsection

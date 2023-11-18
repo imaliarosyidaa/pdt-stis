@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Donations;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DonationStatusUpdated;
 
 class DonationController extends Controller
 {
@@ -44,7 +46,8 @@ class DonationController extends Controller
             'message' => $request->message,
             'name' => $request->name,
             'status' => $status,
-            'metode'=>$request->payment_method
+            'metode'=>$request->payment_method,
+            'email_pembuat'=>'ragus8188@gmail.com'
         ]);
 
 
@@ -66,11 +69,39 @@ class DonationController extends Controller
         return view('donasi.berhasil', compact('donations'));
     }
 
-    public function viewDonasi()
+    // public function viewDonasi()
+    // {
+    //     $donations = Donations::all();
+    //     return view('donasi.viewDonasi', compact('donations'));
+    // }
+
+    public function viewDonasi(Request $request)
     {
-        $donations = Donations::all();
-        return view('donasi.viewDonasi', compact('donations'));
+        $sortOptions = [
+            'terbaru' => ['created_at', 'desc'],
+            'terlama' => ['created_at', 'asc'],
+            'terbesar' => ['nominal', 'desc'],
+            'terkecil' => ['nominal', 'asc'],
+        ];
+
+        $sortBy = $request->query('sort');
+        $sort = $sortOptions[$sortBy] ?? null;
+
+        $year = $request->query('year', null);
+        $searchYear = $year ? intval($year) : null;
+
+        $donations = Donations::when($sort, function ($query) use ($sort) {
+            return $query->orderBy($sort[0], $sort[1]);
+        })
+        ->when($searchYear, function ($query) use ($searchYear) {
+            return $query->whereYear('created_at', $searchYear);
+        })
+        ->get();
+
+        return view('donasi.viewDonasi', compact('donations', 'year'));
     }
+
+
 
     public function updateStatus(Request $request, $id)
     {
@@ -79,8 +110,15 @@ class DonationController extends Controller
         ]);
 
         $donation = Donations::findOrFail($id);
+        $oldStatus = $donation->status;
+
         $donation->status = $request->input('new_status');
         $donation->save();
+
+        if ($oldStatus !== $donation->status) {
+            // Mail::to($donation->user->email)->send(new DonationStatusUpdated($donation));
+            Mail::to($donation->email_pembuat)->send(new DonationStatusUpdated($donation));
+        } 
 
         return redirect()->route('donations.viewDonasi')->with('success', 'Donation status updated successfully.');
     }

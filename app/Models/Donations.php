@@ -18,6 +18,7 @@ class Donations extends Model
         'nama',
         'metode',
         'event_pdt_id',
+        'email_pembuat',
     ];
 
     public function eventPdt()

@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
-    <div class="container">
-        <h2>Create Event</h2>
+    <div class="container mt-5">
+        <h2>Buat Kegiatan Donasi</h2>
 
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -13,11 +13,10 @@
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
-                
             </div>
         @endif
 
-        <p class="mb-0 text-right" >
+        <p class="mb-0 text-right">
             <span class="text-danger" id="i4" aria-label="Required question">*</span>
             <span class="ml-2 text-danger">Wajib diisi</span>
         </p>
@@ -26,7 +25,7 @@
             @csrf
 
             <div class="form-group">
-                <label for="title">
+                <label for="title" class="form-label">
                     Title:
                     <span class="text-danger vnumgf" id="i4" aria-label="Required question">*</span>
                 </label>
@@ -34,7 +33,7 @@
             </div>
 
             <div class="form-group">
-                <label for="description">
+                <label for="description" class="form-label">
                     Description:
                     <span class="text-danger vnumgf" id="i4" aria-label="Required question">*</span>
                 </label>
@@ -42,7 +41,7 @@
             </div>
 
             <div class="form-group">
-                <label for="quota">
+                <label for="quota" class="form-label">
                     Quota:
                     <span class="text-danger vnumgf" id="i4" aria-label="Required question">*</span>
                 </label>
@@ -50,18 +49,18 @@
             </div>
 
             <div class="form-group">
-                <label for="lokasi">
+                <label for="lokasi" class="form-label">
                     Metode
                     <span class="text-danger vnumgf" id="i4" aria-label="Required question">*</span>
                 </label>
-                <select class="form-control" name="lokasi" id="lokasi" required>
+                <select class="form-select" name="lokasi" id="lokasi" required>
                     <option value="Daring">Daring</option>
                     <option value="Luring">Luring</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="waktu_mulai">
+                <label for="waktu_mulai" class="form-label">
                     Start Time:
                     <span class="text-danger vnumgf" id="i4" aria-label="Required question">*</span>
                 </label>
@@ -69,14 +68,16 @@
             </div>
 
             <div class="form-group">
-                <label for="waktu_akhir">
+                <label for="waktu_akhir" class="form-label">
                     End Time:
                     <span class="text-danger vnumgf" id="i4" aria-label="Required question">*</span>
                 </label>
                 <input type="date" name="waktu_akhir" id="waktu_akhir" class="form-control" required>
             </div>
-
-            <button type="submit" class="btn btn-primary">Create Event</button>
+            <br>
+            <div class="form-group text-right">
+                <button type="submit" class="btn btn-primary">Create Event</button>
+            </div>
         </form>
     </div>
 @endsection
