@@ -14,7 +14,7 @@ class createDonationsTable extends Migration
     {
         Schema::create('donations', function (Blueprint $table) {
             $table->mediumIncrements('id');
-            // $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->integer('nominal')->unsigned();
             $table->string('link');
             $table->string('pesan',500)->nullable();

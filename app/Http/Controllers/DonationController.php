@@ -7,6 +7,7 @@ use App\Models\Donations;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DonationStatusUpdated;
+use Illuminate\Support\Facades\Auth;
 
 class DonationController extends Controller
 {
@@ -39,15 +40,16 @@ class DonationController extends Controller
 
         $status = 'belum dikonfimasi';
 
+        $userid = Auth::id();;
+
         Donations::create([
-            // 'user_id' => $request->user_id,
+            'user_id' => $userid,
             'nominal' => $request->nominal,
             'link' => $filePath,
             'message' => $request->message,
             'name' => $request->name,
             'status' => $status,
-            'metode'=>$request->payment_method,
-            'email_pembuat'=>'ragus8188@gmail.com'
+            'metode'=>$request->payment_method
         ]);
 
 
@@ -116,8 +118,7 @@ class DonationController extends Controller
         $donation->save();
 
         if ($oldStatus !== $donation->status) {
-            // Mail::to($donation->user->email)->send(new DonationStatusUpdated($donation));
-            Mail::to($donation->email_pembuat)->send(new DonationStatusUpdated($donation));
+            Mail::to($donation->user->email)->send(new DonationStatusUpdated($donation));
         } 
 
         return redirect()->route('donations.viewDonasi')->with('success', 'Donation status updated successfully.');

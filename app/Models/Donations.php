@@ -18,8 +18,12 @@ class Donations extends Model
         'nama',
         'metode',
         'event_pdt_id',
-        'email_pembuat',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function eventPdt()
     {
