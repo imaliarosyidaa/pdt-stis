@@ -77,30 +77,9 @@ class DonationController extends Controller
     //     return view('donasi.viewDonasi', compact('donations'));
     // }
 
-    public function viewDonasi(Request $request)
+    public function viewDonasi()
     {
-        $sortOptions = [
-            'terbaru' => ['created_at', 'desc'],
-            'terlama' => ['created_at', 'asc'],
-            'terbesar' => ['nominal', 'desc'],
-            'terkecil' => ['nominal', 'asc'],
-        ];
-
-        $sortBy = $request->query('sort');
-        $sort = $sortOptions[$sortBy] ?? null;
-
-        $year = $request->query('year', null);
-        $searchYear = $year ? intval($year) : null;
-
-        $donations = Donations::when($sort, function ($query) use ($sort) {
-            return $query->orderBy($sort[0], $sort[1]);
-        })
-        ->when($searchYear, function ($query) use ($searchYear) {
-            return $query->whereYear('created_at', $searchYear);
-        })
-        ->get();
-
-        return view('donasi.viewDonasi', compact('donations', 'year'));
+        return view('donasi.viewDonasi');
     }
 
 

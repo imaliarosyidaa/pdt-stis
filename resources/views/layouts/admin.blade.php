@@ -7,6 +7,7 @@
     <title>PDT STIS</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
+    @livewireStyles
 </head>
 
 <body>
@@ -37,6 +38,12 @@
     <script src="{{ asset('assets/js/sidebarmenu.js') }}"></script>
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
     <script src="{{ asset('assets/libs/simplebar/dist/simplebar.js') }}"></script>
+    @livewireScripts
+    <script>
+        window.livewire.on('donationTableRefresh', () => {
+            Livewire.emit('refreshLivewire');
+        });
+    </script>
 </body>
 
 </html>
