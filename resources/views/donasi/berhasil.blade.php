@@ -17,6 +17,7 @@
         </script>
     @endif
 
+
     <h2>Donation History</h2>
     <table class="table">
         <thead>
@@ -30,10 +31,12 @@
         <tbody>
             @foreach ($donations as $donation)
                 <tr>
-                    <td>{{ $donation->id }}</td>
-                    <td>{{ $donation->nominal }}</td>
-                    <td>{{$donation->created_at->format('Y-m-d')}}</td>
-                    <td>{{ $donation->status}}</td>
+                    @if (auth()->check() && auth()->user()->id == $donation->user_id)
+                        <td>{{ $donation->id }}</td>
+                        <td>{{ $donation->nominal }}</td>
+                        <td>{{$donation->created_at->format('Y-m-d')}}</td>
+                        <td>{{ $donation->status}}</td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>
