@@ -1,6 +1,11 @@
 <?php
 
+use App\Models\Berita;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\DashboardBeritaController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +21,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/berita', [BeritaController::class, 'index']);
+
+Route::get('berita/{berita:slug}', [BeritaController::class, 'show']);
+
+Route::get('berita/{category:slug}', [BeritaController::class, 'show']);
+
+Route::get('/berita/{berita:slug}', [BeritaController::class, 'show']);
+
+// Route::get('/dashboard/berita/checkSlug', [DashboardBeritaController::class, 'checkSlug']);
+
+Route::resource('/dashboard/berita', DashboardBeritaController::class);
+
+
+
