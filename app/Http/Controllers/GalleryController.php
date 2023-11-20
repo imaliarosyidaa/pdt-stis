@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use Illuminate\Http\Request;
-use Illuminate\Support\Styr;
+use App\Models\PostGallery;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
@@ -17,23 +20,22 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'photoFile' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'photoTitle' => 'required',
-            'photoDescription' => 'required',
-            'photoYear' => 'required',
+            'filename' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'title' => 'required',
+            'caption' => 'required',
+            'tahun' => 'required',
         ]);
 
-        $gallery = new Gallery;
-        $gallery->filename = $request->file('photoFile')->store('gallery');
-        $gallery->title = $validatedData['photoTitle'];
-        $gallery->caption = $validatedData['photoDescription'];
-        $gallery->tahun = $validatedData['photoYear'];
-        // Set nilai urutan secara otomatis (misalnya, +1 dari urutan terakhir pada tahun yang sama)
-        $lastOrder = Gallery::where('tahun', $gallery->tahun)->max('urutan');
-        $gallery->urutan = $lastOrder + 1;
-        $gallery->save();
+        $gallery = $request->file('filename');
+        $gallery->storeAs('public/posts', $gallery->hashName());
 
-        return redirect('/admin/upload-galeri')->with('succes', 'Foto berhasil ditambahkan!');
+        PostGallery::create([
+            'filename' => $gallery->hashName(),
+            'title' => $request->input('title'),
+            'caption' => $request->input('caption'),
+            'tahun' => $request->input('tahun')
+        ]);
+
+        return redirect('/admin/upload-galeri')->with(['succes'=> 'Foto berhasil ditambahkan!']);
     }
-
 }

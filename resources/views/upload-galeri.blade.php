@@ -149,36 +149,36 @@
                             <form enctype="multipart/form-data" method="post" action="{{ url('/admin/upload-galeri') }}">
                             @csrf 
                                 <div class="mb-3">
-                                    <label for="photoFile" class="form-label">Upload Foto</label>
-                                    <input type="file" class="form-control @error('photoFile') is-invalid @enderror" id="photoFile" name="photoFile" accept="image/*">
-                                    @error('photoFile')
+                                    <label for="filename" class="form-label">Upload Foto</label>
+                                    <input type="file" class="form-control @error('filename') is-invalid @enderror" id="filename" name="filename" accept="image/*">
+                                    @error('filename')
                                       <div class="invalid-feedback">
                                         {{ $message }}
                                       </div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="photoTitle" class="form-label">Title Foto</label>
-                                    <input type="text" class="form-control @error('photoTitle') is-invalid @enderror" id="photoTitle" name="photoTitle">
-                                    @error('photoTitle')
+                                    <label for="title" class="form-label">Title Foto</label>
+                                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title">
+                                    @error('title')
                                       <div class="invalid-feedback">
                                         {{ $message }}
                                       </div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="photoDescription" class="form-label">Deskripsi Foto</label>
-                                    <textarea class="form-control @error('photoDescription') is-invalid @enderror" id="photoDescription" name="photoDescription" rows="3"></textarea>
-                                    @error('photoDescription')
+                                    <label for="caption" class="form-label">Deskripsi Foto</label>
+                                    <textarea class="form-control @error('caption') is-invalid @enderror" id="caption" name="caption" rows="3"></textarea>
+                                    @error('caption')
                                       <div class="invalid-feedback">
                                         {{ $message }}
                                       </div>
                                     @enderror
                                   </div>
                                 <div class="mb-3">
-                                    <label for="photoYear" class="form-label">Tahun Foto</label>
-                                    <input type="text" class="form-control @error('photoYear') is-invalid @enderror" id="photoYear" name="photoYear">
-                                    @error('photoYear')
+                                    <label for="tahun" class="form-label">Tahun Foto</label>
+                                    <input type="text" class="form-control @error('tahun') is-invalid @enderror" id="tahun" name="tahun">
+                                    @error('tahun')
                                       <div class="invalid-feedback">
                                         {{ $message }}
                                       </div>

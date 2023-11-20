@@ -197,12 +197,12 @@
         @foreach($galleries as $gallery)
           <div class="col-lg-4 col-md-6 portfolio-item filter-{{ $gallery->tahun }}">
             <div class="portfolio-wrap">
-              <img src="{{ asset('storage/app/gallery/' . $gallery->filename) }}" class="img-fluid" alt="{{ $gallery->title }}">
+              <img style="width: 100%; height:100%;" src="{{ asset('/storage/posts/'.$gallery->filename) }}">
               <div class="portfolio-info">
                 <h4>{{ $gallery->title }}</h4>
                 <p>{{ $gallery->description }}</p>
                 <div class="portfolio-links">
-                  <a href="{{ asset('storage/app/gallery/' . $gallery->filename) }}" data-gallery="portfolioGallery" class="portfokio-lightbox" title="{{ $gallery->description }}"><i class="bi bi-plus"></i></a>
+                  <a href="{{ asset('/storage/posts/'.$gallery->filename) }}" data-gallery="portfolioGallery" class="portfokio-lightbox" title="{{ $gallery->description }}"><i class="bi bi-plus"></i></a>
                   <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
                 </div>
               </div>
