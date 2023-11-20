@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventPdtController;
 use App\Http\Controllers\VolunteerController;
+use App\Http\Controllers\HomeController;
+  
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +18,7 @@ use App\Http\Controllers\VolunteerController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/admin/volunteers', [VolunteerController::class,'index'])->name('daftar volunteer');
 Route::get('/admin/volunteers/add', [VolunteerController::class,'add'])->name('add volunteer');
