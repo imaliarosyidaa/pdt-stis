@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.mahasiswa')
 @section('content')
     <div class="container mt-5">
         @if (session('success'))
@@ -41,4 +40,8 @@
             @endforeach
         </tbody>
     </table>
+    <a href="{{url('/dashboard')}}">
+        <button>Kembali</button>
+    </a>
+    
 @endsection

@@ -30,4 +30,9 @@ class Donations extends Model
         return $this->belongsTo(EventPdt::class);
     }
 
+    public function pemasukan()
+    {
+        return $this->hasOne(Pemasukan::class, 'id_lap');
+    }
+
 }

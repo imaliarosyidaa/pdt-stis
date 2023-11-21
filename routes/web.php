@@ -42,6 +42,10 @@ Route::put('/donations/update-status/{id}', [DonationController::class, 'updateS
     ->middleware(['auth', 'verified'])->name('donations.updateStatus');
 Route::get('admin/donations', [DonationController::class, 'viewDonasi'])->middleware(['auth', 'verified'])->name('donations.viewDonasi');
 
+Route::get('/admin/keuangan/pemasukan', function () {
+    return view('keuangan.pemasukan');
+});
+
 
 Route::get('/admin/donations/approved', [DonationController::class, 'approvedDonationSum'])
     ->middleware(['auth', 'verified'])->name('donations.approvedSum');

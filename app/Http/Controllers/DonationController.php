@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Donations;
+use App\Models\Pemasukan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DonationStatusUpdated;
@@ -47,7 +48,7 @@ class DonationController extends Controller
             'nominal' => $request->nominal,
             'link' => $filePath,
             'message' => $request->message,
-            'name' => $request->name,
+            'nama' => $request->name,
             'status' => $status,
             'metode'=>$request->payment_method
         ]);
@@ -71,18 +72,10 @@ class DonationController extends Controller
         return view('donasi.berhasil', compact('donations'));
     }
 
-    // public function viewDonasi()
-    // {
-    //     $donations = Donations::all();
-    //     return view('donasi.viewDonasi', compact('donations'));
-    // }
-
     public function viewDonasi()
     {
         return view('donasi.viewDonasi');
     }
-
-
 
     public function updateStatus(Request $request, $id)
     {
@@ -97,8 +90,21 @@ class DonationController extends Controller
         $donation->save();
 
         if ($oldStatus !== $donation->status) {
-            Mail::to($donation->user->email)->send(new DonationStatusUpdated($donation));
-        } 
+            Mail::to($donation->user)->send(new DonationStatusUpdated($donation));
+        }
+
+        $pemasukan = Pemasukan::where('donation_id', $donation->id)->firstOrNew([
+            'donation_id' => $donation->id,
+            'ket_pendanaan' => 'Pemasukan Donasi',
+        ]);
+
+        if ($donation->status === 'disetujui') {
+            $pemasukan->total = $donation->nominal;
+        } elseif ($donation->status === 'ditolak') {
+            $pemasukan->total = 0;
+        }
+
+        $pemasukan->save();
 
         return redirect()->route('donations.viewDonasi')->with('success', 'Donation status updated successfully.');
     }

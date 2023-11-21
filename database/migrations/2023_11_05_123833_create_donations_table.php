@@ -31,6 +31,9 @@ class createDonationsTable extends Migration
      */
     public function down()
     {
+        Schema::table('pemasukan', function (Blueprint $table) {
+            $table->dropForeign(['donation_id']);
+        });
         Schema::dropIfExists('donations');
     }
 };

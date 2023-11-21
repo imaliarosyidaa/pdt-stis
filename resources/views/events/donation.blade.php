@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.donasi')
 
-@section('content')
+@section('donasi')
+    <div class="card rounded-0 border-0 card2" id="paypage">
     @if ($eventsAvailable)
         <h1>Halaman Donasi</h1>
             @if ($errors->any())
@@ -18,6 +19,41 @@
         </p>
         <form action="{{ route('donations.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+
+            <div class="mb-3">
+                <label for="payment_method" class="form-label">
+                    Metode Pembayaran:
+                    <span class="text-danger vnumgf" id="i4" aria-label="Required question">*</span>
+                </label>
+
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="payment_method" value="bca">
+                        <img src="{{ asset('assets/Donasi/img/bca.png') }}" width="150px" height="45px" class='radio'>
+                    </label>
+                    <label>
+                        <input type="radio" name="payment_method" value="bni">
+                        <img src="{{ asset('assets/Donasi/img/bni.png') }}" width="150px" height="45px" class='radio'>
+                    </label>
+                    <label>
+                        <input type="radio" name="payment_method" value="bri">
+                        <img src="{{ asset('assets/Donasi/img/bri.png') }}" width="150px" height="45px" class='radio'>
+                    </label>
+                    <label>
+                        <input type="radio" name="payment_method" value="dana">
+                        <img src="{{ asset('assets/Donasi/img/dana.png') }}" width="150px" height="45px" class='radio'>
+                    </label>
+                    <label>
+                        <input type="radio" name="payment_method" value="gopay">
+                        <img src="{{ asset('assets/Donasi/img/gopay.png') }}" width="150px" height="45px" class='radio'>
+                    </label>
+                    <label>
+                        <input type="radio" name="payment_method" value="linkaja">
+                        <img src="{{ asset('assets/Donasi/img/shopeepay.png') }}" width="150px" height="45px" class='radio'>
+                    </label>
+                </div>
+            </div>         
+
             <div class="mb-3">
                 <label for="name" class="form-label">Nama:</label>
                 <input type="text" class="form-control" name="name">
@@ -39,24 +75,7 @@
                 <input type="file" class="form-control" name="file" accept=".jpg, .png, .jpeg">
             </div>
 
-            <div class="mb-3">
-                <label for="payment_method" class="form-label">
-                    Metode Pembayaran:
-                    <span class="text-danger vnumgf" id="i4" aria-label="Required question">*</span>
-                </label>
-                <select class="form-control" name="payment_method" required>
-                    <option value="BNI">BNI</option>
-                    <option value="BRI">BRI</option>
-                    <option value="BCA">BCA</option>
-                    <option value="OVO">OVO</option>
-                </select>
-
-            <div class="mb-3">
-                <label for="message" class="form-label">Message:</label>
-                <textarea class="form-control" name="message" rows="4">{{ old('message') }}</textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Kirim</button>
+            <button type="submit" class="btn btn-primary" class="btn btn-info placeicon">DONASI &nbsp; &#xf178;</button>
         </form>
     </div>
     @else
