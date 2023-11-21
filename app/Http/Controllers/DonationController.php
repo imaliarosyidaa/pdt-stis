@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DonationStatusUpdated;
 use Illuminate\Support\Facades\Auth;
+use Livewire\WithPagination;
 
 class DonationController extends Controller
 {
-
+    use WithPagination;
     public function create()
     {
         return view('donations.createDonasi');
@@ -68,7 +69,7 @@ class DonationController extends Controller
 
     public function berhasilDonasi()
     {
-        $donations = Donations::all();
+        $donations = Donations::paginate(10);
         return view('donasi.berhasil', compact('donations'));
     }
 

@@ -5,7 +5,6 @@
         @if (session('success'))
             <!-- Success alert code here -->
         @endif
-
         <livewire:donation-table />
     </div>
 @endsection

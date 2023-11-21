@@ -118,4 +118,7 @@
             @endforeach
         </tbody>
     </table>
+    <div class="d-flex justify-content-end">
+        {{ $donations->links('livewire.custom-pagination-links') }}
+    </div>
 </div>

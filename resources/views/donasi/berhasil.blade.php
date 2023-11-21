@@ -43,5 +43,7 @@
     <a href="{{url('/dashboard')}}">
         <button>Kembali</button>
     </a>
-    
+    <div class="d-flex justify-content-end">
+        {{ $donations->links('livewire.custom-pagination-links') }}
+    </div>
 @endsection

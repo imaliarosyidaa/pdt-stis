@@ -1,3 +1,4 @@
+<div>
 <table class="table text-nowrap mb-0 align-middle">
     <thead class="text-dark fs-4">
       <tr>
@@ -92,3 +93,4 @@
       @endforeach                      
     </tbody>
   </table>
+</div>

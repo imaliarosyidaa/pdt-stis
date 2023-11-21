@@ -5,9 +5,11 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Donations;
+use Livewire\WithPagination;
 
 class DonationTable extends Component
 {
+    use WithPagination;
     public $year;
     public $sortField = 'created_at';
     public $sortDirection = 'desc';
@@ -19,7 +21,8 @@ class DonationTable extends Component
                 return $query->whereYear('created_at', $this->year);
             })
             ->orderBy($this->sortField, $this->sortDirection)
-            ->get();
+            ->paginate(2);
+            // ->get();
 
         return view('livewire.donation-table', compact('donations'));
     }
