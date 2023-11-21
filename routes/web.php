@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EventPdtController;
-use App\Http\Controllers\VolunteerController;
 use App\Http\Controllers\HomeController;
-  
-
+use App\Http\Controllers\VolunteerController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\PostGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +22,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/admin/volunteers', [VolunteerController::class,'index'])->name('daftar volunteer');
 Route::get('/admin/volunteers/add', [VolunteerController::class,'add'])->name('add volunteer');
 Route::post('/admin/volunteers', [VolunteerController::class,'simpan'])->name('simpan volunteer');
+
+Route::get('/admin/upload-galeri', [GalleryController::class, 'create']);
+Route::post('/admin/upload-galeri', [GalleryController::class, 'store']);
+
+Route::get('/gallery', [PostGalleryController::class, 'index']);
+// Route::resource('/admin/upload-galeri',GalleryController::class)->middleware('guest');
