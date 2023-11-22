@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\DonationStatusUpdated;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
+use App\Jobs\UpdatePemasukanJob;
 
 class DonationController extends Controller
 {
@@ -90,23 +91,10 @@ class DonationController extends Controller
         $donation->status = $request->input('new_status');
         $donation->save();
 
-        if ($oldStatus !== $donation->status) {
-            Mail::to($donation->user)->send(new DonationStatusUpdated($donation));
-        }
-
-        $pemasukan = Pemasukan::where('donation_id', $donation->id)->firstOrNew([
-            'donation_id' => $donation->id,
-            'ket_pendanaan' => 'Pemasukan Donasi',
-        ]);
-
-        if ($donation->status === 'disetujui') {
-            $pemasukan->total = $donation->nominal;
-        } elseif ($donation->status === 'ditolak') {
-            $pemasukan->total = 0;
-        }
-
-        $pemasukan->save();
-
+        // if ($oldStatus !== $donation->status) {
+        //     Mail::to($donation->user)->send(new DonationStatusUpdated($donation));
+        // }
+        UpdatePemasukanJob::dispatch($donation);
         return redirect()->route('donations.viewDonasi')->with('success', 'Donation status updated successfully.');
     }
 

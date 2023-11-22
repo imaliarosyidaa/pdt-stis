@@ -32,7 +32,7 @@ class Donations extends Model
 
     public function pemasukan()
     {
-        return $this->hasOne(Pemasukan::class, 'id_lap');
+        return $this->hasOne(Pemasukan::class, 'donation_id');
     }
 
 }

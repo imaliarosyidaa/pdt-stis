@@ -53,7 +53,7 @@ class CreateKeuanganTable extends Migration
             $table->mediumInteger('donation_id')->unsigned()->nullable();
             $table->mediumInteger('id_lap')->unsigned()->nullable();
             $table->string('ket_pendanaan',100);
-            $table->mediumInteger('total')->unsigned;
+            $table->mediumInteger('total')->unsigned();
             $table->timestamps();
 
 

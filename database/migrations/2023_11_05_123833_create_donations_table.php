@@ -12,17 +12,17 @@ class createDonationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('donations', function (Blueprint $table) {
-            $table->mediumIncrements('id');
-            $table->foreignId('user_id')->constrained();
-            $table->integer('nominal')->unsigned();
-            $table->string('link');
-            $table->string('pesan',500)->nullable();
-            $table->string('nama',500)->nullable()->default('Anonymous');
-            $table->string('metode');
-            $table->enum('status', ['belum dikonfirmasi', 'disetujui', 'ditolak'])->default('belum dikonfirmasi');
-            $table->timestamps();
-        });
+        // Schema::create('donations', function (Blueprint $table) {
+        //     $table->mediumIncrements('id');
+        //     $table->foreignId('user_id')->constrained();
+        //     $table->integer('nominal')->unsigned();
+        //     $table->string('link');
+        //     $table->string('pesan',500)->nullable();
+        //     $table->string('nama',500)->nullable()->default('Anonymous');
+        //     $table->string('metode');
+        //     $table->enum('status', ['belum dikonfirmasi', 'disetujui', 'ditolak'])->default('belum dikonfirmasi');
+        //     $table->timestamps();
+        // });
     }
 
     /**
