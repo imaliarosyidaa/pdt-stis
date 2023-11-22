@@ -13,7 +13,7 @@
                 </ul>
             </div>
         @endif
-        <p class="mb-0 text-right">
+        <p class="mb-0">
             <span class="text-danger" id="i4" aria-label="Required question">*</span>
             <span class="ml-2 text-danger">Wajib diisi</span>
         </p>
@@ -27,36 +27,38 @@
                 </label>
 
                 <div class="radio-group">
-                    <label>
-                        <input type="radio" name="payment_method" value="bca">
+                    <label class="d-inline-block col-md-4">
+                        <input type="radio" name="payment_method" class="d-none" value="bca">
                         <img src="{{ asset('assets/Donasi/img/bca.png') }}" width="150px" height="45px" class='radio'>
                     </label>
-                    <label>
-                        <input type="radio" name="payment_method" value="bni">
+                    <label class="d-inline-block col-md-4">
+                        <input type="radio" name="payment_method" value="bni" class="d-none">
                         <img src="{{ asset('assets/Donasi/img/bni.png') }}" width="150px" height="45px" class='radio'>
                     </label>
-                    <label>
-                        <input type="radio" name="payment_method" value="bri">
+                    <label class="d-inline-block col-md-4">
+                        <input type="radio" name="payment_method" value="bri" class="d-none">
                         <img src="{{ asset('assets/Donasi/img/bri.png') }}" width="150px" height="45px" class='radio'>
                     </label>
-                    <label>
-                        <input type="radio" name="payment_method" value="dana">
+                    <label class="d-inline-block col-md-4">
+                        <input type="radio" name="payment_method" value="dana" class="d-none">
                         <img src="{{ asset('assets/Donasi/img/dana.png') }}" width="150px" height="45px" class='radio'>
                     </label>
-                    <label>
-                        <input type="radio" name="payment_method" value="gopay">
+                    <label class="d-inline-block col-md-4">
+                        <input type="radio" name="payment_method" value="gopay" class="d-none">
                         <img src="{{ asset('assets/Donasi/img/gopay.png') }}" width="150px" height="45px" class='radio'>
                     </label>
-                    <label>
-                        <input type="radio" name="payment_method" value="linkaja">
+                    <label class="d-inline-block col-md-4">
+                        <input type="radio" name="payment_method" value="linkaja" class="d-none">
                         <img src="{{ asset('assets/Donasi/img/shopeepay.png') }}" width="150px" height="45px" class='radio'>
                     </label>
                 </div>
             </div>         
 
             <div class="mb-3">
-                <label for="name" class="form-label">Nama:</label>
-                <input type="text" class="form-control" name="name">
+                <label for="name" class="form-label" >
+                    Nama:
+                </label>
+                <input type="text" class="form-control" name="name" value="{{ auth()->user()->name }}">
             </div>
 
             <div class="mb-3">
