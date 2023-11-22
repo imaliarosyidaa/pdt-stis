@@ -91,9 +91,9 @@ class DonationController extends Controller
         $donation->status = $request->input('new_status');
         $donation->save();
 
-        // if ($oldStatus !== $donation->status) {
-        //     Mail::to($donation->user)->send(new DonationStatusUpdated($donation));
-        // }
+        if ($oldStatus !== $donation->status) {
+            Mail::to($donation->user)->send(new DonationStatusUpdated($donation));
+        }
         UpdatePemasukanJob::dispatch($donation);
         return redirect()->route('donations.viewDonasi')->with('success', 'Donation status updated successfully.');
     }
