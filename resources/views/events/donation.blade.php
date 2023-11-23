@@ -27,27 +27,27 @@
                 </label>
 
                 <div class="radio-group">
-                    <label class="d-inline-block col-md-4">
+                    <label class="d-inline-block col-md-3">
                         <input type="radio" name="payment_method" class="d-none" value="bca">
                         <img src="{{ asset('assets/Donasi/img/bca.png') }}" width="150px" height="45px" class='radio'>
                     </label>
-                    <label class="d-inline-block col-md-4">
+                    <label class="d-inline-block col-md-3">
                         <input type="radio" name="payment_method" value="bni" class="d-none">
                         <img src="{{ asset('assets/Donasi/img/bni.png') }}" width="150px" height="45px" class='radio'>
                     </label>
-                    <label class="d-inline-block col-md-4">
+                    <label class="d-inline-block col-md-3">
                         <input type="radio" name="payment_method" value="bri" class="d-none">
                         <img src="{{ asset('assets/Donasi/img/bri.png') }}" width="150px" height="45px" class='radio'>
                     </label>
-                    <label class="d-inline-block col-md-4">
+                    <label class="d-inline-block col-md-3">
                         <input type="radio" name="payment_method" value="dana" class="d-none">
                         <img src="{{ asset('assets/Donasi/img/dana.png') }}" width="150px" height="45px" class='radio'>
                     </label>
-                    <label class="d-inline-block col-md-4">
+                    <label class="d-inline-block col-md-3">
                         <input type="radio" name="payment_method" value="gopay" class="d-none">
                         <img src="{{ asset('assets/Donasi/img/gopay.png') }}" width="150px" height="45px" class='radio'>
                     </label>
-                    <label class="d-inline-block col-md-4">
+                    <label class="d-inline-block col-md-3">
                         <input type="radio" name="payment_method" value="linkaja" class="d-none">
                         <img src="{{ asset('assets/Donasi/img/shopeepay.png') }}" width="150px" height="45px" class='radio'>
                     </label>

@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventPdtController;
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\PemasukanController;
+use App\Http\Controllers\PengeluaranController;
+use App\Http\Controllers\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,5 +54,13 @@ Route::get('/admin/donations/approved', [DonationController::class, 'approvedDon
     ->middleware(['auth', 'verified'])->name('donations.approvedSum');
 Route::get('/admin/total-donasi/bulan', [DonationController::class, 'totalApprovedDonationPerMonth'])
     ->middleware(['auth', 'verified'])->name('donations.totalApprovedDonationPerMonth');
+
+    Route::get('/pemasukan', [PemasukanController::class, 'create'])->middleware(['auth', 'verified'])->name('pemasukan.create');
+    Route::post('/pemasukan', [PemasukanController::class, 'store'])->middleware(['auth', 'verified'])->name('pemasukan.store');
+
+    Route::get('/pengeluaran', [PengeluaranController::class, 'create'])->middleware(['auth', 'verified'])->name('pengeluaran.create');
+    Route::post('/pengeluaran', [PengeluaranController::class, 'store'])->middleware(['auth', 'verified'])->name('pengeluaran.store');
+
+    Route::get('admin/laporan', [LaporanController::class, 'viewLaporan'])->middleware(['auth', 'verified'])->name('laporan.viewLaporan');
 
 require __DIR__.'/auth.php';

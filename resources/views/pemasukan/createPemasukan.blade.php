@@ -1,13 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
+    
+@endsection
+<div class="container-fluid">
     <div class="container-fluid">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div class="card">
                     <div class="card-body">
-                        <form enctype="multipart/form-data" method="post" action="{{ route('pemasukan.store') }}">
-                            @csrf
+                        <form enctype="multipart/form-data" method="post" action="upload.php">
                             <div class="mb-3">
                                 <label for="tanggal" class="form-label">Tanggal</label>
                                 <input type="date" class="form-control" id="tanggal" name="tanggal">
@@ -31,4 +33,6 @@
             </div>
         </div>
     </div>
+</div>
+
 @endsection

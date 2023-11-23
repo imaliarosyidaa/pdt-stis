@@ -5,11 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class laporan_keuangan extends Model
+class LaporanKeuangan extends Model
 {
     use HasFactory;
     protected $table = 'lap_keuangan';
-    protected $fillable = ['name', 'debit'];
+    protected $fillable = ['name', 'debit', 'created_at', 'donation_id', 'tipe'];
+
+
+    public function donation()
+    {
+        return $this->belongsTo(Donations::class, 'donation_id');
+    }
 
     public function pengeluarans()
     {

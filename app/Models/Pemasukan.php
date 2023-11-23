@@ -10,7 +10,7 @@ class Pemasukan extends Model
     use HasFactory;
 
     protected $table = 'pemasukan';
-    protected $fillable = ['donation_id', 'id_lap', 'ket_pendanaan', 'total'];
+    protected $fillable = ['donation_id', 'id_lap', 'ket_pendanaan', 'total', 'tanggal_pemasukan'];
 
     public function donation()
     {

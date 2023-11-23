@@ -11,6 +11,7 @@ use App\Mail\DonationStatusUpdated;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
 use App\Jobs\UpdatePemasukanJob;
+use App\Jobs\UpdateLaporanJob;
 
 class DonationController extends Controller
 {
@@ -95,6 +96,7 @@ class DonationController extends Controller
             Mail::to($donation->user)->send(new DonationStatusUpdated($donation));
         }
         UpdatePemasukanJob::dispatch($donation);
+        dispatch(new UpdateLaporanJob($donation));
         return redirect()->route('donations.viewDonasi')->with('success', 'Donation status updated successfully.');
     }
 
