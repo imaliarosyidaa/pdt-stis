@@ -17,7 +17,11 @@
             
             {{-- Menampilkan foto/ thumbnails --}}
             <div class="entry-img">
-              <img src="https://source.unsplash.com/1000x600?{{ $berita->category->name }}" alt="" class="img-fluid">
+              @if($berita->image)
+                <img src="{{ asset('storage/' . $berita->image) }}" alt="" class="img-fluid">
+              @else
+                <img src="https://source.unsplash.com/1000x600?{{ $berita->category->name }}" alt="" class="img-fluid">
+              @endif
             </div>
            
             {{-- Menampilkan judul berita --}}

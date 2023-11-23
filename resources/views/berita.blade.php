@@ -24,7 +24,11 @@
 
             {{-- Menampilkan gambar/ thumbnail --}}
             <div class="entry-img">
+              @if($isi->image)
+                <img src="{{ asset('storage/' . $isi->image) }}" alt="" class="img-fluid">
+              @else
               <img src="https://source.unsplash.com/1000x600?{{ $isi->category->name }}" alt="" class="img-fluid">
+              @endif
             </div>
 
             {{-- Menampilkan judul yang dapat diklik dan mengarah ke halaman berita berdasarkan judul --}}

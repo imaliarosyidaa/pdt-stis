@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
 use App\Models\Berita;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -30,9 +31,10 @@ Route::get('berita/{category:slug}', [BeritaController::class, 'show']);
 
 Route::get('/berita/{berita:slug}', [BeritaController::class, 'show']);
 
-// Route::get('/dashboard/berita/checkSlug', [DashboardBeritaController::class, 'checkSlug']);
+Route::get('/dashboard/berita/checkSlug', [DashboardBeritaController::class, 'checkSlug']);
 
 Route::resource('/dashboard/berita', DashboardBeritaController::class);
 
+Route::get('/dashboard/kategori/checkSlug', [AdminCategoryController::class, 'checkSlug']);
 
-
+Route::resource('/dashboard/kategori', AdminCategoryController::class)->except('show');

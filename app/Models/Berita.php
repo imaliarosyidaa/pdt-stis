@@ -24,10 +24,10 @@ class Berita extends Model
     //setiap pemanggilan database akan sekalian disimpan data category dan authornya
     protected $with = ['category'];
     // properti untuk nilai default user_id
-    protected $attributes = [
-        'user_id' => 1, 
-        'author' => 'PDT STIS'// Gantilah nilai ini dengan nilai default yang diinginkan
-    ];
+    // protected $attributes = [
+    //     'user_id' => 1, 
+    //     'author' => 'PDT STIS'// Gantilah nilai ini dengan nilai default yang diinginkan
+    // ];
 
     //melakukan fungsi pencarian
     public function scopeFilter($query, array $filters) {

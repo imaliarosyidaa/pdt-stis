@@ -31,7 +31,13 @@
       {{-- Recent post --}}
       @foreach($recentPost as $beritaTerbaru)
       <div class="post-item clearfix">
-        <img src="https://source.unsplash.com/1000x600?{{ $beritaTerbaru->category->name }}" alt="">
+        <div class="entry-img">
+          @if($beritaTerbaru->image)
+            <img src="{{ asset('storage/' . $beritaTerbaru->image) }}" alt="" class="img-fluid">
+          @else
+          <img src="https://source.unsplash.com/1000x600?{{ $beritaTerbaru->category->name }}" alt="" class="img-fluid">
+          @endif
+        </div>
         <h4><a href="/berita/{{ $beritaTerbaru->slug }}">{{ $beritaTerbaru->title }}</a></h4>
         <time datetime="2020-01-01">{{ $beritaTerbaru->created_at->diffForHumans() }}</time>
       </div>

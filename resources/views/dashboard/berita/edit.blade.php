@@ -2,15 +2,16 @@
 
 @section('berita')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1>Tambah Berita</h1>
+    <h1>Edit Berita</h1>
 </div>
 
 <div class="col-lg-8 mb-5">
-<form method="post" action="/dashboard/berita" class="mb-5" enctype="multipart/form-data">
+<form method="post" action="/dashboard/berita/{{ $berita->slug }}" enctype="multipart/form-data">
+    @method('put')
     @csrf
     <div class="mb-3">
       <label for="title" class="form-label">Judul</label>
-      <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required autofocus value="{{ old('title') }}">
+      <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required autofocus value="{{ old('title', $berita->title) }}">
         @error('title')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -19,7 +20,7 @@
     </div>
     <div class="mb-3">
         <label for="slug" class="form-label">Slug</label>
-        <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" required readonly value="{{ old('slug') }}">
+        <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" required readonly value="{{ old('slug', $berita->slug) }}">
         @error('slug')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -28,7 +29,7 @@
     </div>
     <div class="mb-3">
         <label for="author" class="form-label">Penulis</label>
-        <input type="text" class="form-control @error('author') is-invalid @enderror" id="author" name="author" required autofocus value="{{ old('author') }}">
+        <input type="text" class="form-control @error('author') is-invalid @enderror" id="author" name="author" required autofocus value="{{ old('author', $berita->author) }}">
           @error('author')
               <div class="invalid-feedback">
                   {{ $message }}
@@ -39,7 +40,7 @@
         <label for="category" class="form-label">Kategori</label>
         <select class="form-select" name="category_id">
             @foreach($categories as $category)
-                @if(old('category_id') == $category->id)
+                @if(old('category_id', $berita->category_id) == $category->id)
                 <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                 @else
                 <option value="{{ $category->id }}">{{ $category->name }}</option> 
@@ -49,7 +50,12 @@
     </div>
     <div class="mb-3">
         <label for="image" class="form-label">Thumbnail Berita</label>
-        <img class="img-preview img-fluid mb-3 col-sm-5">
+        <input type="hidden" name="oldImage" value="{{ $berita->image }}">
+        @if($berita->image)
+         <img src="{{ asset('storage/' . $berita->image) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+        @else
+            <img class="img-preview img-fluid mb-3 col-sm-5">
+        @endif
         <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
         @error('image')
             <div class="invalid-feedback">
@@ -62,10 +68,10 @@
         @error('body')
             <p class="text-danger">{{ $message }}</p>
         @enderror
-        <input id="body" type="hidden" name="body" value="{{ old('title') }}">
+        <input id="body" type="hidden" name="body" value="{{ old('body', $berita->body) }}">
         <trix-editor input="body"></trix-editor>
     </div>
-    <button type="submit" class="btn btn-primary">Tambah</button>
+    <button type="submit" class="btn btn-primary">Update</button>
 </form>
 </div>
 
@@ -96,7 +102,6 @@
             imgPreview.src = oFREvent.target.result;
         }
     }
-    
 </script>
 
 @endsection
