@@ -27,4 +27,6 @@ Route::get('/admin/upload-galeri', [GalleryController::class, 'create']);
 Route::post('/admin/upload-galeri', [GalleryController::class, 'store']);
 
 Route::get('/gallery', [PostGalleryController::class, 'index']);
-// Route::resource('/admin/upload-galeri',GalleryController::class)->middleware('guest');
+
+Route::get('/email', [App\Http\Controllers\ContactController::class, 'create']);
+Route::post('/send-email', [App\Http\Controllers\ContactController::class, 'sendEmail'])->name('send.email');
