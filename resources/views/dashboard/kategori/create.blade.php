@@ -1,16 +1,10 @@
 <!-- resources/views/dashboard/kategori/create.blade.php -->
-@extends('dashboard.layouts.navbar')
+{{-- @extends('dashboard.layouts.navbar') --}}
 
-@section('kategori')
+{{-- @section('kategori')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1>Tambah Kategori</h1>
-</div>
-
-@if(session()->has('success'))
-  <div class="alert alert-success col-lg-6" role="alert">
-    {{ session('success') }}
-  </div>
-@endif
+</div> --}}
 
 <div class="col-lg-8 mb-5">
     <!-- Formulir untuk menambah kategori -->
@@ -40,4 +34,4 @@
             .then(data => slugInput.value = data.slug)
     });
 </script> --}}
-@endsection
+{{-- @endsection --}}

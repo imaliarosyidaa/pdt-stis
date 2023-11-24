@@ -16,8 +16,18 @@ class DashboardBeritaController extends Controller
      */
     public function index()
     {
+        // return view('dashboard.berita.index', [
+        //     "berita" => Berita::latest()->paginate(10)->withQueryString(),
+        // ]);
+        $activeCategory = null;
+
+        if(request('category')) {
+            $activeCategory = Category::firstWhere('slug', request('category'));
+        }
         return view('dashboard.berita.index', [
-            "berita" => Berita::all(),
+            "berita" => Berita::latest()->filter(request(['search', 'category']))->paginate(10)->withQueryString(),
+            "categories" => Category::all(),
+            "activeCategory" => $activeCategory     
         ]);
     }
 

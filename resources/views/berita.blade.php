@@ -25,9 +25,9 @@
             {{-- Menampilkan gambar/ thumbnail --}}
             <div class="entry-img">
               @if($isi->image)
-                <img src="{{ asset('storage/' . $isi->image) }}" alt="" class="img-fluid">
+                <img src="{{ asset('storage/' . $isi->image) }}" alt="" class="img-fluid" style="width: 1000px; object-fit: cover;">
               @else
-              <img src="https://source.unsplash.com/1000x600?{{ $isi->category->name }}" alt="" class="img-fluid">
+              <img src="https://source.unsplash.com/1000x400?{{ $isi->category->name }}" alt="" class="img-fluid">
               @endif
             </div>
 

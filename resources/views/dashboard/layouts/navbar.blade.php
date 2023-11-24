@@ -15,6 +15,7 @@
   {{-- trix editor --}}
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
   <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Z1mZlkCJg2ES+8FQECacuLpLHPeqZ3f+waFaG5BvBBcA5q5kDYWvXLjogp2fep5G" crossorigin="anonymous">
 
   <style>
     trix-toolbar [data-trix-button-group="file-tools"] {
@@ -109,11 +110,17 @@
     @yield('berita')
     
     </div>
-  <script src="../admin/assets/libs/jquery/dist/jquery.min.js"></script>
+  {{-- <script src="../admin/assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../admin/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../admin/assets/js/sidebarmenu.js"></script>
   <script src="../admin/assets/js/app.min.js"></script>
-  <script src="../admin/assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="../admin/assets/libs/simplebar/dist/simplebar.js"></script> --}}
+  {{-- Script transform --}}
+  <script src="{{ asset("../admin/assets/libs/jquery/dist/jquery.min.js") }}"></script>
+  <script src="{{ asset("../admin/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js") }}"></script>
+  <script src="{{ asset("../admin/assets/js/sidebarmenu.js") }}"></script>
+  <script src="{{ asset("../admin/assets/js/app.min.js") }}"></script>
+  <script src="{{ asset("../admin/assets/libs/simplebar/dist/simplebar.js") }}"></script>
 </body>
 
 </html>
