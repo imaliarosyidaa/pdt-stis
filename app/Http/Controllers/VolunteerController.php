@@ -1,30 +1,41 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
 use App\Models\Volunteer;
+use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class VolunteerController extends Controller
 {
-    public function index(){
-        $volunteers = Volunteer::select('*')->get();
-        return view('volunteer.index',['volunteers'=>$volunteers]);
+    public function index(): View
+    {
+        $volunteers = Volunteer::latest()->paginate(5);
+        return view('volunteer.index',compact('volunteers'));
     }
-    public function add(){
+
+    public function create(){
         return view('volunteer.add');
     }
-    public function simpan(Request $request){
-        $volunteers = Volunteer::create([
-            'user_id' => $request->user_id,
-            'nim' => $request->nim,
-            'devisi' => $request->devisi,
-            'no_wa' => $request->no_wa,
-            'link' => $request->link,
-            'status_pendaftaran' => $request->status_pendaftaran,
-            'created_at' => $request->created_at,
-            'update_at' => $request->update_at,
-        ]);
 
-        return redirect()->route('index');
+    public function daftarVolunteer(){
+        return view('layouts.daftarVolunteer');
     }
+    public function store(Request $request)
+{
+    // Validate the form data
+    $request->validate([
+        'user_id' => 'required',
+        'nim' => 'required',
+        'devisi' => 'required',
+        'no_wa' => 'required',
+        'link' => 'required|mimes:pdf|max:10240',
+    ]);
+
+    // Save the data to the database
+    Volunteer::create($request->all());
+
+    // Redirect or return a response as needed
+    return redirect()->route('volunteers.index')->with('success', 'Volunteer created successfully');
+}
+
 }

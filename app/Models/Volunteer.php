@@ -18,6 +18,6 @@ class Volunteer extends Model
         'link',
         'status_pendaftaran',
         'created_at',
-        'update_at'
+        'update_at',
     ];
 }

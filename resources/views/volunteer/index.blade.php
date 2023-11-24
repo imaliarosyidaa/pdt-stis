@@ -192,7 +192,7 @@
                     </table>
                 </div>
             </div>
-            <a class="btn btn-success" href="{{route('add volunteer')}}"><i class="fa fa-plus"></i> Tambah Volunteer</a>
+            <a class="btn btn-success" href="{{route('volunteers.create')}}"><i class="fa fa-plus"></i> Tambah Volunteer</a>
             
           </div>
         </div>

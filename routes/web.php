@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EventPdtController;
 use App\Http\Controllers\VolunteerController;
 
 /*
@@ -19,6 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin/volunteers', [VolunteerController::class,'index'])->name('daftar volunteer');
-Route::get('/admin/volunteers/add', [VolunteerController::class,'add'])->name('add volunteer');
-Route::post('/admin/volunteers', [VolunteerController::class,'simpan'])->name('simpan volunteer');
+Route::resource('volunteers', VolunteerController::class);
+Route::get('home/daftar-volunteer', [VolunteerController::class,'daftarVolunteer']);
