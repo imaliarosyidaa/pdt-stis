@@ -38,6 +38,8 @@ Route::get('/events', [EventPdtController::class, 'berhasil'])->middleware(['aut
 Route::delete('/events/{id}', [EventPdtController::class, 'hapusKegiatan'])->middleware(['auth', 'verified'])->name('events.hapusKegiatan');
 Route::get('/donasi', [EventPdtController::class, 'viewDonasi'])->middleware(['auth', 'verified'])->name('events.donasi');
 Route::get('/donation',[EventPdtController::class, 'donasi'])->middleware(['auth', 'verified'])->name('events.donation');
+Route::get('/events/{event}/edit', [EventPdtController::class, 'edit'])->name('events.edit');
+Route::put('/events/{event}/update', [EventPdtController::class, 'update'])->name('events.update');
 
 Route::post('/donations', [DonationController::class, 'store'])->middleware(['auth', 'verified'])->name('donations.store');
 Route::get('/donations', [DonationController::class, 'berhasilDonasi'])->middleware(['auth', 'verified'])->name('donations.berhasil');
@@ -62,5 +64,6 @@ Route::get('/admin/total-donasi/bulan', [DonationController::class, 'totalApprov
     Route::post('/pengeluaran', [PengeluaranController::class, 'store'])->middleware(['auth', 'verified'])->name('pengeluaran.store');
 
     Route::get('admin/laporan', [LaporanController::class, 'viewLaporan'])->middleware(['auth', 'verified'])->name('laporan.viewLaporan');
+
 
 require __DIR__.'/auth.php';

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\EventPdt;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\DonationController;
+use Illuminate\Validation\Rule;
 
 class EventPdtController extends Controller
 {
@@ -50,10 +51,28 @@ class EventPdtController extends Controller
         return view('events.berhasil', compact('events'));
     }
 
-    public function edit($id)
+    public function edit(EventPdt $event)
     {
-        $event = EventPdt::findOrFail($id);
         return view('events.edit', compact('event'));
+    }
+
+    public function update(Request $request, EventPdt $event)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'quota' => 'required|integer|min:0',
+            'lokasi' => 'required',
+            'waktu_mulai' => 'required|date|after_or_equal:' . Carbon::today(),
+            'waktu_akhir' => 'required|date|after:waktu_mulai|after_or_equal:' . Carbon::today(),
+            'id' => 'exists:event_pdts,id', 
+            'waktu_mulai' => 'required|date|after_or_equal:' . Carbon::today(),
+            'waktu_akhir' => 'required|date|after:waktu_mulai|after_or_equal:' . Carbon::today(),
+        ]);
+
+        $event->update($validatedData);
+
+        return redirect()->route('events.berhasil')->with('success', 'Kegiatan berhasil diupdate!');
     }
 
     public function hapusKegiatan($id)

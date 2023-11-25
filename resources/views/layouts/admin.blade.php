@@ -39,6 +39,7 @@
     <script src="{{ asset('assets/admin/js/app.min.js') }}"></script>
     <script src="{{ asset('assets/admin/libs/simplebar/dist/simplebar.js') }}"></script>
     @livewireScripts
+    @livewireScripts
     <script>
         window.livewire.on('donationTableRefresh', () => {
             Livewire.emit('refreshLivewire');
