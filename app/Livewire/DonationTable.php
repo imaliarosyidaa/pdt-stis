@@ -21,7 +21,8 @@ class DonationTable extends Component
                 return $query->whereYear('created_at', $this->year);
             })
             ->orderBy($this->sortField, $this->sortDirection)
-            ->paginate(10);
+            ->paginate(2);
+            // ->get();
 
         return view('livewire.donation-table', compact('donations'));
     }

@@ -34,11 +34,11 @@ class PengeluaranController extends Controller
 
         LaporanKeuangan::create([
             'name' => $request->input('jenisPengeluaran'),
-            'tipe' =>'Pengeluaran',
-            'debit' =>$debit,
+            'tipe' => 'Pengeluaran',
+            'debit' => $debit,
         ]);
 
-        return redirect()->route('donations.berhasil')
-            ->with('success', 'Pengeluaran created successfully.');
+        notify()->success('Pengeluaran berhasil dibuat');
+        return redirect()->to('/admin/keuangan/pengeluaran');
     }
 }

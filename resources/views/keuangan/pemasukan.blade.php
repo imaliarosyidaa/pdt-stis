@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-
 @section('content')
     <div class="container-fluid">
         <div class="card-body">
@@ -18,7 +17,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="deskripsiPemasukan" class="form-label">Deskripsi Pemasukan</label>
-                                <input type="text" class="form-control" id="deskripsiPemasukan" name="deskripsiPemasukan">
+                                <input type="text" class="form-control" id="deskripsiPemasukan"
+                                    name="deskripsiPemasukan">
                             </div>
                             <div class="mb-3">
                                 <label for="nominal" class="form-label">Nominal</label>

@@ -38,7 +38,7 @@ class PemasukanController extends Controller
             'debit' => $request->input('nominal'),
         ]);
 
-        return redirect()->route('donations.berhasil')
-            ->with('success', 'Pemasukan created successfully.');
+        notify()->success('Pemasukan berhasil dibuat');
+        return redirect()->to('/admin/keuangan/pemasukan');
     }
 }

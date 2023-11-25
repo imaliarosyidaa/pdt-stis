@@ -36,10 +36,10 @@
                         <td>{{ $event->description }}</td>
                         <td>{{ $event->quota }}</td>
                         <td>{{ $event->lokasi }}</td>
-                        <td>{{ \Carbon\Carbon::parse($event->waktu_mulai)->translatedFormat('d F Y') }}</td>
-                        <td>{{ \Carbon\Carbon::parse($event->waktu_akhir)->translatedFormat('d F Y') }}</td>
+                        <td>{{ $event->waktu_mulai}}</td>
+                        <td>{{ $event->waktu_akhir}}</td>
                         <td>
-                            <a href="{{ route('events.edit', $event->id) }}" class="btn btn-primary">Edit</a>
+                            {{-- <a href="{{ route('events.edit', $event->id) }}" class="btn btn-primary">Edit</a> --}}
                             <form action="{{ route('events.hapusKegiatan', $event->id) }}" method="POST" style="display:inline">
                                 @csrf
                                 @method('DELETE')

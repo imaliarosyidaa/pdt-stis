@@ -16,12 +16,13 @@ class KeuanganTable extends Component
 
     public function render()
     {
-            $keuangan = LaporanKeuangan::query()
+        $keuangan = LaporanKeuangan::query()
             ->when($this->year, function ($query) {
                 return $query->whereYear('created_at', $this->year);
             })
             ->orderBy($this->sortField, $this->sortDirection)
-            ->paginate(5);
+            ->paginate(20);
+            // ->get();
 
         return view('livewire.keuangan-table', compact('keuangan'));
     }
