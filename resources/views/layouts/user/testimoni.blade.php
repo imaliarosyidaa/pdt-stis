@@ -31,6 +31,18 @@
 
 <body>
 
+  <script>
+    function showModal() {
+      event.preventDefault();
+      $('#exampleModal').modal('show');
+    }
+
+    function updateButton() {
+      $('#exampleModal').modal('hide');
+      var myForm = document.getElementById('myForm');
+      myForm.submit();
+    }
+  </script>
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -72,6 +84,23 @@
     </div>
   </header><!-- End Header -->
 
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        </div>
+        <div class="modal-body">
+          Data berhasil disimpan
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="updateButton()">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ======= Testimonial Form ======= -->
   <section id="testimonial-form" class="testimonial-form">
     <div class="container">
@@ -83,7 +112,7 @@
           </div>
 
           <!-- Form -->
-          <form method="post" action="{{ route('feedback.store') }}" class="php-email-form">
+          <form id="myForm" method="post" action="{{ route('feedback.store') }}" class="php-email-form">
             @csrf
             @method('post')
             <input type="hidden" role="form" name="id_user" value="1">
@@ -102,7 +131,7 @@
 
               <!-- Tombol Submit -->
               <div class="col-md-12 mt-3 text-center">
-                <button type="submit" class="btn btn-primary">Kirim</button>
+                <button type="submit" class="btn btn-primary" onclick="showModal()">Kirim</button>
               </div>
             </div>
           </form>
@@ -199,6 +228,10 @@
   <script src="{{asset ('/assets/mahasiswa/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
   <script src="{{asset ('/assets/mahasiswa/vendor/swiper/swiper-bundle.min.js') }}"></script>
   <script src="{{asset ('/assets/mahasiswa/vendor/php-email-form/validate.js') }}"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="{{asset ('/assets/mahasiswa/js/main.js') }}"></script>

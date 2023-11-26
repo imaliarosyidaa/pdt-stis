@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\testimoni_feedback;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class feedbackController extends Controller
 {
@@ -45,6 +46,8 @@ class feedbackController extends Controller
 
             // Update status pada testimoni_feedback
             $feedback->update(['status' => $newStatus]);
+            // Store $newStatus in a cookie
+            Cookie::queue('newStatus', $newStatus, 60); // The third parameter is the number of minutes the cookie should be valid
 
             return redirect(route('feedback.view'))->with('success', 'Berhasil mengubah status');
         } else {

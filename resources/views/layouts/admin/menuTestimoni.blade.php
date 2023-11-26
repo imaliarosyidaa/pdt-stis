@@ -11,6 +11,17 @@
 </head>
 
 <body>
+  <script>
+    function showModal() {
+      event.preventDefault();
+      $('#exampleModal').modal('show');
+    }
+
+    function updateButton() {
+      $('#exampleModal').modal('hide');
+    }
+  </script>
+
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
     <!-- Sidebar Start -->
@@ -97,8 +108,23 @@
 
     <!--  Main wrapper -->
     <div class="body-wrapper">
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            </div>
+            <div class="modal-body">
+              Data berhasil ditampilkan di halaman utama
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="updateButton()">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <!--  Header Start -->
-
       <!--  Header End -->
       <div class="container-fluid">
         <div class="container-fluid">
@@ -137,12 +163,6 @@
                           <h6 class="fw-semibold mb-0">Feedback</h6>
                         </th>
                         <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Created at</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Update at</h6>
-                        </th>
-                        <th class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Action</h6>
                         </th>
                       </tr>
@@ -154,13 +174,12 @@
                         <td class="border-bottom-0">{{ $f->id_user}}</td>
                         <td class="border-bottom-0">{{ $f->testimoni}}</td>
                         <td class="border-bottom-0">{{ $f->feedback}}</td>
-                        <td class="border-bottom-0">{{ $f->created_at}}</td>
-                        <td class="border-bottom-0">{{ $f->updated_at}}</td>
+                        <!-- <td class="border-bottom-0">{{ $f->status}}</td> -->
                         <td class="border-bottom-0">
                           <form method="post" action="{{ route('feedback.editview', ['id' => $f->id]) }}">
                             @csrf
                             <input type="hidden" name="status" value="{{ $f->status }}">
-                            <button type="submit" name="tampilkan" class="btn btn-primary mr-2">Tampilkan</button>
+                            <button type="submit" name="tampilkan" class="btn btn-primary mr-2" id="tampilkanButton" onclick="showModal()">Tampilkan</button>
                           </form>
                         </td>
 
@@ -175,11 +194,20 @@
         </div>
       </div>
     </div>
-    <script src="{{asset ('/assets/admin/libs/jquery/dist/jquery.min.js')}}"></script>
-    <script src="{{asset ('/assets/admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset ('/assets/admin/js/sidebarmenu.js')}}"></script>
-    <script src="{{asset ('/assets/admin/js/app.min.js')}}"></script>
-    <script src="{{asset ('/assets/admin/libs/simplebar/dist/simplebar.js')}}"></script>
+  </div>
+
+  <!-- <link rel=" stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+  <script src="{{asset ('/assets/admin/libs/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{asset ('/assets/admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset ('/assets/admin/js/sidebarmenu.js')}}"></script>
+  <script src="{{asset ('/assets/admin/js/app.min.js')}}"></script>
+  <script src="{{asset ('/assets/admin/libs/simplebar/dist/simplebar.js')}}"></script>
 </body>
 
 </html>
