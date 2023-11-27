@@ -3,7 +3,7 @@
 use App\Http\Controllers\cekController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\EventPdtController;
 use App\Http\Controllers\VolunteerController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PostGalleryController;
@@ -58,9 +58,8 @@ Route::get('mahasiswa', function(){
 
 require __DIR__.'/auth.php';
 
-Route::get('/admin/volunteers', [VolunteerController::class,'index'])->name('daftar volunteer');
-Route::get('/admin/volunteers/add', [VolunteerController::class,'add'])->name('add volunteer');
-Route::post('/admin/volunteers', [VolunteerController::class,'simpan'])->name('simpan volunteer');
+Route::resource('volunteers', VolunteerController::class);
+Route::get('home/daftar-volunteer', [VolunteerController::class,'daftarVolunteer']);
 
 Route::get('/admin/upload-galeri', [GalleryController::class, 'create']);
 Route::post('/admin/upload-galeri', [GalleryController::class, 'store']);

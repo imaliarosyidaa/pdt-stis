@@ -12,22 +12,22 @@
 </head>
 
 <body>
-  <!--  Body Wrapper -->
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed">
-    <!-- Sidebar Start -->
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
     <aside class="left-sidebar">
-      <!-- Sidebar scroll-->
-      <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./index.html" class="text-nowrap logo-img">
-            <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
-          </a>
-          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
-            <i class="ti ti-x fs-8"></i>
-          </div>
-        </div>
-        <!-- Sidebar navigation-->
+        <div>
+            <div class="brand-logo d-flex align-items-center justify-content-between">
+                <a href="./index.html" class="text-nowrap logo-img">
+                <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
+                </a>
+                <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                <i class="ti ti-x fs-8"></i>
+                </div>
+            </div>
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
           <ul id="sidebarnav">
             <li class="nav-small-cap">
@@ -35,7 +35,7 @@
               <span class="hide-menu"></span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./index.html" aria-expanded="false">
+              <a class="sidebar-link" href="/dashboard" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
@@ -51,7 +51,7 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./ui-volunteer.html" aria-expanded="false">
+                <a class="sidebar-link" href="/volunteers" aria-expanded="false">
                   <span>
                     <i class="ti ti-users"></i>
                   </span>
@@ -82,18 +82,11 @@
                   <span class="hide-menu">Berita</span>
                 </a>
               </li>
-            
-        <!-- End Sidebar navigation -->
       </div>
-      <!-- End Sidebar scroll-->
     </aside>
-    <!--  Sidebar End -->
-    @section('content')
-    <!--  Main wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
     <div class="body-wrapper">
-      <!--  Header Start -->
-      
-      <!--  Header End -->
       <div class="container-fluid">
         <div class="container-fluid">
           <div class="card">
@@ -192,18 +185,19 @@
                     </table>
                 </div>
             </div>
-            <a class="btn btn-success" href="{{route('add volunteer')}}"><i class="fa fa-plus"></i> Tambah Volunteer</a>
+            <a class="btn btn-success" href="{{route('volunteers.create')}}"><i class="fa fa-plus"></i> Tambah Volunteer</a>
             
           </div>
         </div>
       </div>
     </div>
-  </div>
-  @endsection
+    </div>
+    </div>
   <script src="{{asset ('/libs/jquery/dist/jquery.min.js') }}"></script>
   <script src="{{asset ('/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{asset ('/js/sidebarmenu.js') }}"></script>
   <script src="{{asset ('/js/app.min.js') }}"></script>
   <script src="{{asset ('/libs/simplebar/dist/simplebar.js') }}"></script>
+</x-app-layout>
 </body>
 </html>
