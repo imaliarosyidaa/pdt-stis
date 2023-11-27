@@ -150,7 +150,7 @@
                             @csrf 
                                 <div class="mb-3">
                                     <label for="filename" class="form-label">Upload Foto</label>
-                                    <input type="file" class="form-control @error('filename') is-invalid @enderror" id="filename" name="filename" accept="image/*">
+                                    <input type="file" class="form-control @error('filename') is-invalid @enderror" id="filename" name="filename[]" accept="image/*" multiple>
                                     @error('filename')
                                       <div class="invalid-feedback">
                                         {{ $message }}
@@ -175,7 +175,24 @@
                                       </div>
                                     @enderror
                                   </div>
-                                <div class="mb-3">
+
+                                  <div class="mb-3">
+                                    <label for="tahun" class="form-label">Tahun Foto</label>
+                                    <select class="form-select" id="tahun" name="tahun">
+                                        <?php
+                                                  $currentYear = date("Y");
+                                            for ($tahun = 2019; $tahun <= 2025; $tahun++) {
+                                                echo "<option value=\"$tahun\">$tahun</option>";
+                                            }
+                                        ?>
+                                    </select>
+                                    @error('tahun')
+                                      <div class="invalid-feedback">
+                                        {{ $message }}
+                                      </div>
+                                    @enderror
+                                </div>
+                                <!-- <div class="mb-3">
                                     <label for="tahun" class="form-label">Tahun Foto</label>
                                     <input type="text" class="form-control @error('tahun') is-invalid @enderror" id="tahun" name="tahun">
                                     @error('tahun')
@@ -183,7 +200,7 @@
                                         {{ $message }}
                                       </div>
                                     @enderror
-                                </div>
+                                </div> -->
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>

@@ -20,4 +20,10 @@ class PostGalleryController extends Controller
         //render view with posts
         return view('beranda', compact('galleries'));
     }
+
+    public function filterByYear($year)
+    {
+        $galleries = PostGallery::where('tahun', $year)->get();
+        return view('galeri-filter', compact('galleries'));
+    }
 }
