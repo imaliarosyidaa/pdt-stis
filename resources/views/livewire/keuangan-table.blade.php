@@ -52,6 +52,21 @@
                                       <td class="border-bottom-0">
                                           <p class="mb-0 fw-normal">{{ $item->debit }}</p>
                                       </td>
+                                      <td class="border-bottom-0">
+                                        <div class="d-flex">
+                                            @if ($item->tipe == 'Pemasukan')
+                                                {{-- <a href="{{ route('pemasukan.edit', $item->id) }}" class="btn btn-warning me-2">Edit</a>
+                                                <form action="{{ route('pemasukan.destroy', $item->id) }}" method="POST"> --}}
+                                            @elseif ($item->tipe == 'Pengeluaran')
+                                                <a href="{{ route('pengeluaran.edit', $item->id) }}" class="btn btn-warning me-2">Edit</a>
+                                                <form action="{{ route('pengeluaran.destroy', $item->id) }}" method="POST">
+                                            @endif
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+                                            </form>
+                                        </div>
+                                    </td>
                                   </tr>
                               @endforeach
                           </tbody>

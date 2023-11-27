@@ -36,6 +36,7 @@ class PemasukanController extends Controller
             'name' => $request->input('jenisPemasukan'),
             'tipe' => 'Pemasukan',
             'debit' => $request->input('nominal'),
+            'tanggal'=>$tanggalPemasukan,
         ]);
 
         return redirect()->route('donations.berhasil')
