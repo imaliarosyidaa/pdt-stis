@@ -11,6 +11,10 @@ export default {
 
     theme: {
         extend: {
+            backgroundImage: (theme) => ({
+                "hijau-gradasi-pattern":
+                    "url('../../public/images/Latar-belakang.png')",
+            }),
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
