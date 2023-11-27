@@ -2,11 +2,17 @@
 
 use App\Http\Controllers\cekController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminCategoryController;
+use App\Models\Berita;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventPdtController;
 use App\Http\Controllers\VolunteerController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PostGalleryController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\DashboardBeritaController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,3 +72,13 @@ Route::post('/admin/upload-galeri', [GalleryController::class, 'store']);
 
 Route::get('/gallery', [PostGalleryController::class, 'index']);
 // Route::resource('/admin/upload-galeri',GalleryController::class)->middleware('guest');
+
+// Berita
+Route::get('/berita', [BeritaController::class, 'index']);
+Route::get('berita/{berita:slug}', [BeritaController::class, 'show']);
+Route::get('berita/{category:slug}', [BeritaController::class, 'show']);
+Route::get('/berita/{berita:slug}', [BeritaController::class, 'show']);
+Route::get('/dashboard/berita/checkSlug', [DashboardBeritaController::class, 'checkSlug']);
+Route::resource('/dashboard/berita', DashboardBeritaController::class);
+Route::get('/dashboard/kategori/checkSlug', [AdminCategoryController::class, 'checkSlug']);
+Route::resource('/dashboard/kategori', AdminCategoryController::class)->except('show');

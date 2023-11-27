@@ -13,6 +13,14 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Icons -->
+        <link rel="shortcut icon" type="image/png" href="{{ asset('/images/logos/favicon.png') }}" />
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ asset('/css/styles.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('/css/custom.css') }}"/>
+        <link rel="stylesheet" href="../admin.assets/css/form.css">
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-white">
@@ -27,10 +35,19 @@
                 </header>
             @endif
 
+            @include('components.dashboard.sidebar')
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
         </div>
+
+        <!-- JS -->
+        <script src="{{asset ('/libs/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{asset ('/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{asset ('/js/sidebarmenu.js') }}"></script>
+        <script src="{{asset ('/js/app.min.js') }}"></script>
+        <script src="{{asset ('/libs/simplebar/dist/simplebar.js') }}"></script>
     </body>
 </html>
