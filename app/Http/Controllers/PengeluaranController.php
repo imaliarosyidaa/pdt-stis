@@ -23,30 +23,30 @@ class PengeluaranController extends Controller
             'nominal' => 'required|numeric',
         ]);
 
+        $laporan = LaporanKeuangan::create([
+            'name' => $request->input('jenisPengeluaran'),
+            'tipe' =>'Pengeluaran',
+            'debit' =>$request->input('nominal'),
+            'tanggal'=> $request->input('tanggal'),
+        ]);
+
         $tanggalPengeluaran = Carbon::parse($request->input('tanggal'));
         Pengeluaran::create([
+            'id_lap' => $laporan->id,
             'tanggal_pengeluaran' => $request->input('tanggal'),
             'ket_pendanaan' => $request->input('deskripsiPengeluaran'),
             'total' => $request->input('nominal'),
         ]);
 
-        $debit = $request->input('nominal');
-
-        LaporanKeuangan::create([
-            'name' => $request->input('jenisPengeluaran'),
-            'tipe' =>'Pengeluaran',
-            'debit' =>$debit,
-            'tanggal'=> $request->input('tanggal'),
-        ]);
-
         return redirect()->route('donations.berhasil')
             ->with('success', 'Pengeluaran created successfully.');
     }
+
     public function edit($id)
     {
-        $pengeluaran = Pengeluaran::findOrFail($id);
-
-        return view('keuangan.edit_pengeluaran', compact('pengeluaran'));
+        $laporan = LaporanKeuangan::findOrFail($id);
+        $pengeluaran = Pengeluaran::where('id_lap', $id)->firstOrFail();
+        return view('keuangan.edit_pengeluaran', compact('pengeluaran','laporan'));
     }
 
     public function update(Request $request, $id)
@@ -59,8 +59,9 @@ class PengeluaranController extends Controller
         ]);
 
         $tanggalPengeluaran = Carbon::parse($request->input('tanggal'));
-
         $pengeluaran = Pengeluaran::findOrFail($id);
+        $laporan = LaporanKeuangan::findOrFail($pengeluaran->id_lap);
+
         $pengeluaran->update([
             'tanggal_pengeluaran' => $request->input('tanggal'),
             'ket_pendanaan' => $request->input('deskripsiPengeluaran'),
@@ -69,9 +70,10 @@ class PengeluaranController extends Controller
 
         $debit = $request->input('nominal');
 
-        LaporanKeuangan::where('tanggal', $pengeluaran->tanggal_pengeluaran)
-            ->where('tipe', 'Pengeluaran')
-            ->update(['debit' => $debit, 'name' => $request->input('jenisPengeluaran')]);
+        $laporan->update([
+            'debit' => $debit,
+            'name' => $request->input('jenisPengeluaran'),
+        ]);
 
         return redirect()->route('donations.berhasil')
             ->with('success', 'Pengeluaran updated successfully.');
@@ -80,15 +82,14 @@ class PengeluaranController extends Controller
     public function destroy($id)
     {
         $pengeluaran = Pengeluaran::findOrFail($id);
-        $jenisPengeluaran = $pengeluaran->ket_pendanaan;
+        $laporan = LaporanKeuangan::findOrFail($pengeluaran->id_lap);
 
         $pengeluaran->delete();
 
-        LaporanKeuangan::where('tanggal', $pengeluaran->tanggal_pengeluaran)
-            ->where('tipe', 'Pengeluaran')
-            ->delete();
+        $laporan->delete();
 
         return redirect()->route('donations.berhasil')
             ->with('success', 'Pengeluaran deleted successfully.');
     }
+
 }
