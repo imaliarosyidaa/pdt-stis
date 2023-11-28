@@ -34,9 +34,11 @@ use App\Http\Controllers\KeuanganController;
 
 // Landing Page
 // Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 // routes/web.php
 
@@ -45,7 +47,7 @@ Route::post('/layouts.user.testimoni', [feedbackController::class, 'store'])->na
 Route::get('/layouts.user.testimoni', [feedbackController::class, 'create'])->name('feedback.create');
 Route::get('/admin/testimoni', [feedbackController::class, 'view'])->name('feedback.view');
 Route::post('/feedback/editview/{id}', [FeedbackController::class, 'editview'])->name('feedback.editview');
-Route::get('/layouts.user.HalamanUtama', [feedbackController::class, 'view'])->name('feedback.home');
+//Route::get('/layouts.user.HalamanUtama', [feedbackController::class, 'view'])->name('feedback.home');
 Route::get('/layouts.user.HalamanUtama', [HomeController::class, 'index'])->name('home.index');
 
 // Dashboard
@@ -92,7 +94,9 @@ Route::get('home/daftar-volunteer', [VolunteerController::class,'daftarVolunteer
 Route::get('/admin/upload-galeri', [GalleryController::class, 'create']);
 Route::post('/admin/upload-galeri', [GalleryController::class, 'store']);
 Route::get('/gallery', [PostGalleryController::class, 'index']);
-// Route::resource('/admin/upload-galeri',GalleryController::class)->middleware('guest');
+
+Route::get('/email', [App\Http\Controllers\ContactController::class, 'create']);
+Route::post('/send-email', [App\Http\Controllers\ContactController::class, 'sendEmail'])->name('send.email');
 
 // Berita
 Route::get('/berita', [BeritaController::class, 'index']);
@@ -111,7 +115,7 @@ Route::get('/events', [EventPdtController::class, 'berhasil'])->middleware(['aut
 Route::delete('/events/{id}', [EventPdtController::class, 'hapusKegiatan'])->middleware(['auth', 'verified'])->name('events.hapusKegiatan');
 
 // Donations
-Route::get('/donasi', [EventPdtController::class, 'viewDonasi'])->middleware(['auth', 'verified'])->name('events.donasi');
+Route::get('/donasi', [EventPdtController::class, 'viewDonasi'])->middleware(['auth', 'verified'])->name('events.donasi'); //dashboard user
 Route::get('/donation', [EventPdtController::class, 'donasi'])->middleware(['auth', 'verified'])->name('events.donation');
 Route::post('/donations', [DonationController::class, 'store'])->middleware(['auth', 'verified'])->name('donations.store');
 Route::get('/donations', [DonationController::class, 'berhasilDonasi'])->middleware(['auth', 'verified'])->name('donations.berhasil');
@@ -119,9 +123,9 @@ Route::put('/donations/update-status/{id}', [DonationController::class, 'updateS
     ->middleware(['auth', 'verified'])->name('donations.updateStatus');
 Route::get('admin/donations', [DonationController::class, 'viewDonasi'])->middleware(['auth', 'verified'])->name('donations.viewDonasi');
 Route::get('/admin/donations/approved', [DonationController::class, 'approvedDonationSum'])
-    ->middleware(['auth', 'verified'])->name('donations.approvedSum');
+    ->middleware(['auth', 'verified'])->name('donations.approvedSum'); //jumlah donasi yang masuk
 Route::get('/admin/total-donasi/bulan', [DonationController::class, 'totalApprovedDonationPerMonth'])
-    ->middleware(['auth', 'verified'])->name('donations.totalApprovedDonationPerMonth');
+    ->middleware(['auth', 'verified'])->name('donations.totalApprovedDonationPerMonth'); //donasi per bulan
 
 // Keuangan
 Route::get('/admin/keuangan/pemasukan', function () {

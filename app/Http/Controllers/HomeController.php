@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Support\Renderable;
+use App\Models\testimoni_feedback;
 
 class HomeController extends Controller
 {
@@ -27,8 +28,9 @@ class HomeController extends Controller
             'testimoni_feedback' => testimoni_feedback::where('status', 1)->orderBy('created_at', 'desc')->get(),
         ];
 
-        return view('home', $data);
-        //return view('layouts.user.HalamanUtama', $data);
+        //return view('home', $data);
+        // return view('layouts.user.HalamanUtama', $data);
+        return view('welcome', $data);
     }
     // public function index(){
     //     return view("layouts.home");
