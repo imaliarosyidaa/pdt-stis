@@ -13,6 +13,11 @@ use App\Http\Controllers\PostGalleryController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardBeritaController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\DonationController;
+use App\Http\Controllers\PemasukanController;
+use App\Http\Controllers\PengeluaranController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\KeuanganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,15 +30,18 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
+// Landing Page
 // Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Profile
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -64,12 +72,13 @@ Route::get('mahasiswa', function(){
 
 require __DIR__.'/auth.php';
 
+// Volunteers
 Route::resource('volunteers', VolunteerController::class);
 Route::get('home/daftar-volunteer', [VolunteerController::class,'daftarVolunteer']);
 
+// Galeri
 Route::get('/admin/upload-galeri', [GalleryController::class, 'create']);
 Route::post('/admin/upload-galeri', [GalleryController::class, 'store']);
-
 Route::get('/gallery', [PostGalleryController::class, 'index']);
 // Route::resource('/admin/upload-galeri',GalleryController::class)->middleware('guest');
 
@@ -82,3 +91,40 @@ Route::get('/dashboard/berita/checkSlug', [DashboardBeritaController::class, 'ch
 Route::resource('/dashboard/berita', DashboardBeritaController::class);
 Route::get('/dashboard/kategori/checkSlug', [AdminCategoryController::class, 'checkSlug']);
 Route::resource('/dashboard/kategori', AdminCategoryController::class)->except('show');
+
+// Events
+Route::get('/events/create', [EventPdtController::class, 'create'])->middleware(['auth', 'verified'])->name('events.createKegiatan');
+Route::post('/events', [EventPdtController::class, 'store'])->middleware(['auth', 'verified'])->name('events.store');
+Route::get('/events', [EventPdtController::class, 'berhasil'])->middleware(['auth', 'verified'])->name('events.berhasil');
+Route::delete('/events/{id}', [EventPdtController::class, 'hapusKegiatan'])->middleware(['auth', 'verified'])->name('events.hapusKegiatan');
+
+// Donations
+Route::get('/donasi', [EventPdtController::class, 'viewDonasi'])->middleware(['auth', 'verified'])->name('events.donasi');
+Route::get('/donation', [EventPdtController::class, 'donasi'])->middleware(['auth', 'verified'])->name('events.donation');
+Route::post('/donations', [DonationController::class, 'store'])->middleware(['auth', 'verified'])->name('donations.store');
+Route::get('/donations', [DonationController::class, 'berhasilDonasi'])->middleware(['auth', 'verified'])->name('donations.berhasil');
+Route::put('/donations/update-status/{id}', [DonationController::class, 'updateStatus'])
+    ->middleware(['auth', 'verified'])->name('donations.updateStatus');
+Route::get('admin/donations', [DonationController::class, 'viewDonasi'])->middleware(['auth', 'verified'])->name('donations.viewDonasi');
+Route::get('/admin/donations/approved', [DonationController::class, 'approvedDonationSum'])
+    ->middleware(['auth', 'verified'])->name('donations.approvedSum');
+Route::get('/admin/total-donasi/bulan', [DonationController::class, 'totalApprovedDonationPerMonth'])
+    ->middleware(['auth', 'verified'])->name('donations.totalApprovedDonationPerMonth');
+
+// Keuangan
+Route::get('/admin/keuangan/pemasukan', function () {
+    return view('keuangan.pemasukan');
+});
+Route::get('/pemasukan', [PemasukanController::class, 'create'])->middleware(['auth', 'verified'])->name('pemasukan.create');
+Route::post('/pemasukan', [PemasukanController::class, 'store'])->middleware(['auth', 'verified'])->name('pemasukan.store');
+Route::get('/admin/keuangan/pengeluaran', function () {
+    return view('keuangan.pengeluaran');
+});
+Route::get('/pengeluaran', [PengeluaranController::class, 'create'])->middleware(['auth', 'verified'])->name('pengeluaran.create');
+Route::post('/pengeluaran', [PengeluaranController::class, 'store'])->middleware(['auth', 'verified'])->name('pengeluaran.store');
+Route::get('/admin/keuangan/laporan', [LaporanController::class, 'viewLaporan'])->middleware(['auth', 'verified'])->name('laporan.viewLaporan');
+
+// Route::get('/admin/keuangan/pemasukan/{id}/edit', [KeuanganController::class, 'editPemasukan'])->name('keuangan.editPemasukan');
+// Route::get('/admin/keuangan/pengeluaran/{id}/edit', [KeuanganController::class, 'editPengeluaran'])->name('keuangan.editPengeluaran');
+
+Route::delete('/admin/keuangan/laporan/{id}', [KeuanganController::class, 'destroy'])->name('keuangan.destroy');

@@ -23,7 +23,7 @@
           </a>
         </li>
         <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-keuangan.html" aria-expanded="false">
+            <a class="sidebar-link" href="/admin/keuangan/laporan" aria-expanded="false">
               <span>
                 <i class="ti ti-moneybag"></i>
               </span>
@@ -39,7 +39,7 @@
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-donasi.html" aria-expanded="false">
+            <a class="sidebar-link" href="/admin/donations" aria-expanded="false">
               <span>
                 <i class="ti ti-wallet"></i>
               </span>
