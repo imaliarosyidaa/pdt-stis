@@ -122,5 +122,4 @@ class DonationController extends Controller
 
         return view('donasi.totalApprovedDonationPerMonth', compact('totalPerMonth'));
     }
-
 }

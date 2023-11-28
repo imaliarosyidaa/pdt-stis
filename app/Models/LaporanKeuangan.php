@@ -9,7 +9,7 @@ class LaporanKeuangan extends Model
 {
     use HasFactory;
     protected $table = 'lap_keuangan';
-    protected $fillable = ['name', 'debit', 'created_at', 'donation_id', 'tipe'];
+    protected $fillable = ['name', 'debit', 'created_at', 'donation_id', 'tipe', 'tanggal'];
 
 
     public function donation()
