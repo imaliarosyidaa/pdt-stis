@@ -33,3 +33,5 @@ Route::get('/gallery/{year}', [PostGalleryController::class, 'filterByYear'])->n
 
 Route::get('/email', [App\Http\Controllers\ContactController::class, 'create']);
 Route::post('/send-email', [App\Http\Controllers\ContactController::class, 'sendEmail'])->name('send.email');
+
+// Route::resource('/dashboard/gallery', DashboardGalleryController::class);

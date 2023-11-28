@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class PostGallery extends Model
 {
     protected $table = 'galleries';
-    protected $fillable = ['filename', 'title', 'caption', 'tahun'];
+    protected $fillable = ['filename', 'title', 'tahun'];
 }

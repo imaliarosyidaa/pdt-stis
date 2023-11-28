@@ -166,7 +166,7 @@
                                       </div>
                                     @enderror
                                 </div>
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <label for="caption" class="form-label">Deskripsi Foto</label>
                                     <textarea class="form-control @error('caption') is-invalid @enderror" id="caption" name="caption" rows="3"></textarea>
                                     @error('caption')
@@ -174,7 +174,7 @@
                                         {{ $message }}
                                       </div>
                                     @enderror
-                                  </div>
+                                  </div> -->
 
                                   <div class="mb-3">
                                     <label for="tahun" class="form-label">Tahun Foto</label>
