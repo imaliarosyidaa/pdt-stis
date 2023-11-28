@@ -67,11 +67,11 @@
             }
 
             if (myChart) {
-                myChart.destroy(); // Destroy the previous chart instance
+                myChart.destroy(); 
             }
 
             myChart = new Chart(ctx, {
-                type: 'line',
+                type: 'bar',
                 data: chartData,
                 options: {
                     scales: {

@@ -55,8 +55,8 @@
                                       <td class="border-bottom-0">
                                         <div class="d-flex">
                                             @if ($item->tipe == 'Pemasukan')
-                                                {{-- <a href="{{ route('pemasukan.edit', $item->id) }}" class="btn btn-warning me-2">Edit</a>
-                                                <form action="{{ route('pemasukan.destroy', $item->id) }}" method="POST"> --}}
+                                                <a href="{{ route('pemasukan.edit', $item->id) }}" class="btn btn-warning me-2">Edit</a>
+                                                <form action="{{ route('pemasukan.destroy', $item->id) }}" method="POST">
                                             @elseif ($item->tipe == 'Pengeluaran')
                                                 <a href="{{ route('pengeluaran.edit', $item->id) }}" class="btn btn-warning me-2">Edit</a>
                                                 <form action="{{ route('pengeluaran.destroy', $item->id) }}" method="POST">
