@@ -65,8 +65,22 @@ Route::post('/pengeluaran', [PengeluaranController::class, 'store'])->middleware
 
 Route::get('/admin/keuangan/laporan', [LaporanController::class, 'viewLaporan'])->middleware(['auth', 'verified'])->name('laporan.viewLaporan');
 
+<<<<<<< HEAD
 // Route::get('/admin/keuangan/pemasukan/{id}/edit', [KeuanganController::class, 'editPemasukan'])->name('keuangan.editPemasukan');
 // Route::get('/admin/keuangan/pengeluaran/{id}/edit', [KeuanganController::class, 'editPengeluaran'])->name('keuangan.editPengeluaran');
+=======
+    Route::get('/pengeluaran/{id}/edit', [PengeluaranController::class, 'edit'])->name('pengeluaran.edit');
+    Route::patch('/pengeluaran/{id}', [PengeluaranController::class, 'update'])->name('pengeluaran.update');
+    Route::delete('/pengeluaran/{id}', [PengeluaranController::class, 'destroy'])->name('pengeluaran.destroy');
+
+    Route::get('/pemasukan/{id}/edit', [PengeluaranController::class, 'edit'])->name('pemasukan.edit');
+    Route::patch('/pemasukan/{id}', [PengeluaranController::class, 'update'])->name('pemasukan.update');
+    Route::delete('/pemasukan/{id}', [PengeluaranController::class, 'destroy'])->name('pemasukan.destroy');
+
+    Route::get('/admin', [LaporanController::class, 'totalDebitByTypeAndMonth'])
+    ->name('laporan-keuangan.graph');
+
+>>>>>>> 481a2574405575cd475cfab16e0873ff80362410
 
 Route::delete('/admin/keuangan/laporan/{id}', [KeuanganController::class, 'destroy'])->name('keuangan.destroy');
 

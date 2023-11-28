@@ -30,6 +30,7 @@ class CreateKeuanganTable extends Migration
             $table -> enum('tipe', ['Pemasukan', 'Pengeluaran']);
             $table->mediumInteger('debit')->unsigned();
             $table->mediumInteger('donation_id')->unsigned()->nullable();
+            $table->date('tanggal');
             $table->timestamps();
 
             $table->foreign('donation_id')
@@ -88,4 +89,6 @@ class CreateKeuanganTable extends Migration
         Schema::dropIfExists('pengeluaran');
         Schema::dropIfExists('pemasukan');
     }
+
+
 };
