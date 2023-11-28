@@ -50,7 +50,7 @@ class PemasukanController extends Controller
     {
         $laporan = LaporanKeuangan::findOrFail($id);
         $pemasukan = Pemasukan::where('id_lap', $id)->firstOrFail();
-        return view('keuangan.edit_pengeluaran', compact('pengeluaran','laporan'));
+        return view('keuangan.edit_pemasukan', compact('pemasukan','laporan'));
     }
 
     public function update(Request $request, $id)
@@ -58,13 +58,13 @@ class PemasukanController extends Controller
         $request->validate([
             'tanggal' => 'required|date',
             'jenisPemasukan' => 'required|string',
-            'deskripsiPengeluaran' => 'required|string',
+            'deskripsiPemasukan' => 'required|string',
             'nominal' => 'required|numeric',
         ]);
 
-        $tanggalPengeluaran = Carbon::parse($request->input('tanggal'));
+        $tanggalPemasukan = Carbon::parse($request->input('tanggal'));
         $pemasukan = Pemasukan::findOrFail($id);
-        $laporan = LaporanKeuangan::findOrFail($pengeluaran->id_lap);
+        $laporan = LaporanKeuangan::findOrFail($pemasukan->id_lap);
 
         $pemasukan->update([
             'tanggal_pemasukan' => $request->input('tanggal'),
@@ -76,7 +76,7 @@ class PemasukanController extends Controller
 
         $laporan->update([
             'debit' => $debit,
-            'name' => $request->input('jenisPengeluaran'),
+            'name' => $request->input('jenisPemasukan'),
         ]);
 
         return redirect()->route('donations.berhasil')
@@ -86,9 +86,9 @@ class PemasukanController extends Controller
     public function destroy($id)
     {
         $pemasukan = Pemasukan::findOrFail($id);
-        $laporan = LaporanKeuangan::findOrFail($pengeluaran->id_lap);
+        $laporan = LaporanKeuangan::findOrFail($pemasukan->id_lap);
 
-        $pengeluaran->delete();
+        $pemasukan->delete();
 
         $laporan->delete();
 
