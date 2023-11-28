@@ -12,17 +12,12 @@ class CreateFeedbackAndTestimoniTable extends Migration
      */
     public function up()
     {
-        Schema::create('testimoni', function (Blueprint $table) {
+        Schema::create('testimoni_feedbacks', function (Blueprint $table) {
             $table->mediumIncrements('id');
             $table->mediumInteger('id_user')->references('id')->on('users');
-            $table->string('testimoni',500);
-            $table->timestamps();
-        });
-
-        Schema::create('feedback', function (Blueprint $table) {
-            $table->mediumIncrements('id');
-            $table->mediumInteger('id_user')->references('id')->on('users');
-            $table->string('feedback',500);
+            $table->string('testimoni', 500);
+            $table->string('feedback', 500);
+            $table->integer('status')->default(0); // Default value is 0
             $table->timestamps();
         });
     }
@@ -33,7 +28,6 @@ class CreateFeedbackAndTestimoniTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feedback');
-        Schema::dropIfExists('testiomoni');
+        Schema::dropIfExists('feedback_testimoni');
     }
 };

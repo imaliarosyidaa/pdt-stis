@@ -62,5 +62,13 @@
               <span class="hide-menu">Berita</span>
             </a>
           </li>
+          <li class="sidebar-item">
+              <a class="sidebar-link" href="/admin/testimoni" aria-expanded="false">
+                <span>
+                  <i class="ti"></i>
+                </span>
+                <span class="hide-menu">Testimoni dan Feedback</span>
+              </a>
+            </li>
   </div>
 </aside>
