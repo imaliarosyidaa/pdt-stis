@@ -73,9 +73,9 @@ Route::get('/admin/keuangan/laporan', [LaporanController::class, 'viewLaporan'])
     Route::patch('/pengeluaran/{id}', [PengeluaranController::class, 'update'])->name('pengeluaran.update');
     Route::delete('/pengeluaran/{id}', [PengeluaranController::class, 'destroy'])->name('pengeluaran.destroy');
 
-    Route::get('/pemasukan/{id}/edit', [PengeluaranController::class, 'edit'])->name('pemasukan.edit');
-    Route::patch('/pemasukan/{id}', [PengeluaranController::class, 'update'])->name('pemasukan.update');
-    Route::delete('/pemasukan/{id}', [PengeluaranController::class, 'destroy'])->name('pemasukan.destroy');
+    Route::get('/pemasukan/{id}/edit', [PemasukanController::class, 'edit'])->name('pemasukan.edit');
+    Route::patch('/pemasukan/{id}', [PemasukanController::class, 'update'])->name('pemasukan.update');
+    Route::delete('/pemasukan/{id}', [PemasukanController::class, 'destroy'])->name('pemasukan.destroy');
 
     Route::get('/admin', [LaporanController::class, 'totalDebitByTypeAndMonth'])
     ->name('laporan-keuangan.graph');
