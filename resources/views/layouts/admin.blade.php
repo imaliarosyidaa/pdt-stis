@@ -4,13 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PDT STIS</title>
+    <title>Dashboard Admin</title>
+    @notifyCss
     <link rel="shortcut icon" type="image/png" href="{{ asset('assets/admin/images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('assets/admin/css/styles.min.css') }}" />
     @livewireStyles
 </head>
 
 <body>
+    
+
     <!-- Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
@@ -38,7 +41,11 @@
     <script src="{{ asset('assets/admin/js/sidebarmenu.js') }}"></script>
     <script src="{{ asset('assets/admin/js/app.min.js') }}"></script>
     <script src="{{ asset('assets/admin/libs/simplebar/dist/simplebar.js') }}"></script>
-    @livewireScripts
+    
+    <div style="z-index: 99999999999999999999">
+        <x-notify::notify />
+    </div>
+    @notifyJs
     @livewireScripts
     <script>
         window.livewire.on('donationTableRefresh', () => {

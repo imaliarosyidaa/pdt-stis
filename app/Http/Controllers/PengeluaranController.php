@@ -25,9 +25,9 @@ class PengeluaranController extends Controller
 
         $laporan = LaporanKeuangan::create([
             'name' => $request->input('jenisPengeluaran'),
-            'tipe' =>'Pengeluaran',
-            'debit' =>$request->input('nominal'),
-            'tanggal'=> $request->input('tanggal'),
+            'tipe' => 'Pengeluaran',
+            'debit' => $request->input('nominal'),
+            'tanggal' => $request->input('tanggal'),
         ]);
 
         $tanggalPengeluaran = Carbon::parse($request->input('tanggal'));
@@ -38,15 +38,15 @@ class PengeluaranController extends Controller
             'total' => $request->input('nominal'),
         ]);
 
-        return redirect()->route('donations.berhasil')
-            ->with('success', 'Pengeluaran created successfully.');
+        notify()->success('Pengeluaran berhasil dibuat');
+        return redirect()->to('/admin/keuangan/pengeluaran');
     }
 
     public function edit($id)
     {
         $laporan = LaporanKeuangan::findOrFail($id);
         $pengeluaran = Pengeluaran::where('id_lap', $id)->firstOrFail();
-        return view('keuangan.edit_pengeluaran', compact('pengeluaran','laporan'));
+        return view('keuangan.edit_pengeluaran', compact('pengeluaran', 'laporan'));
     }
 
     public function update(Request $request, $id)
@@ -68,28 +68,30 @@ class PengeluaranController extends Controller
             'total' => $request->input('nominal'),
         ]);
 
+        $name = $request->input('deskripsiPengeluaran');
+        $tanggal = $request->input('tanggal');
         $debit = $request->input('nominal');
 
         $laporan->update([
+            'name' => $name,
+            'tanggal' => $tanggal,
             'debit' => $debit,
-            'name' => $request->input('jenisPengeluaran'),
         ]);
 
-        return redirect()->route('donations.berhasil')
-            ->with('success', 'Pengeluaran updated successfully.');
+        notify()->success('Pengeluaran berhasil diupdate');
+        return redirect()->to('/admin/keuangan');
     }
 
     public function destroy($id)
     {
-        $pengeluaran = Pengeluaran::findOrFail($id);
-        $laporan = LaporanKeuangan::findOrFail($pengeluaran->id_lap);
+        $laporan = LaporanKeuangan::findOrFail($id);
+        $pengeluaran = Pengeluaran::where('id_lap', $id)->firstOrFail();
 
         $pengeluaran->delete();
 
         $laporan->delete();
 
-        return redirect()->route('donations.berhasil')
-            ->with('success', 'Pengeluaran deleted successfully.');
+        notify()->success('Pengeluaran berhasil dihapus');
+        return redirect()->to('/admin/keuangan');
     }
-
 }

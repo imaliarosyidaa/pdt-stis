@@ -28,7 +28,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit']) ->middleware(['auth', 'verified'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'edit'])->middleware(['auth', 'verified'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->middleware(['auth', 'verified'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->middleware(['auth', 'verified'])->name('profile.destroy');
 });
@@ -37,7 +37,7 @@ Route::post('/events', [EventPdtController::class, 'store'])->middleware(['auth'
 Route::get('/events', [EventPdtController::class, 'berhasil'])->middleware(['auth', 'verified'])->name('events.berhasil');
 Route::delete('/events/{id}', [EventPdtController::class, 'hapusKegiatan'])->middleware(['auth', 'verified'])->name('events.hapusKegiatan');
 Route::get('/donasi', [EventPdtController::class, 'viewDonasi'])->middleware(['auth', 'verified'])->name('events.donasi');
-Route::get('/donation',[EventPdtController::class, 'donasi'])->middleware(['auth', 'verified'])->name('events.donation');
+Route::get('/donation', [EventPdtController::class, 'donasi'])->middleware(['auth', 'verified'])->name('events.donation');
 Route::get('/events/{event}/edit', [EventPdtController::class, 'edit'])->name('events.edit');
 Route::put('/events/{event}/update', [EventPdtController::class, 'update'])->name('events.update');
 
@@ -47,34 +47,33 @@ Route::put('/donations/update-status/{id}', [DonationController::class, 'updateS
     ->middleware(['auth', 'verified'])->name('donations.updateStatus');
 Route::get('admin/donations', [DonationController::class, 'viewDonasi'])->middleware(['auth', 'verified'])->name('donations.viewDonasi');
 
-Route::get('/admin/keuangan/pemasukan', function () {
-    return view('keuangan.pemasukan');
-});
-
-
 Route::get('/admin/donations/approved', [DonationController::class, 'approvedDonationSum'])
     ->middleware(['auth', 'verified'])->name('donations.approvedSum');
 Route::get('/admin/total-donasi/bulan', [DonationController::class, 'totalApprovedDonationPerMonth'])
     ->middleware(['auth', 'verified'])->name('donations.totalApprovedDonationPerMonth');
 
-    Route::get('/pemasukan', [PemasukanController::class, 'create'])->middleware(['auth', 'verified'])->name('pemasukan.create');
-    Route::post('/pemasukan', [PemasukanController::class, 'store'])->middleware(['auth', 'verified'])->name('pemasukan.store');
+Route::get('/admin/keuangan/pemasukan', function () {
+    return view('keuangan.pemasukan');
+});
 
-    Route::get('/pengeluaran', [PengeluaranController::class, 'create'])->middleware(['auth', 'verified'])->name('pengeluaran.create');
-    Route::post('/pengeluaran', [PengeluaranController::class, 'store'])->middleware(['auth', 'verified'])->name('pengeluaran.store');
+Route::get('/admin/keuangan/pemasukan', [PemasukanController::class, 'create'])->middleware(['auth', 'verified'])->name('pemasukan.create');
+Route::post('/admin/keuangan/pemasukan', [PemasukanController::class, 'store'])->middleware(['auth', 'verified'])->name('pemasukan.store');
+Route::get('/admin/keuangan/admin/keuangan/pemasukan/{id}/edit', [PemasukanController::class, 'edit'])->name('pemasukan.edit');
+Route::patch('/admin/keuangan/pemasukan/{id}', [PemasukanController::class, 'update'])->name('pemasukan.update');
+Route::delete('/admin/keuangan/pemasukan/{id}', [PemasukanController::class, 'destroy'])->name('pemasukan.destroy');
 
-    Route::get('admin/laporan', [LaporanController::class, 'viewLaporan'])->middleware(['auth', 'verified'])->name('laporan.viewLaporan');
+Route::get('/admin/keuangan/pengeluaran', function () {
+    return view('keuangan.pengeluaran');
+});
 
-    Route::get('/pengeluaran/{id}/edit', [PengeluaranController::class, 'edit'])->name('pengeluaran.edit');
-    Route::patch('/pengeluaran/{id}', [PengeluaranController::class, 'update'])->name('pengeluaran.update');
-    Route::delete('/pengeluaran/{id}', [PengeluaranController::class, 'destroy'])->name('pengeluaran.destroy');
+Route::get('/admin/keuangan/pengeluaran', [PengeluaranController::class, 'create'])->middleware(['auth', 'verified'])->name('pengeluaran.create');
+Route::post('/admin/keuangan/pengeluaran', [PengeluaranController::class, 'store'])->middleware(['auth', 'verified'])->name('pengeluaran.store');
+Route::get('/admin/keuangan/pengeluaran/{id}/edit', [PengeluaranController::class, 'edit'])->name('pengeluaran.edit');
+Route::patch('/admin/keuangan/pengeluaran/{id}', [PengeluaranController::class, 'update'])->name('pengeluaran.update');
+Route::delete('/admin/keuangan/pengeluaran/{id}', [PengeluaranController::class, 'destroy'])->name('pengeluaran.destroy');
 
-    Route::get('/pemasukan/{id}/edit', [PemasukanController::class, 'edit'])->name('pemasukan.edit');
-    Route::patch('/pemasukan/{id}', [PemasukanController::class, 'update'])->name('pemasukan.update');
-    Route::delete('/pemasukan/{id}', [PemasukanController::class, 'destroy'])->name('pemasukan.destroy');
+Route::get('admin/keuangan', [LaporanController::class, 'viewLaporan'])->middleware(['auth', 'verified'])->name('laporan.viewLaporan');
 
-    Route::get('/admin', [LaporanController::class, 'totalDebitByTypeAndMonth'])
-    ->name('laporan-keuangan.graph');
+Route::get('/admin', [LaporanController::class, 'totalDebitByTypeAndMonth'])->name('laporan-keuangan.graph');
 
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
