@@ -1,6 +1,4 @@
-@extends('layouts/navbar')
-
-@section('blog')
+<x-index>
     <!-- ======= Breadcrumbs ======= -->
     @section('breadcrumbs')
       <li><a href="index.html">Home</a></li>
@@ -86,5 +84,4 @@
 <div class="d-flex justify-content-center">
   {{ $berita->links() }}
 </div>
-    
-@endsection
+</x-index>

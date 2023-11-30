@@ -41,7 +41,6 @@ class PemasukanController extends Controller
             'total' => $request->input('nominal'),
         ]);
 
-<<<<<<< HEAD
         LaporanKeuangan::create([
             'name' => $request->input('jenisPemasukan'),
             'tipe' => 'Pemasukan',
@@ -49,11 +48,9 @@ class PemasukanController extends Controller
         ]);
 
         notify()->success('Pemasukan berhasil dibuat');
-        return redirect()->to('/admin/keuangan/pemasukan');
-=======
+        // return redirect()->to('/admin/keuangan/pemasukan');
         return redirect()->route('donations.berhasil')
             ->with('success', 'Pemasukan created successfully.');
->>>>>>> 481a2574405575cd475cfab16e0873ff80362410
     }
 
 

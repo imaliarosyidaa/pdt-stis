@@ -1,5 +1,4 @@
-@extends('layouts.navbar')
-
+<x-index>
 @section('blog')
     <!-- ======= Breadcrumbs ======= -->
     @section('breadcrumbs')
@@ -54,4 +53,4 @@
       </div>
     </div>
 </section>
-@endsection
+</x-index>

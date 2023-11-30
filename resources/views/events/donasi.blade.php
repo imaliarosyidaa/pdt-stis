@@ -1,6 +1,9 @@
-@extends('layouts.mahasiswa')
-
-@section('content')
+<x-index>
+<section>
+    <div class="container" data-aos="fade-up">
+        <main class="py-4">
+          <div class="container">
+              
     <div class="container">
         <h1>Daftar Donasi aktif</h1>
 
@@ -27,4 +30,8 @@
             <p>Tidak ada kegiatan hari ini.</p>
         @endif
     </div>
-@endsection
+        </div>
+      </main>
+    </div>
+  </section>
+</x-index>

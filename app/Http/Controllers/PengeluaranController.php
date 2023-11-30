@@ -73,19 +73,12 @@ class PengeluaranController extends Controller
         $laporan->update([
             'debit' => $debit,
             'name' => $request->input('jenisPengeluaran'),
-<<<<<<< HEAD
             'tipe' => 'Pengeluaran',
-            'debit' => $debit,
         ]);
 
         notify()->success('Pengeluaran berhasil dibuat');
-        return redirect()->to('/admin/keuangan/pengeluaran');
-=======
-        ]);
-
         return redirect()->route('donations.berhasil')
             ->with('success', 'Pengeluaran updated successfully.');
->>>>>>> 481a2574405575cd475cfab16e0873ff80362410
     }
 
     public function destroy($id)
