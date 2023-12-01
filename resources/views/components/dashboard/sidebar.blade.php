@@ -23,7 +23,7 @@
           </a>
         </li>
         <li class="sidebar-item">
-            <a class="sidebar-link" href="/admin/keuangan/laporan" aria-expanded="false">
+            <a class="sidebar-link" href="/admin/keuangan" aria-expanded="false">
               <span>
                 <i class="ti ti-moneybag"></i>
               </span>

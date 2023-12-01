@@ -23,15 +23,13 @@ class PemasukanController extends Controller
             'nominal' => 'required|numeric',
         ]);
 
-
         $tanggalPemasukan = Carbon::parse($request->input('tanggal'));
 
-
-        $laporan =LaporanKeuangan::create([
+        $laporan = LaporanKeuangan::create([
             'name' => $request->input('jenisPemasukan'),
             'tipe' => 'Pemasukan',
             'debit' => $request->input('nominal'),
-            'tanggal'=>$tanggalPemasukan,
+            'tanggal' => $tanggalPemasukan,
         ]);
 
         Pemasukan::create([
@@ -41,24 +39,15 @@ class PemasukanController extends Controller
             'total' => $request->input('nominal'),
         ]);
 
-        LaporanKeuangan::create([
-            'name' => $request->input('jenisPemasukan'),
-            'tipe' => 'Pemasukan',
-            'debit' => $request->input('nominal'),
-        ]);
-
         notify()->success('Pemasukan berhasil dibuat');
-        // return redirect()->to('/admin/keuangan/pemasukan');
-        return redirect()->route('donations.berhasil')
-            ->with('success', 'Pemasukan created successfully.');
+        return redirect()->to('/admin/keuangan/pemasukan');
     }
-
 
     public function edit($id)
     {
         $laporan = LaporanKeuangan::findOrFail($id);
         $pemasukan = Pemasukan::where('id_lap', $id)->firstOrFail();
-        return view('keuangan.edit_pemasukan', compact('pemasukan','laporan'));
+        return view('keuangan.edit_pemasukan', compact('pemasukan', 'laporan'));
     }
 
     public function update(Request $request, $id)
@@ -80,28 +69,29 @@ class PemasukanController extends Controller
             'total' => $request->input('nominal'),
         ]);
 
+        $name = $request->input('deskripsiPemasukan');
+        $tanggal = $request->input('tanggal');
         $debit = $request->input('nominal');
 
         $laporan->update([
+            'name' => $name,
+            'tanggal' => $tanggal,
             'debit' => $debit,
-            'name' => $request->input('jenisPemasukan'),
         ]);
 
-        return redirect()->route('donations.berhasil')
-            ->with('success', 'Pemasukan updated successfully.');
+        notify()->success('Pemasukan berhasil diupdate');
+        return redirect()->to('/admin/keuangan');
     }
 
     public function destroy($id)
     {
-        $pemasukan = Pemasukan::findOrFail($id);
-        $laporan = LaporanKeuangan::findOrFail($pemasukan->id_lap);
+        $laporan = LaporanKeuangan::findOrFail($id);
+        $pemasukan = Pemasukan::where('id_lap', $id)->firstOrFail();
 
         $pemasukan->delete();
-
         $laporan->delete();
 
-        return redirect()->route('donations.berhasil')
-            ->with('success', 'Pemasukan deleted successfully.');
+        notify()->success('Pemasukan berhasil dihapus');
+        return redirect()->to('/admin/keuangan');
     }
-
 }
