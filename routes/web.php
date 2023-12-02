@@ -23,6 +23,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', [BeritaController::class, 'home']);
+
 Route::get('/berita', [BeritaController::class, 'index']);
 
 Route::get('berita/{berita:slug}', [BeritaController::class, 'show']);

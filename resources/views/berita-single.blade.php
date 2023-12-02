@@ -3,7 +3,7 @@
 @section('blog')
     <!-- ======= Breadcrumbs ======= -->
     @section('breadcrumbs')
-      <li><a href="index.html">Home</a></li>
+      <li><a href="/home">Home</a></li>
       <li><a href="/berita">Berita</a></li>
       <li>{{ $title }}</li>
     @endsection
@@ -26,15 +26,15 @@
            
             {{-- Menampilkan judul berita --}}
             <h2 class="entry-title">
-              <a href="blog-single.html">{{ $berita->title }}</a>
+              {{ $berita->title }}
             </h2>
            
             {{-- Menampilkan nama penulis dan waktu publish berita --}}
             <div class="entry-meta">
               <ul>
-                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">{{ $berita->author }}</a></li>
-                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{ $berita->created_at->diffForHumans() }}</time></a></li>
-                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{ $berita->category->name }}</time></a></li>
+                <li class="d-flex align-items-center text-dark"><i class="bi bi-person"></i>{{ $berita->author }}</li>
+                <li class="d-flex align-items-center text-dark"><i class="bi bi-clock"></i><time datetime="2020-01-01">{{ $berita->created_at->diffForHumans() }}</time></li>
+                <li class="d-flex align-items-center text-dark"><i class="bi bi-clock"></i>=<time datetime="2020-01-01">{{ $berita->category->name }}</time></li>
               </ul>
             </div>
            
