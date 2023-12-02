@@ -65,7 +65,7 @@
           <li class="sidebar-item">
               <a class="sidebar-link" href="/admin/testimoni" aria-expanded="false">
                 <span>
-                  <i class="ti"></i>
+                  <i class="ti ti-folder-minus "></i>
                 </span>
                 <span class="hide-menu">Testimoni dan Feedback</span>
               </a>

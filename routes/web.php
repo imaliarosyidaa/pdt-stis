@@ -38,6 +38,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', [BeritaController::class, 'home']);
+
 //Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 // routes/web.php
