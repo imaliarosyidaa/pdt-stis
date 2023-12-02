@@ -18,6 +18,6 @@ class PostGalleryController extends Controller
         $galleries = PostGallery::all();
 
         //render view with posts
-        return view('beranda', compact('galleries'));
+        return view('gallery', compact('galleries'));
     }
 }

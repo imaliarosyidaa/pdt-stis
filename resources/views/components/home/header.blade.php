@@ -4,7 +4,7 @@
             <a href="/" class="logo d-flex align-items-center">
                 <img src="{{ asset('assets/img/logo pdt.png') }}" alt="">
                 <span class="logo-text ps-3">
-                    <span>Pembangunan</span>
+                    <span>Pengembangan</span>
                     <span>Desa Tertinggal</span>
                 </span>
             </a>
@@ -27,7 +27,7 @@
                         </ul>
                     </li>
                     <li><a href="/berita">Berita</a></li>
-                    <li><a class="nav-link scrollto" href="#portfolio">Galeri</a></li>
+                    <li><a class="nav-link scrollto" href="/gallery">Galeri</a></li>
                     @if (Route::has('login'))
                         @auth
                             <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
