@@ -312,10 +312,9 @@
 
         <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials">
-
-                @include('layouts.testimoniFeedback')
-
-        </section><!-- End Testimonials Section -->
+            @include('layouts.testimoniFeedback')
+        </section>
+        <!-- End Testimonials Section -->
 
         <!-- ======= Recent Blog Posts Section ======= -->
         <section id="recent-blog-posts" class="recent-blog-posts">

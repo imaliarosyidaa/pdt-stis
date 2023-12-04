@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin.admin')
 @section('content')
     @if (session('success'))
         <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
