@@ -38,12 +38,6 @@
                           <h6 class="fw-semibold mb-0">Feedback</h6>
                         </th>
                         <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Created at</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Update at</h6>
-                        </th>
-                        <th class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Action</h6>
                         </th>
                       </tr>
@@ -55,13 +49,12 @@
                         <td class="border-bottom-0">{{ $f->id_user}}</td>
                         <td class="border-bottom-0">{{ $f->testimoni}}</td>
                         <td class="border-bottom-0">{{ $f->feedback}}</td>
-                        <td class="border-bottom-0">{{ $f->created_at}}</td>
-                        <td class="border-bottom-0">{{ $f->updated_at}}</td>
+                        <!-- <td class="border-bottom-0">{{ $f->status}}</td> -->
                         <td class="border-bottom-0">
                           <form method="post" action="{{ route('feedback.editview', ['id' => $f->id]) }}">
                             @csrf
                             <input type="hidden" name="status" value="{{ $f->status }}">
-                            <button type="submit" name="tampilkan" class="btn btn-primary mr-2">Tampilkan</button>
+                            <button type="submit" name="tampilkan" class="btn btn-primary mr-2" id="tampilkanButton" onclick="showModal()">Tampilkan</button>
                           </form>
                         </td>
 
