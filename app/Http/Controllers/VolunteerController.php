@@ -18,7 +18,7 @@ class VolunteerController extends Controller
     }
 
     public function daftarVolunteer(){
-        return view('layouts.daftarVolunteer');
+        return view('volunteerHome');
     }
     public function store(Request $request)
 {

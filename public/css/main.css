@@ -621,8 +621,9 @@ textarea {
   font-size: 36px;
   font-weight: 700;
   text-align: left;
-  color: #fff;
+  color: black;
   margin-bottom: 24px;
+  text-align: center;
 }
 
 @media (max-width: 767px) {

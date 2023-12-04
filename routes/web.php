@@ -90,7 +90,7 @@ require __DIR__.'/auth.php';
 
 // Volunteers
 Route::resource('volunteers', VolunteerController::class);
-Route::get('home/daftar-volunteer', [VolunteerController::class,'daftarVolunteer']);
+Route::get('/daftar-volunteer', [VolunteerController::class,'daftarVolunteer']);
 
 // Galeri
 Route::get('/admin/upload-galeri', [GalleryController::class, 'create']);

@@ -320,21 +320,6 @@
         <!-- ======= Recent Blog Posts Section ======= -->
         <section id="recent-blog-posts" class="recent-blog-posts">
 
-            <div class="container" data-aos="fade-up">
-
-                <header class="section-header">
-                    <h2>Blog</h2>
-                    <p>Recent posts form our Blog</p>
-                </header>
-
-                <div class="row">
-                @if(count($recentPost) > 0)
-                @foreach($recentPost as $beritaTerbaru)
-                    @include('beritaHome')
-                @endif
-                </div>
-
-            </div>
 
         </section><!-- End Recent Blog Posts Section -->
 

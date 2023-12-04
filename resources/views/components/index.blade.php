@@ -14,6 +14,9 @@
         <link
             href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
             rel="stylesheet">
+            
+        <!-- Font special for pages-->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 
         <!-- Vendor CSS Files -->
         <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
@@ -25,6 +28,7 @@
 
         <!-- Template Main CSS File -->
         <link href="{{ asset('assets/css/welcome_style.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/main.css')}}" rel="stylesheet" media="all">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -37,11 +41,7 @@
             <main id="main">
                 <section class="bg-white">
                     <div class="container">
-                    @if (isset($slot))
                         {{ $slot }}
-                    @else
-                        @yield('content')
-                    @endif
                     </div>
                 </section>
             </main>
@@ -56,8 +56,12 @@
         <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
         <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
         <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
-
+        
+        <!-- Jquery JS-->
+        <script src="{{ asset('/assets/halDarftarVolunteer/vendor/jquery/jquery.min.js') }}"></script>
+        
         <!-- Template Main JS File -->
         <script src="{{ asset('assets/js/main.js') }}"></script>
+        <script src="{{ asset('/assets/halDarftarVolunteer/js/global.js') }}"></script>
     </body>
 </html>

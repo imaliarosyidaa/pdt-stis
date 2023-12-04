@@ -22,7 +22,7 @@
                     <li class="dropdown"><a href="#"><span>Mari Bergabung</span> <i
                                 class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="#">Volunteer</a></li>
+                            <li><a href="/daftar-volunteer">Volunteer</a></li>
                             <li><a href="/donasi">Donasi</a></li>
                         </ul>
                     </li>
