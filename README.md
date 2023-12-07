@@ -8,6 +8,8 @@
 7. Migrasikan database, `php artisan migrate`
 8. Jalankan seeder `php artisan db:seed`
 9. Jalankan project nya `php artisan serve`
+10. Jalakan `php artisan queue:tabel` utuk membuat database antrian
+11. Jalankan `php artisan queue:work` untuk menjalankan antrian
 
 Semangatt!! >_<
 

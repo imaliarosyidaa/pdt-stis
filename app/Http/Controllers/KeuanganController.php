@@ -14,7 +14,6 @@ class KeuanganController extends Controller
     {
         $id->delete();
         notify()->success('Data berhasil dihapus!');
-        // return redirect()->to('/admin/keuangan/laporan');
         return redirect('/admin/keuangan/laporan');
     }
 

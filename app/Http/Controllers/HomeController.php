@@ -25,11 +25,9 @@ class HomeController extends Controller
     public function index()
     {
         $data = [
-            'testimoni_feedback' => testimoni_feedback::where('status', 1)->orderBy('created_at', 'desc')->get(),
+            // 'testimoni_feedback' => testimoni_feedback::where('status', 1)->orderBy('created_at', 'desc')->get(),
+            'feedback' => testimoni_feedback::where('status', 1)->get(),
         ];
-
-        //return view('home', $data);
-        // return view('layouts.user.HalamanUtama', $data);
         return view('welcome', $data);
     }
     // public function index(){
