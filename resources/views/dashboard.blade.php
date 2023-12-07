@@ -231,6 +231,9 @@
                     />
                   </div>
                 </div>
+                <div class="grafik">
+                  @include('keuangan.grap')
+                </div>
                 <div class="bio-desk">
                   <h4 class="terques">Donasi yang Disumbangkan</h4>
                   <p>Started : 15 July</p>
