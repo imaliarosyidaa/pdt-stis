@@ -30,7 +30,15 @@
               <span class="hide-menu">Keuangan</span>
             </a>
         </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="/events" aria-expanded="false">
+              <span>
+                <i class="ti ti-calendar"></i>
+              </span>
+              <span class="hide-menu">Events</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
             <a class="sidebar-link" href="/volunteers" aria-expanded="false">
               <span>
                 <i class="ti ti-users"></i>

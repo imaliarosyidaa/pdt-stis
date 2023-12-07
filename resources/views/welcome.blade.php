@@ -312,9 +312,9 @@
 
         <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials">
-
+        @if ($data->count() >= 0)
                 @include('layouts.testimoniFeedback')
-
+        @endif
         </section><!-- End Testimonials Section -->
 
         <!-- ======= Recent Blog Posts Section ======= -->

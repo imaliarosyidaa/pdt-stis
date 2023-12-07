@@ -113,6 +113,7 @@ Route::resource('/dashboard/kategori', AdminCategoryController::class)->except('
 // Events
 Route::get('/events/create', [EventPdtController::class, 'create'])->middleware(['auth', 'verified'])->name('events.createKegiatan');
 Route::post('/events', [EventPdtController::class, 'store'])->middleware(['auth', 'verified'])->name('events.store');
+
 Route::get('/events', [EventPdtController::class, 'berhasil'])->middleware(['auth', 'verified'])->name('events.berhasil');
 Route::delete('/events/{id}', [EventPdtController::class, 'hapusKegiatan'])->middleware(['auth', 'verified'])->name('events.hapusKegiatan');
 Route::get('/donasi', [EventPdtController::class, 'viewDonasi'])->middleware(['auth', 'verified'])->name('events.donasi');
@@ -121,13 +122,13 @@ Route::get('/events/{event}/edit', [EventPdtController::class, 'edit'])->name('e
 Route::put('/events/{event}/update', [EventPdtController::class, 'update'])->name('events.update');
 
 // Donations
-Route::get('/donasi', [EventPdtController::class, 'viewDonasi'])->name('events.donasi'); //dashboard user tidak usah login
+//Route::get('/donasi', [EventPdtController::class, 'viewDonasi'])->name('events.donasi'); //dashboard user tidak usah login
 //Route::get('/donation', [EventPdtController::class, 'donasi'])->middleware(['auth', 'verified'])->name('events.donation'); //cuma testing
 Route::post('/donations', [DonationController::class, 'store'])->middleware(['auth', 'verified'])->name('donations.store');
 Route::get('/donations', [DonationController::class, 'berhasilDonasi'])->middleware(['auth', 'verified'])->name('donations.berhasil'); //dasboard user
 Route::put('/donations/update-status/{id}', [DonationController::class, 'updateStatus'])
     ->middleware(['auth', 'verified'])->name('donations.updateStatus');
-Route::get('admin/donations', [DonationController::class, 'viewDonasi'])->middleware(['auth', 'verified'])->name('donations.viewDonasi');
+Route::get('admin/donations', [DonationController::class, 'viewDonasi'])->middleware(['auth', 'verified'])->name('donations.viewDonasi'); //dashboard admin
 
 Route::get('/admin/donations/approved', [DonationController::class, 'approvedDonationSum'])
     ->middleware(['auth', 'verified'])->name('donations.approvedSum');

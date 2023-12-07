@@ -32,6 +32,8 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
+        @notifyCss
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-white">
@@ -63,5 +65,12 @@
         <!-- Template Main JS File -->
         <script src="{{ asset('assets/js/main.js') }}"></script>
         <script src="{{ asset('/assets/halDarftarVolunteer/js/global.js') }}"></script>
+        @notifyJs
+        @livewireScripts
+        <script>
+            window.livewire.on('donationTableRefresh', () => {
+                Livewire.emit('refreshLivewire');
+            });
+        </script>
     </body>
 </html>
