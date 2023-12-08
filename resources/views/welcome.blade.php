@@ -34,15 +34,14 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 d-flex flex-column justify-content-center">
-                    <h1 data-aos="fade-up">Segera Jadilah Bagian dari Perubahan</h1>
-                    <h2 data-aos="fade-up" data-aos-delay="400">Mari bersama-sama mendaftar untuk program pengembangan desa tertinggal dan wujudkan 
-                    </h2>
-                    <h2 data-aos="fade-up" data-aos-delay="400">masa depan yang lebih cerah untuk komunitas kita.</h2>
+                <div class="col-lg-6 d-flex flex-column justify-content-center">
+                    <h1 data-aos="fade-up">SEGERA JADILAH BAGIAN DARI PERUBAHAN</h1>
+                    <h2 data-aos="fade-up" data-aos-delay="400">Mari bersama-sama mendaftar untuk program pengembangan</h2>
+                    <h2 data-aos="fade-up" data-aos-delay="400">desa tertinggal dan wujudkan masa depan yang lebih cerah</h2>
+                    <h2 data-aos="fade-up" data-aos-delay="400">untuk komunitas kita.</h2>
                     <div data-aos="fade-up" data-aos-delay="600">
                         <div class="text-center text-lg-start">
-                            <a href="#"
-                                class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                            <a href="#" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                                 <span>Daftarkan Dirimu Sekarang!</span>
                                 <i class="bi bi-arrow-right"></i>
                             </a>
@@ -107,20 +106,15 @@
             <div class="container" data-aos="fade-up">
                 <div class="row gx-0">
 
-                    <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up"
-                        data-aos-delay="200">
+                    <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
                         <div class="content">
                             <h3>Siapa kami?</h3>
-                            <h2>Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat
-                                corrupti reprehenderit.</h2>
+                            <h2>Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti reprehenderit.</h2>
                             <p>
-                                Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor
-                                consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam
-                                et est corrupti.
+                                Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
                             </p>
                             <div class="text-center text-lg-start">
-                                <a href="#"
-                                    class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                                <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                                     <span>Read More</span>
                                     <i class="bi bi-arrow-right"></i>
                                 </a>
@@ -167,10 +161,8 @@
                                 <h4>Deskripsi</h4>
                                 <p>Deskripsi</p>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-1.png" data-gallery="portfolioGallery"
-                                        class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i
-                                            class="bi bi-link"></i></a>
+                                    <a href="assets/img/galeri/galeri-1.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -183,10 +175,8 @@
                                 <h4>Deskripsi</h4>
                                 <p>Deskripsi</p>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-2.png" data-gallery="portfolioGallery"
-                                        class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i
-                                            class="bi bi-link"></i></a>
+                                    <a href="assets/img/galeri/galeri-2.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -199,10 +189,8 @@
                                 <h4>Deskripsi</h4>
                                 <p>Deskripsi</p>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-3.png" data-gallery="portfolioGallery"
-                                        class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i
-                                            class="bi bi-link"></i></a>
+                                    <a href="assets/img/galeri/galeri-3.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -215,10 +203,8 @@
                                 <h4>Deskripsi</h4>
                                 <p>Deskripsi</p>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-4.png" data-gallery="portfolioGallery"
-                                        class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i
-                                            class="bi bi-link"></i></a>
+                                    <a href="assets/img/galeri/galeri-4.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -231,10 +217,8 @@
                                 <h4>Deskripsi</h4>
                                 <p>Deskripsi</p>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-5.png" data-gallery="portfolioGallery"
-                                        class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i
-                                            class="bi bi-link"></i></a>
+                                    <a href="assets/img/galeri/galeri-5.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -247,10 +231,8 @@
                                 <h4>Deskripsi</h4>
                                 <p>Deskripsi</p>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-6.png" data-gallery="portfolioGallery"
-                                        class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i
-                                            class="bi bi-link"></i></a>
+                                    <a href="assets/img/galeri/galeri-6.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -263,10 +245,8 @@
                                 <h4>Deskripsi</h4>
                                 <p>Deskripsi</p>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-7.png" data-gallery="portfolioGallery"
-                                        class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i
-                                            class="bi bi-link"></i></a>
+                                    <a href="assets/img/galeri/galeri-7.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -279,10 +259,8 @@
                                 <h4>Deskripsi</h4>
                                 <p>Deskripsi</p>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-8.png" data-gallery="portfolioGallery"
-                                        class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i
-                                            class="bi bi-link"></i></a>
+                                    <a href="assets/img/galeri/galeri-8.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -295,10 +273,8 @@
                                 <h4>Deskripsi</h4>
                                 <p>Deskripsi</p>
                                 <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-9.png" data-gallery="portfolioGallery"
-                                        class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i
-                                            class="bi bi-link"></i></a>
+                                    <a href="assets/img/galeri/galeri-9.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -312,43 +288,79 @@
 
         <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials">
-        @if ($data->count() >= 0)
-                @include('layouts.testimoniFeedback')
-        @endif
+
+            <div class="container" data-aos="fade-up">
+
+                <header class="section-header">
+                    <h2>Testimonials</h2>
+                    <p>What they are saying about us</p>
+                </header>
+
+                <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="200">
+                    <div class="swiper-wrapper">
+
+                        @foreach($testimoni_feedback as $testi)
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                </div>
+                                <p>
+                                    {{ $testi->testimoni }}
+                                </p>
+                                <div class="profile mt-auto">
+                                    <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                                    <h3>{{ $testi->user->name }}</h3>
+                                    <h4>Designer</h4>
+                                </div>
+                            </div>
+                        </div><!-- End testimonial item -->
+                        @endforeach
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+
         </section><!-- End Testimonials Section -->
 
-        <!-- ======= Recent Blog Posts Section ======= -->
+
+            <!-- ======= Recent Blog Posts Section ======= -->
         <section id="recent-blog-posts" class="recent-blog-posts">
 
-
-        </section><!-- End Recent Blog Posts Section -->
-
-        <!-- ======= Clients Section ======= -->
-        <section id="clients" class="clients">
-
-        <div class="container" data-aos="fade-up">
+            <div class="container" data-aos="fade-up">
 
             <header class="section-header">
-                <h2>Mitra Kami</h2>
-                <p>Kemitraan</p>
+                <h2>Blog</h2>
+                <p>Recent posts form our Blog</p>
             </header>
 
-            <div class="clients-slider swiper">
-                <div class="swiper-wrapper align-items-center">
-                    <div class="swiper-slide"><img src="assets/img/mitra-1.png" class="img-fluid"
-                            alt=""></div>
-                    <div class="swiper-slide"><img src="assets/img/mitra-2.png" class="img-fluid"
-                            alt=""></div>
-                    <div class="swiper-slide"><img src="assets/img/mitra-3.png" class="img-fluid"
-                            alt=""></div>
-                    <div class="swiper-slide"><img src="assets/img/mitra-4.png" class="img-fluid"
-                            alt=""></div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
+            <div class="row">
 
-        </section><!-- End Clients Section -->
+                @foreach($recentPost as $beritaTerbaru)
+                <div class="col-lg-4">
+                <div class="post-box">
+                    <div class="post-img">
+                        @if($beritaTerbaru->image)
+                            <img src="{{ asset('storage/' . $beritaTerbaru->image) }}" alt="" class="img-fluid">
+                        @else
+                            <img src="https://source.unsplash.com/1000x600?{{ $beritaTerbaru->category->name }}" alt="" class="img-fluid">
+                        @endif
+                    </div>
+                    <span class="post-date"><time datetime="2020-01-01">{{ $beritaTerbaru->created_at->diffForHumans() }}</time></span>
+                    <h3 class="post-title">{{ $beritaTerbaru->title }}</h3>
+                    <p>{{ $beritaTerbaru->excerpt }}</p>
+                    <a href="/berita/{{ $beritaTerbaru->slug }}"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                </div>
+                </div>
+            @endforeach
+
+            </div>
+
+            </div>
+
+        </section><!-- End Recent Blog Posts Section -->
 
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact">
@@ -366,18 +378,15 @@
                             <div class="row gy-4">
 
                                 <div class="col-md-6">
-                                    <input type="text" name="name" class="form-control"
-                                        placeholder="Your Name" required>
+                                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                                 </div>
 
                                 <div class="col-md-6 ">
-                                    <input type="email" class="form-control" name="email"
-                                        placeholder="Your Email" required>
+                                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" name="subject" placeholder="Subject"
-                                        required>
+                                    <input type="text" class="form-control" name="subject" placeholder="Subject" required>
                                 </div>
 
                                 <div class="col-md-12">
@@ -438,23 +447,49 @@
 
         </section><!-- End Contact Section -->
 
-        @include('components.home.footer')
+        <!-- ======= Clients Section ======= -->
+        <section id="clients" class="clients">
+
+            <div class="container" data-aos="fade-up">
+
+                <header class="section-header">
+                    <h2>Mitra Kami</h2>
+                    <p>Kemitraan</p>
+                </header>
+
+                <div class="clients-slider swiper">
+                    <div class="swiper-wrapper align-items-center">
+                        <div class="swiper-slide"><img src="assets/img/mitra-1.png" class="img-fluid" alt=""></div>
+                        <div class="swiper-slide"><img src="assets/img/mitra-2.png" class="img-fluid" alt=""></div>
+                        <div class="swiper-slide"><img src="assets/img/mitra-3.png" class="img-fluid" alt=""></div>
+                        <div class="swiper-slide"><img src="assets/img/mitra-4.png" class="img-fluid" alt=""></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+        </section><!-- End Clients Section -->
+
+
     </main><!-- End #main -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <!-- ======= Footer ======= -->
+    @include('components.home.footer')
+    <!-- ======= End Footer ======= -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="{{asset ('/assets/mahasiswa/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+    <script src="{{asset ('/assets/mahasiswa/vendor/aos/aos.js') }}"></script>
+    <script src="{{asset ('/assets/mahasiswa/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{asset ('/assets/mahasiswa/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{asset ('/assets/mahasiswa/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{asset ('/assets/mahasiswa/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{asset ('/assets/mahasiswa/vendor/php-email-form/validate.js') }}"></script>
 
     <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script src="{{asset ('/assets/mahasiswa/js/main.js') }}"></script>
 
 </body>
 

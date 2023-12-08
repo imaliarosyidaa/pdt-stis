@@ -33,13 +33,13 @@ use App\Http\Controllers\KeuanganController;
 */
 
 // Landing Page
-// Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('', [HomeController::class, 'index'])->name('welcome');
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/home', [BeritaController::class, 'home']);
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
+//Route::get('/home', [BeritaController::class, 'home']);
+//Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 //Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
@@ -112,19 +112,16 @@ Route::get('/dashboard/kategori/checkSlug', [AdminCategoryController::class, 'ch
 Route::resource('/dashboard/kategori', AdminCategoryController::class)->except('show');
 
 // Events
-Route::get('/events/create', [EventPdtController::class, 'create'])->middleware(['auth', 'verified'])->name('events.createKegiatan');
-Route::post('/events', [EventPdtController::class, 'store'])->middleware(['auth', 'verified'])->name('events.store');
-
-Route::get('/events', [EventPdtController::class, 'berhasil'])->middleware(['auth', 'verified'])->name('events.berhasil');
-Route::delete('/events/{id}', [EventPdtController::class, 'hapusKegiatan'])->middleware(['auth', 'verified'])->name('events.hapusKegiatan');
-Route::get('/donasi', [EventPdtController::class, 'viewDonasi'])->middleware(['auth', 'verified'])->name('events.donasi');
-Route::get('/donation', [EventPdtController::class, 'donasi'])->middleware(['auth', 'verified'])->name('events.donation');
+Route::get('/events', [EventPdtController::class, 'berhasil'])->middleware(['auth', 'verified'])->name('events.berhasil'); //dashboard admin events
+Route::get('/events/create', [EventPdtController::class, 'create'])->middleware(['auth', 'verified'])->name('events.createKegiatan'); //form membuat events
+Route::post('/events', [EventPdtController::class, 'store'])->middleware(['auth', 'verified'])->name('events.store'); //simpan events
+Route::delete('/events/{id}', [EventPdtController::class, 'hapusKegiatan'])->middleware(['auth', 'verified'])->name('events.hapusKegiatan'); // Hapus Events
 Route::get('/events/{event}/edit', [EventPdtController::class, 'edit'])->name('events.edit');
 Route::put('/events/{event}/update', [EventPdtController::class, 'update'])->name('events.update');
 
 // Donations
-//Route::get('/donasi', [EventPdtController::class, 'viewDonasi'])->name('events.donasi'); //dashboard user tidak usah login
-//Route::get('/donation', [EventPdtController::class, 'donasi'])->middleware(['auth', 'verified'])->name('events.donation'); //cuma testing
+Route::get('/donasi', [EventPdtController::class, 'viewDonasi'])->name('events.donasi'); // Halmaan donasi tidak usah login
+Route::get('/donation', [EventPdtController::class, 'donasi'])->middleware(['auth', 'verified'])->name('events.donation'); //cuma testing
 Route::post('/donations', [DonationController::class, 'store'])->middleware(['auth', 'verified'])->name('donations.store');
 Route::get('/donations', [DonationController::class, 'berhasilDonasi'])->middleware(['auth', 'verified'])->name('donations.berhasil'); //dasboard user
 Route::put('/donations/update-status/{id}', [DonationController::class, 'updateStatus'])
@@ -136,6 +133,8 @@ Route::get('/admin/donations/approved', [DonationController::class, 'approvedDon
 Route::get('/admin/total-donasi/bulan', [DonationController::class, 'totalApprovedDonationPerMonth'])
     ->middleware(['auth', 'verified'])->name('donations.totalApprovedDonationPerMonth');
 
+
+//Keuangan
 Route::get('/admin/keuangan/pemasukan', function () {
     return view('keuangan.pemasukan');
 });
