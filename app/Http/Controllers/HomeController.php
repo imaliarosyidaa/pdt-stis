@@ -10,6 +10,7 @@ use App\Models\Gallery;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
+use App\Models\PostGallery;
 
 class HomeController extends Controller
 {
@@ -40,7 +41,13 @@ class HomeController extends Controller
         $data = [
             'testimoni_feedback' => testimoni_feedback::where('status', 1)->orderBy('created_at', 'desc')->get(),
         ];
-        
-        return view('welcome',$data, $berita);
+
+       // $galleries = PostGallery::all();
+        $foto = PostGallery::where('urutan', '!=', null)
+            ->limit(3)
+            ->orderby('urutan', 'asc')
+            ->get();
+
+        return view('welcome',$data, $berita, $foto);
     }
 }

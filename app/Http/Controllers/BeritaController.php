@@ -36,23 +36,5 @@ class BeritaController extends Controller
             "recentPost" => Berita::latest()->take(5)->get()
         ]);
     }
-
-    public function home() {
-        $title = '';
-        $activeCategory = null;
-
-        if(request('category')) {
-            $activeCategory = Category::firstWhere('slug', request('category'));
-            $title = ": " . $activeCategory->name;
-        }
-        return view('welcome', [
-            "title" => "Berita" . $title,
-            "berita" => Berita::latest()->filter(request(['search', 'category']))->paginate(5)->withQueryString(),
-            "categories" => Category::all(),
-            "activeCategory" => $activeCategory,      
-            "recentPost" => Berita::latest()->take(3)->get()
-        ]);
-    }
-
 }
 

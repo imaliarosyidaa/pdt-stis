@@ -21,6 +21,17 @@
         <link rel="stylesheet" href="{{ asset('/css/styles.min.css') }}"/>
         <link rel="stylesheet" href="{{ asset('/css/custom.css') }}"/>
         <link rel="stylesheet" href="../admin.assets/css/form.css">
+        
+        {{-- trix editor --}}
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+        <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Z1mZlkCJg2ES+8FQECacuLpLHPeqZ3f+waFaG5BvBBcA5q5kDYWvXLjogp2fep5G" crossorigin="anonymous">
+
+        <style>
+            trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+            }
+        </style>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-white">

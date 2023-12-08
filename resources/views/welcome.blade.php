@@ -153,135 +153,28 @@
                 </div>
 
                 <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">  
+                    @if($foto->count() > 0)
+                    @foreach($foto as $gallery)
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-{{ $gallery->tahun }}">
                         <div class="portfolio-wrap">
-                            <img src="assets/img/galeri/galeri-1.png" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Deskripsi</h4>
-                                <p>Deskripsi</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-1.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
-                                </div>
+                        <img style="width: 100%; height:100%;" src="{{ asset('/storage/posts/'.$gallery->filename) }}">
+                        <div class="portfolio-info">
+                            <h4>{{ $gallery->title }}</h4>
+                            <p>{{ $gallery->description }}</p>
+                            <div class="portfolio-links">
+                            <a href="{{ asset('/storage/posts/'.$gallery->filename) }}" data-gallery="portfolioGallery" class="portfokio-lightbox" title="{{ $gallery->description }}"><i class="bi bi-plus"></i></a>
+                            <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/galeri/galeri-2.png" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Deskripsi</h4>
-                                <p>Deskripsi</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-2.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
-                                </div>
-                            </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/galeri/galeri-3.png" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Deskripsi</h4>
-                                <p>Deskripsi</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-3.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                    @endforeach
+                    @else
+                    <p>sorry ga ada gambar</p>
+                    @endif
                     </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/galeri/galeri-4.png" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Deskripsi</h4>
-                                <p>Deskripsi</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-4.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/galeri/galeri-5.png" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Deskripsi</h4>
-                                <p>Deskripsi</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-5.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/galeri/galeri-6.png" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Deskripsi</h4>
-                                <p>Deskripsi</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-6.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/galeri/galeri-7.png" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Deskripsi</h4>
-                                <p>Deskripsi</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-7.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/galeri/galeri-8.png" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Deskripsi</h4>
-                                <p>Deskripsi</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-8.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/galeri/galeri-9.png" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Deskripsi</h4>
-                                <p>Deskripsi</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/galeri/galeri-9.png" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Deskripsi"><i class="bi bi-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-
             </div>
 
         </section><!-- End Portfolio Section -->
