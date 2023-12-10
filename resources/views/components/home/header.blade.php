@@ -28,7 +28,7 @@
             </ul>
           </li>
           <li><a href="blog.html">Publikasi</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio">Galeri</a></li>
+          <li><a href="/gallery">Galeri</a></li>
           <li><a class="signup" href="#">Sign Up</a></li>
           <li><a class="getstarted scrollto" href="#about">Log In</a></li>
         </ul>

@@ -20,10 +20,12 @@ class GalleryController extends Controller
         $validatedData = $request->validate([
             'filename.*' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'title' => 'required',
+            'caption' => 'required',
             'tahun' => 'required',
         ]);
         
         $title = $request->input('title');
+        $caption = $request->input('caption');
         $tahun = $request->input('tahun');
 
 
@@ -35,6 +37,7 @@ class GalleryController extends Controller
                     'filename' =>  $gallery->hashName(),
                     'tahun' => $tahun,
                     'title' => $title,
+                    'caption' => $caption,
                 ]);
             }
             return redirect('/admin/upload-galeri')->with(['succes'=> 'Foto berhasil ditambahkan!']);

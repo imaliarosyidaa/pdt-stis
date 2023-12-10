@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Modernize Free</title>
-  <link rel="shortcut icon" type="image/png" href="../admin.assets/images/logos/favicon.png" />
-  <link rel="stylesheet" href="../admin.assets/css/styles.min.css" />
-  <link rel="stylesheet" href="../admin.assets/css/custom.css" />
-  <link rel="stylesheet" href="../admin.assets/css/form.css">
+  <link rel="shortcut icon" type="image/png" href="{{asset('../admin.assets/images/logos/favicon.png')}}" />
+  <link rel="stylesheet" href="{{asset('../admin.assets/css/styles.min.css')}}" />
+  <link rel="stylesheet" href="{{asset('../admin.assets/css/custom.css')}}" />
+  <link rel="stylesheet" href="{{asset('../admin.assets/css/form.css')}}">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index.html" class="text-nowrap logo-img">
-            <img src="../admin.assets/images/logos/dark-logo.svg" width="180" alt="" />
+            <img src="{{asset('../admin.assets/images/logos/dark-logo.svg')}}" width="180" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -146,7 +146,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <form enctype="multipart/form-data" method="post" action="{{ url('/admin/upload-galeri') }}">
+                            <form enctype="multipart/form-data" method="post" action="/dashboard/galeri">
                             @csrf 
                                 <div class="mb-3">
                                     <label for="filename" class="form-label">Upload Foto</label>
@@ -211,11 +211,12 @@
     </div>
     
   </div>
-  <script src="../admin.assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="../admin.assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../admin.assets/js/sidebarmenu.js"></script>
-  <script src="../admin.assets/js/app.min.js"></script>
-  <script src="../admin.assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="{{asset('../admin.assets/libs/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{asset('../admin.assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('../admin.assets/js/sidebarmenu.js')}}"></script>
+  <script src="{{asset('../admin.assets/js/app.min.js')}}"></script>
+  <script src="{{asset('../admin.assets/libs/simplebar/dist/simplebar.js')}}"></script>
+ 
 </body>
 
 </html>

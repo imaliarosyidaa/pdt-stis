@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Modernize Free</title>
-  <link rel="shortcut icon" type="image/png" href="../admin.assets/images/logos/favicon.png" />
-  <link rel="stylesheet" href="../admin.assets/css/styles.min.css" />
-  <link rel="stylesheet" href="../admin.assets/css/custom.css" />
-  <link rel="stylesheet" href="../admin.assets/css/form.css">
+  <link rel="shortcut icon" type="image/png" href="{{asset('../admin.assets/images/logos/favicon.png')}}" />
+  <link rel="stylesheet" href="{{asset('../admin.assets/css/styles.min.css')}}" />
+  <link rel="stylesheet" href="{{asset('../admin.assets/css/custom.css')}}" />
+  <link rel="stylesheet" href="{{asset('../admin.assets/css/form.css')}}">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index.html" class="text-nowrap logo-img">
-            <img src="../admin.assets/images/logos/dark-logo.svg" width="180" alt="" />
+            <img src="{{asset('../admin.assets/images/logos/dark-logo.svg')}}" width="180" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -137,85 +137,118 @@
         </nav>
       </header>
       <!--  Header End -->
-
-      
-
       <div class="container-fluid">
         <div class="container-fluid">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <form enctype="multipart/form-data" method="post" action="{{ url('/admin/upload-galeri') }}">
-                            @csrf 
-                                <div class="mb-3">
-                                    <label for="filename" class="form-label">Upload Foto</label>
-                                    <input type="file" class="form-control @error('filename') is-invalid @enderror" id="filename" name="filename[]" accept="image/*" multiple>
-                                    @error('filename')
-                                      <div class="invalid-feedback">
-                                        {{ $message }}
-                                      </div>
-                                    @enderror
-                                </div>
-                                <div class="mb-3">
-                                    <label for="title" class="form-label">Title Foto</label>
-                                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title">
-                                    @error('title')
-                                      <div class="invalid-feedback">
-                                        {{ $message }}
-                                      </div>
-                                    @enderror
-                                </div>
-                                <div class="mb-3">
-                                    <label for="caption" class="form-label">Deskripsi Foto</label>
-                                    <textarea class="form-control @error('caption') is-invalid @enderror" id="caption" name="caption" rows="3"></textarea>
-                                    @error('caption')
-                                      <div class="invalid-feedback">
-                                        {{ $message }}
-                                      </div>
-                                    @enderror
-                                  </div>
+                          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                              <h1>Edit Foto</h1>
+                          </div>
 
-                                  <div class="mb-3">
-                                    <label for="tahun" class="form-label">Tahun Foto</label>
-                                    <select class="form-select" id="tahun" name="tahun">
-                                        <?php
-                                                  $currentYear = date("Y");
-                                            for ($tahun = 2019; $tahun <= 2025; $tahun++) {
-                                                echo "<option value=\"$tahun\">$tahun</option>";
-                                            }
-                                        ?>
-                                    </select>
-                                    @error('tahun')
+                          <div class="col-lg-8 mb-5">
+                          <form  enctype="multipart/form-data" method="post" action="/dashboard/galeri/{{ $gallery->id }}" enctype="multipart/form-data">
+                              @method('put')
+                              @csrf
+                              <div class="mb-3">
+                                  <label for="filename" class="form-label"> Foto</label>
+                                  <input type="hidden" name="oldFilename" value="{{ $gallery->filename }}">
+                                  @if($gallery->filename)
+                                  <img src="{{ asset('storage/' . $gallery->filename) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                                  @else
+                                      <img class="img-preview img-fluid mb-3 col-sm-5">
+                                  @endif
+                                  <input class="form-control @error('filename') is-invalid @enderror" type="file" id="filename" name="filename" onchange="previewImage()">
+                                  @error('filename')
                                       <div class="invalid-feedback">
-                                        {{ $message }}
+                                          {{ $message }}
                                       </div>
-                                    @enderror
-                                </div>
-                                <!-- <div class="mb-3">
-                                    <label for="tahun" class="form-label">Tahun Foto</label>
-                                    <input type="text" class="form-control @error('tahun') is-invalid @enderror" id="tahun" name="tahun">
-                                    @error('tahun')
+                                  @enderror
+                              </div>
+                              <div class="mb-3">
+                              <label for="title" class="form-label">Judul</label>
+                              <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required autofocus value="{{ old('title', $gallery->title) }}">
+                                  @error('title')
                                       <div class="invalid-feedback">
-                                        {{ $message }}
+                                          {{ $message }}
                                       </div>
-                                    @enderror
-                                </div> -->
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
-                        </div>
+                                  @enderror
+                              </div>
+                              
+                              <div class="mb-3">
+                                  <label for="caption" class="form-label">Deskripsi</label>
+                                  <input type="text" class="form-control @error('caption') is-invalid @enderror" id="caption" name="caption" required autofocus value="{{ old('caption', $gallery->caption) }}">
+                                  @error('caption')
+                                      <div class="invalid-feedback">
+                                          {{ $message }}
+                                      </div>
+                                  @enderror
+                              </div>
+                              
+                              <div class="mb-3">
+                              <label for="tahun" class="form-label">Tahun Foto</label>
+                              <select class="form-select @error('tahun') is-invalid @enderror" id="tahun" name="tahun" required autofocus value="{{ old('tahun', $gallery->tahun) }}">
+                              <?php
+                                $currentYear = date("Y");
+                                  for ($tahun = 2019; $tahun <= 2025; $tahun++) {
+                                    echo "<option value=\"$tahun\">$tahun</option>";
+                                  }
+                              ?>
+                              </select>
+                                @error('tahun')
+                                  <div class="invalid-feedback">
+                                    {{ $message }}
+                                  </div>
+                                @enderror
+                              </div>                                      
+                              
+                              <button type="submit" class="btn btn-primary">Update</button>
+                          </form>
+                          </div>
+                      </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
+    <script>
+    // const title = document.querySelector('#title');
+    // const id = document.querySelector('#id');
+    
+    // title.addEventListener('change', function() {
+    //     fetch('/dashboard/berita/checkSlug?title=' + title.value)
+    //     .then(response => response.json())
+    //     .then(data => slug.value = data.slug)
+    // });
+
+    // document.addEventListener('trix-file-accept', function(e) {
+    //     e.preventDefault();
+    // })
+
+    function previewImage() {
+        const image = document.querySelector('#image');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+  </script>
+
   </div>
-  <script src="../admin.assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="../admin.assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../admin.assets/js/sidebarmenu.js"></script>
-  <script src="../admin.assets/js/app.min.js"></script>
-  <script src="../admin.assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="{{asset('../admin.assets/libs/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{asset('../admin.assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('../admin.assets/js/sidebarmenu.js')}}"></script>
+  <script src="{{asset('../admin.assets/js/app.min.js')}}"></script>
+  <script src="{{asset('../admin.assets/libs/simplebar/dist/simplebar.js')}}"></script>
+  
 </body>
 
 </html>

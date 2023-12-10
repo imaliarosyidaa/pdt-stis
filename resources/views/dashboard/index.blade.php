@@ -138,78 +138,110 @@
       </header>
       <!--  Header End -->
 
-      
-
+      <!--  Tabel Gallery -->
       <div class="container-fluid">
         <div class="container-fluid">
+          <div class="card">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <form enctype="multipart/form-data" method="post" action="{{ url('/admin/upload-galeri') }}">
-                            @csrf 
-                                <div class="mb-3">
-                                    <label for="filename" class="form-label">Upload Foto</label>
-                                    <input type="file" class="form-control @error('filename') is-invalid @enderror" id="filename" name="filename[]" accept="image/*" multiple>
-                                    @error('filename')
-                                      <div class="invalid-feedback">
-                                        {{ $message }}
-                                      </div>
-                                    @enderror
-                                </div>
-                                <div class="mb-3">
-                                    <label for="title" class="form-label">Title Foto</label>
-                                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title">
-                                    @error('title')
-                                      <div class="invalid-feedback">
-                                        {{ $message }}
-                                      </div>
-                                    @enderror
-                                </div>
-                                <div class="mb-3">
-                                    <label for="caption" class="form-label">Deskripsi Foto</label>
-                                    <textarea class="form-control @error('caption') is-invalid @enderror" id="caption" name="caption" rows="3"></textarea>
-                                    @error('caption')
-                                      <div class="invalid-feedback">
-                                        {{ $message }}
-                                      </div>
-                                    @enderror
-                                  </div>
-
-                                  <div class="mb-3">
-                                    <label for="tahun" class="form-label">Tahun Foto</label>
-                                    <select class="form-select" id="tahun" name="tahun">
-                                        <?php
-                                                  $currentYear = date("Y");
-                                            for ($tahun = 2019; $tahun <= 2025; $tahun++) {
-                                                echo "<option value=\"$tahun\">$tahun</option>";
-                                            }
-                                        ?>
-                                    </select>
-                                    @error('tahun')
-                                      <div class="invalid-feedback">
-                                        {{ $message }}
-                                      </div>
-                                    @enderror
-                                </div>
-                                <!-- <div class="mb-3">
-                                    <label for="tahun" class="form-label">Tahun Foto</label>
-                                    <input type="text" class="form-control @error('tahun') is-invalid @enderror" id="tahun" name="tahun">
-                                    @error('tahun')
-                                      <div class="invalid-feedback">
-                                        {{ $message }}
-                                      </div>
-                                    @enderror
-                                </div> -->
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
-                        </div>
+                    <h5 class="card-title fw-semibold">Tabel Daftar Berita</h5>
+                    <div class="d-flex align-items-center">
+                      
+                        <!-- {{-- Search --}} -->
+                        <div class="input-group">
+                          <form action="/dashboard/galeri" class="input-group d-flex">
+                            <!-- @if(request('category'))
+                              <input type="hidden" name="category" value="{{ request('category') }}">
+                            @endif -->
+                            <input type="text" class="form-control" name="search" placeholder="Search.." aria-label="Search" aria-describedby="searchButton">
+                            <button class="btn btn-primary" type="submit" id="searchButton">Cari</button>
+                          </form>
+                        </div><!-- End search form -->                
                     </div>
                 </div>
+
+                @if(session()->has('success'))
+                  <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                  </div>
+                @endif
+                @if(session()->has('error'))
+                <div class="alert alert-warning" role="alert">
+                  {{ session('error') }}
+                </div>
+                @endif
+                <div class="mb-3">
+                  <a href="/dashboard/galeri/create" class="btn btn-primary">
+                      <span data-feather="plus-circle"></span> Tambah
+                  </a>
+                  <!-- <a href="/dashboard/kategori" class="btn btn-primary">
+                      <span data-feather="list"></span> Kategori
+                  </a> -->
+              </div>
+              
+              <!-- Display message when there are no news articles -->
+              @if($galleries->isEmpty())
+                <div class="alert alert-info" role="alert">
+                    Tidak ada foto yang tersedia.
+                </div>
+              @else
+              
+              <div class="card">
+                <div class="table-responsive">
+                    <table class="table text-nowrap mb-0 align-middle">
+                      <thead class="text-dark fs-4">
+                        <tr>
+                          <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">id</h6>
+                          </th>
+                          <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">Judul</h6>
+                          </th>
+                          <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">Deskripsi</h6>
+                          </th>
+                          <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">Tahun</h6>
+                          </th>
+                          <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">Action</h6>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach($galleries as $gallery)
+                        <tr>
+                            <td class="border-bottom-0">{{ $gallery->id }}</td>
+                            <td>{{ $gallery->title }}</td>
+                            <td>{{ $gallery->caption}}</td>
+                            <td>{{ $gallery->tahun}}</td>
+                            <td>
+                                <a href="/dashboard/galeri/{{ $gallery->id }}" class="badge bg-info p-1"><span data-feather="eye">show</span></a>
+                                <a href="/dashboard/galeri/{{ $gallery->id }}/edit" class="badge bg-warning p-1"><span data-feather="edit">edit</span></a>
+                                <form action="/dashboard/galeri/{{ $gallery->id }}" method="post" class="d-inline">
+                                    @method('delete')
+                                    @csrf
+                                    <button class="badge bg-danger border-0 p-1" onclick="return confirm('Apakah Anda ingin menghapus foto ini?')">
+                                        <span data-feather="trash-2">delete</span>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach                      
+                      </tbody>
+                    </table>
+                </div>
+                
+              @endif
             </div>
+          </div>
         </div>
-    </div>
+      </div> 
     
+        <!-- Menampilkan link untuk halaman berita utama selanjutnya  -->
+  <div class="d-flex justify-content-center">
+                  {{ $galleries->links() }}
+                </div>
   </div>
   <script src="../admin.assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../admin.assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

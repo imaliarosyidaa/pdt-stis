@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VolunteerController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PostGalleryController;
+use App\Http\Controllers\DashboardGalleryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +25,10 @@ Route::get('/admin/volunteers', [VolunteerController::class,'index'])->name('daf
 Route::get('/admin/volunteers/add', [VolunteerController::class,'add'])->name('add volunteer');
 Route::post('/admin/volunteers', [VolunteerController::class,'simpan'])->name('simpan volunteer');
 
-Route::get('/admin/upload-galeri', [GalleryController::class, 'create']);
-Route::post('/admin/upload-galeri', [GalleryController::class, 'store']);
+// Route::get('/admin/upload-galeri', [GalleryController::class, 'create']);
+// Route::post('/admin/upload-galeri', [GalleryController::class, 'store']);
 
-Route::get('/gallery', [PostGalleryController::class, 'index']);
+Route::get('/gallery', [PostGalleryController::class, 'index'])->name('gallery.index');
 Route::get('/gallery/{year}', [PostGalleryController::class, 'filterByYear'])->name('filter.year');
 //Route::get('/gallery/filter/{year}', 'PostGalleryController@filterByYear');
 
@@ -34,4 +36,6 @@ Route::get('/gallery/{year}', [PostGalleryController::class, 'filterByYear'])->n
 Route::get('/email', [App\Http\Controllers\ContactController::class, 'create']);
 Route::post('/send-email', [App\Http\Controllers\ContactController::class, 'sendEmail'])->name('send.email');
 
-// Route::resource('/dashboard/gallery', DashboardGalleryController::class);
+Route::resource('/dashboard/galeri', DashboardGalleryController::class);
+Route::get('/dashboard/galeri/{{ $gallery->id }}',  [DashboardGalleryController::class, 'show']);
+

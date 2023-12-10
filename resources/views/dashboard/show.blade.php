@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Modernize Free</title>
   <link rel="shortcut icon" type="image/png" href="../admin.assets/images/logos/favicon.png" />
-  <link rel="stylesheet" href="../admin.assets/css/styles.min.css" />
-  <link rel="stylesheet" href="../admin.assets/css/custom.css" />
-  <link rel="stylesheet" href="../admin.assets/css/form.css">
+  <link rel="stylesheet" href="{{asset('../admin.assets/css/styles.min.css')}}" />
+  <link rel="stylesheet" href="{{asset('../admin.assets/css/custom.css')}}" />
+  <link rel="stylesheet" href="{{asset('../admin.assets/css/form.css')}}">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index.html" class="text-nowrap logo-img">
-            <img src="../admin.assets/images/logos/dark-logo.svg" width="180" alt="" />
+            <img src="{{asset('../admin.assets/images/logos/dark-logo.svg')}}" width="180" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -138,84 +138,65 @@
       </header>
       <!--  Header End -->
 
-      
+   
+    <!-- <section class="foto-section"> -->
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-lg-8 entries">
+                    <article class="entry entry-single">
 
-      <div class="container-fluid">
-        <div class="container-fluid">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <form enctype="multipart/form-data" method="post" action="{{ url('/admin/upload-galeri') }}">
-                            @csrf 
-                                <div class="mb-3">
-                                    <label for="filename" class="form-label">Upload Foto</label>
-                                    <input type="file" class="form-control @error('filename') is-invalid @enderror" id="filename" name="filename[]" accept="image/*" multiple>
-                                    @error('filename')
-                                      <div class="invalid-feedback">
-                                        {{ $message }}
-                                      </div>
-                                    @enderror
-                                </div>
-                                <div class="mb-3">
-                                    <label for="title" class="form-label">Title Foto</label>
-                                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title">
-                                    @error('title')
-                                      <div class="invalid-feedback">
-                                        {{ $message }}
-                                      </div>
-                                    @enderror
-                                </div>
-                                <div class="mb-3">
-                                    <label for="caption" class="form-label">Deskripsi Foto</label>
-                                    <textarea class="form-control @error('caption') is-invalid @enderror" id="caption" name="caption" rows="3"></textarea>
-                                    @error('caption')
-                                      <div class="invalid-feedback">
-                                        {{ $message }}
-                                      </div>
-                                    @enderror
-                                  </div>
+                        <!-- {{-- Menampilkan judul foto --}} -->
+                        <h2 class="entry-title">
+                            <a>{{ $gallery->title }}</a>
+                        </h2>
 
-                                  <div class="mb-3">
-                                    <label for="tahun" class="form-label">Tahun Foto</label>
-                                    <select class="form-select" id="tahun" name="tahun">
-                                        <?php
-                                                  $currentYear = date("Y");
-                                            for ($tahun = 2019; $tahun <= 2025; $tahun++) {
-                                                echo "<option value=\"$tahun\">$tahun</option>";
-                                            }
-                                        ?>
-                                    </select>
-                                    @error('tahun')
-                                      <div class="invalid-feedback">
-                                        {{ $message }}
-                                      </div>
-                                    @enderror
-                                </div>
-                                <!-- <div class="mb-3">
-                                    <label for="tahun" class="form-label">Tahun Foto</label>
-                                    <input type="text" class="form-control @error('tahun') is-invalid @enderror" id="tahun" name="tahun">
-                                    @error('tahun')
-                                      <div class="invalid-feedback">
-                                        {{ $message }}
-                                      </div>
-                                    @enderror
-                                </div> -->
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                        <!-- {{-- Menampilkan tombol kembali, edit, dan delete --}} -->
+                        <div class="mb-3">
+                            <a href="/dashboard/galeri" class="btn btn-success p-1"><span data-feather="arrow-left"></span> Kembali</a>
+                            <a href="/dashboard/galeri/{{ $gallery->id }}/edit" class="btn btn-warning p-1"><span data-feather="edit"></span> Edit</a>
+                            <form action="/dashboard/galeri/{{ $gallery->id }}" method="post" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button class="btn btn-danger p-1" onclick="return confirm('Apakah Anda ingin menghapus foto ini?')">
+                                    <span data-feather="trash-2"></span> Hapus
+                                </button>
                             </form>
                         </div>
-                    </div>
+
+                        <!-- {{-- Menampilkan foto --}} -->
+                        <div class="entry-img mb-3">
+                            <img src="{{ asset('/storage/public/posts/'.$gallery->filename) }}" alt="" class="img-fluid">
+                        </div>
+
+                        <!-- {{-- Menampilkan title, deskripsi, dan tahun foto --}} -->
+                        <div class="entry-meta mb-3">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><i class="bi bi-person"></i>{{ $gallery->title }}</a></li>
+                                <li class="list-inline-item"><i class="bi bi-clock"></i>{{ $gallery->caption }}</time></a></li>
+                                <li class="list-inline-item"><i class="bi bi-clock"></i>{{ $gallery->tahun }}</li>
+                            </ul>
+                        </div>
+
+                    </article>
                 </div>
             </div>
         </div>
-    </div>
+    <!-- </section> -->
+    
+ 
     
   </div>
-  <script src="../admin.assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="../admin.assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../admin.assets/js/sidebarmenu.js"></script>
-  <script src="../admin.assets/js/app.min.js"></script>
-  <script src="../admin.assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="{{asset('../admin.assets/libs/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{asset('../admin.assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('../admin.assets/js/sidebarmenu.js')}}"></script>
+  <script src="{{asset('../admin.assets/js/app.min.js')}}"></script>
+  <script src="{{asset('../admin.assets/libs/simplebar/dist/simplebar.js')}}"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+  <script>
+    feather.replace();
+  </script>
+
 </body>
 
 </html>
