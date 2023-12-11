@@ -20,6 +20,16 @@
     function updateButton() {
       $('#exampleModal').modal('hide');
     }
+
+    function showModal2() {
+      event.preventDefault();
+      $('#exampleModal2').modal('show');
+    }
+
+    function updateButton2() {
+      $('#exampleModal2').modal('hide');
+      document.getElementById('hapusTestimoniForm').submit();
+    }
   </script>
 
   <!--  Body Wrapper -->
@@ -124,6 +134,22 @@
           </div>
         </div>
       </div>
+
+      <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            </div>
+            <div class="modal-body">
+              Apakah data ingin dihapus?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="updateButton2()">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <!--  Header Start -->
       <!--  Header End -->
       <div class="container-fluid">
@@ -183,6 +209,13 @@
                           </form>
                         </td>
 
+                        <td class="border-bottom-0">
+                          <form id="hapusTestimoniForm" method="post" action="{{ route('feedback.hapusTestimoni', ['id' => $f->id]) }}">
+                            @csrf
+                            <input type="hidden" name="status" value="{{ $f->status }}">
+                            <button type="submit" name="tampilkan" class="btn btn-primary mr-2" id="tampilkanButton" onclick="showModal2()">Hapus</button>
+                          </form>
+                        </td>
                       </tr>
                       @endforeach
                     </tbody>

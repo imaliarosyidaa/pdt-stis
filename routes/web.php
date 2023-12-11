@@ -23,6 +23,8 @@ Route::get('/admin/testimoni', [feedbackController::class, 'view'])->name('feedb
 
 Route::post('/feedback/editview/{id}', [FeedbackController::class, 'editview'])->name('feedback.editview');
 
+Route::post('/feedback/hapusTestimoni/{id}', [FeedbackController::class, 'hapusTestimoni'])->name('feedback.hapusTestimoni');
+
 Route::get('/layouts.user.HalamanUtama', [feedbackController::class, 'view'])->name('feedback.home');
 
 Route::get('/layouts.user.HalamanUtama', [HomeController::class, 'index'])->name('home.index');

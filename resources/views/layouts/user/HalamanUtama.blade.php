@@ -190,6 +190,7 @@
               <li data-filter=".filter-app">2021</li>
               <li data-filter=".filter-card">2022</li>
               <li data-filter=".filter-web">2023</li>
+
             </ul>
           </div>
         </div>
@@ -348,7 +349,7 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  {{ $testi->testimoni }}
+                  {{ $testi -> testimoni }}
                 </p>
                 <div class="profile mt-auto">
                   <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
