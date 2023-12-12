@@ -2,7 +2,7 @@
 <header id="header" class="header fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
             <a href="/" class="logo d-flex align-items-center">
-                <img src="{{ asset('assets/img/logo pdt.png') }}" alt="">
+                <img src="{{ asset('assets/img/logo pdt.png') }}" alt="" style="width: 50px;">
                 <span class="logo-text ps-3">
                     <span>Pengembangan</span>
                     <span>Desa Tertinggal</span>

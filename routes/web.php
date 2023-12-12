@@ -20,6 +20,7 @@ use App\Http\Controllers\PemasukanController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\KeuanganController;
+use App\Http\Controllers\DashboardGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,9 +95,12 @@ Route::resource('volunteers', VolunteerController::class);
 Route::get('/daftar-volunteer', [VolunteerController::class,'daftarVolunteer']);
 
 // Galeri
-Route::get('/admin/upload-galeri', [GalleryController::class, 'create']);
-Route::post('/admin/upload-galeri', [GalleryController::class, 'store']);
-Route::get('/gallery', [PostGalleryController::class, 'index']);
+// Route::get('/admin/upload-galeri', [GalleryController::class, 'create']);
+// Route::post('/admin/upload-galeri', [GalleryController::class, 'store']);
+Route::get('/gallery', [PostGalleryController::class, 'index'])->name('gallery.index');
+Route::get('/gallery/{year}', [PostGalleryController::class, 'filterByYear'])->name('filter.year');
+//Route::get('/gallery/filter/{year}', 'PostGalleryController@filterByYear');
+
 
 Route::get('/email', [App\Http\Controllers\ContactController::class, 'create']);
 Route::post('/send-email', [App\Http\Controllers\ContactController::class, 'sendEmail'])->name('send.email');
@@ -161,3 +165,8 @@ Route::get('admin/keuangan', [LaporanController::class, 'viewLaporan'])->middlew
 Route::get('/admin', [LaporanController::class, 'totalDebitByTypeAndMonth'])->name('laporan-keuangan.graph');
 
 require __DIR__ . '/auth.php';
+
+
+Route::resource('/dashboard/galeri', DashboardGalleryController::class);
+Route::get('/dashboard/galeri/{{ $gallery->id }}',  [DashboardGalleryController::class, 'show']);
+

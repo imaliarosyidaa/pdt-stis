@@ -20,7 +20,9 @@
         <!-- CSS -->
         <link rel="stylesheet" href="{{ asset('/css/styles.min.css') }}"/>
         <link rel="stylesheet" href="{{ asset('/css/custom.css') }}"/>
-        <link rel="stylesheet" href="../admin.assets/css/form.css">
+        <link rel="stylesheet" href="{{ asset('/admin/assets/css/form.css') }}">
+        <link rel="stylesheet" href="{{ asset('/admin/assets/css/styles.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/admin/assets/css/custom.css') }}" />
         
         {{-- trix editor --}}
         <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
@@ -35,8 +37,6 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-white">
-            @include('layouts.navigation')
-
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white">
@@ -47,7 +47,7 @@
             @endif
 
             @include('components.dashboard.sidebar')
-
+            @include('layouts.navigation')
             <!-- Page Content -->
             <main>
                 @if (isset($slot))
@@ -64,5 +64,10 @@
         <script src="{{asset ('/js/sidebarmenu.js') }}"></script>
         <script src="{{asset ('/js/app.min.js') }}"></script>
         <script src="{{asset ('/libs/simplebar/dist/simplebar.js') }}"></script>
+        <script src="{{asset ('/admin/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{asset ('/admin/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{asset ('/admin/assets/js/sidebarmenu.js') }}"></script>
+        <script src="{{asset ('/admin/assets/js/app.min.js') }}"></script>
+        <script src="{{asset ('/admin/assets/libs/simplebar/dist/simplebar.js') }}"></script>
     </body>
 </html>

@@ -1,14 +1,12 @@
 <aside class="left-sidebar">
-    <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
-            <a href="./index.html" class="text-nowrap logo-img">
-            <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
-            </a>
-            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
-            <i class="ti ti-x fs-8"></i>
-            </div>
-        </div>
+    <div class="mt-4">
     <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+        <div>
+            <a href="/" class="text-nowrap d-flex flex-row ">
+            <img src="{{asset('/assets/img/logo pdt.png') }}" class="w-10 h-10 me-3" alt=""/> 
+            <h1>PDT STIS</h1>
+            </a>
+        </div>
       <ul id="sidebarnav">
         <li class="nav-small-cap">
           <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -55,7 +53,7 @@
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="/admin/upload-galeri" aria-expanded="false">
+            <a class="sidebar-link" href="/dashboard/galeri" aria-expanded="false">
               <span>
                 <i class="ti ti-photo"></i>
               </span>
