@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\testimoni_feedback;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Cookie;
 
 class feedbackController extends Controller
@@ -42,7 +43,7 @@ class feedbackController extends Controller
         // Pastikan data ditemukan sebelum mengakses properti
         if ($feedback) {
             // Lakukan operasi pada $feedback
-            $newStatus = $request->input('status') == 0 ? 1 : 1;
+            $newStatus = $request->input('status') == 0 ? 1 : 0;
 
             // Update status pada testimoni_feedback
             $feedback->update(['status' => $newStatus]);
@@ -54,5 +55,21 @@ class feedbackController extends Controller
             // Handle jika data tidak ditemukan
             return redirect(route('admin'))->with('error', 'Data tidak ditemukan');
         }
+    }
+
+    public function hapusTestimoni($id)
+    {
+        // Temukan testimoni berdasarkan ID
+        $feedback = testimoni_feedback::find($id);
+
+        // Periksa apakah testimoni ditemukan
+        if (!$feedback) {
+            return response()->json(['message' => 'Testimoni tidak ditemukan'], 404);
+        }
+
+        // Hapus testimoni
+        $feedback->delete();
+
+        return Redirect::back()->with(['message' => 'Testimoni berhasil dihapus']);
     }
 }

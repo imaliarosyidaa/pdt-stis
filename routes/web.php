@@ -51,6 +51,9 @@ Route::post('/layouts.user.testimoni', [feedbackController::class, 'store'])->na
 Route::get('/layouts.user.testimoni', [feedbackController::class, 'create'])->name('feedback.create');
 Route::get('/admin/testimoni', [feedbackController::class, 'view'])->name('feedback.view');
 Route::post('/feedback/editview/{id}', [FeedbackController::class, 'editview'])->name('feedback.editview');
+
+Route::post('/feedback/hapusTestimoni/{id}', [FeedbackController::class, 'hapusTestimoni'])->name('feedback.hapusTestimoni');
+
 Route::get('/layouts.user.HalamanUtama', [feedbackController::class, 'view'])->name('feedback.home');
 Route::get('/layouts.user.HalamanUtama', [HomeController::class, 'index'])->name('home.index');
 
