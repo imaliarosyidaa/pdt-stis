@@ -43,7 +43,7 @@ class feedbackController extends Controller
         // Pastikan data ditemukan sebelum mengakses properti
         if ($feedback) {
             // Lakukan operasi pada $feedback
-            $newStatus = $request->input('status') == 0 ? 1 : 0;
+            $newStatus = $request->input('status') == 0 ? 1 : 1;
 
             // Update status pada testimoni_feedback
             $feedback->update(['status' => $newStatus]);
@@ -61,6 +61,7 @@ class feedbackController extends Controller
     {
         // Temukan testimoni berdasarkan ID
         $feedback = testimoni_feedback::find($id);
+
 
         // Periksa apakah testimoni ditemukan
         if (!$feedback) {

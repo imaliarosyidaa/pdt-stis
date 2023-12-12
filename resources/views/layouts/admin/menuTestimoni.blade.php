@@ -19,6 +19,7 @@
 
     function updateButton() {
       $('#exampleModal').modal('hide');
+      document.getElementById('editViewForm').submit();
     }
 
     function showModal2() {
@@ -126,7 +127,7 @@
               <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
             </div>
             <div class="modal-body">
-              Data berhasil ditampilkan di halaman utama
+              Yakin ingin tampilkan testimoni di halaman utama?
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="updateButton()">OK</button>
@@ -202,7 +203,7 @@
                         <td class="border-bottom-0">{{ $f->feedback}}</td>
                         <!-- <td class="border-bottom-0">{{ $f->status}}</td> -->
                         <td class="border-bottom-0">
-                          <form method="post" action="{{ route('feedback.editview', ['id' => $f->id]) }}">
+                          <form id="editViewForm" method="post" action="{{ route('feedback.editview', ['id' => $f->id]) }}">
                             @csrf
                             <input type="hidden" name="status" value="{{ $f->status }}">
                             <button type="submit" name="tampilkan" class="btn btn-primary mr-2" id="tampilkanButton" onclick="showModal()">Tampilkan</button>
