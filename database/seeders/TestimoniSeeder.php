@@ -12,7 +12,7 @@ class TestimoniSeeder extends Seeder
      * Run the database seeds.
      * @return void
      */
-    public function run(): void
+    public function run()
     {
         testimoni_feedback::create([
             'id_user' => '1',
@@ -24,8 +24,7 @@ class TestimoniSeeder extends Seeder
                             Saya mengapresiasi pendekatan interaktif dalam menyajikan materi 
                             yang membuat pembelajaran lebih menarik. Fasilitator berkompeten 
                             dan ramah, memberikan jawaban yang memadai terhadap pertanyaan 
-                            peserta. Saya merasa lebih percaya diri dalam menghadapi tantangan 
-                            di dunia profesional setelah mengikuti program ini.'
+                            peserta.'
         ]);
 
         testimoni_feedback::create([
@@ -38,8 +37,7 @@ class TestimoniSeeder extends Seeder
                             dalam konteks pekerjaan sehari-hari. Sesi diskusi kelompok memberikan peluang 
                             untuk berbagi pengalaman dan belajar dari rekan-rekan sejawat. Penekanan pada 
                             aspek kesejahteraan mental dan emosional juga memberikan nilai tambah yang 
-                            signifikan. Terima kasih STIS, saya merasa lebih siap menghadapi perubahan 
-                            dan tumbuh secara profesional.'
+                            signifikan.'
         ]);
 
         testimoni_feedback::create([
@@ -50,8 +48,7 @@ class TestimoniSeeder extends Seeder
                             dan profesional saya.',
             'feedback' => 'PDT STIS memberikan pengalaman pelatihan yang sangat bermanfaat. Saya mengapresiasi 
                             pendekatan interaktif dalam menyajikan materi yang membuat pembelajaran lebih menarik. Fasilitator 
-                            berkompeten dan ramah, memberikan jawaban yang memadai terhadap pertanyaan peserta. Saya merasa 
-                            lebih percaya diri dalam menghadapi tantangan di dunia profesional setelah mengikuti program ini.'
+                            berkompeten dan ramah, memberikan jawaban yang memadai terhadap pertanyaan peserta.'
         ]);
     }
 }
