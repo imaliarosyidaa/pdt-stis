@@ -33,52 +33,75 @@
                                     </div>
                                     <div class="col-md-7 col-sm-12 p-0 box">
                                         <div class="card rounded-0 border-0 card2" id="paypage">
-                                            <div class="form-card">
+                                            <form action="{{ route('donations.store') }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="form-card">
                                                 <h2 id="heading2" class="text-danger">Metode Pembayaran</h2>
+
                                                 <div class="radio-group">
-                                                    <div class="radio" data-value="bca" onclick="showPopup('assets/img/bca.png', 'BCA Bank: Pembayaran donasi dilakukan dengan cara Transfer ke nomor rekening xxx-xxx-xxxx')">
-                                                        <img src="assets/img/bca.png" width="150px" height="45px" />
-                                                    </div>
-                                                    <div class="radio" data-value="bni" onclick="showPopup('assets/img/bni.png', 'BNI Bank: Pembayaran donasi dilakukan dengan cara Transfer ke nomor rekening xxx-xxx-xxxx')">
-                                                        <img src="assets/img/bni.png" width="150px" height="45px" />
-                                                    </div>
-                                                    <div class="radio" data-value="bri" onclick="showPopup('assets/img/bri.png', 'BRI Bank: Pembayaran donasi dilakukan dengan cara Transfer ke nomor rekening xxx-xxx-xxxx')">
-                                                        <img src="assets/img/bri.png" width="150px" height="45px" />
-                                                    </div>
-                                                    <div class="radio" data-value="dana" onclick="showPopup('assets/img/qr.jpg', 'DANA: Pembayaran donasi dilakukan dengan cara Scan kode QR diatas pada aplikasi DANA')">
-                                                        <img src="assets/img/dana.png" width="150px" height="45px" />
-                                                    </div>
-                                                    <div class="radio" data-value="gopay" onclick="showPopup('assets/img/qr.jpg', 'Gopay: Pembayaran donasi dilakukan dengan cara Scan kode QR diatas pada aplikasi Gopay')">
-                                                        <img src="assets/img/gopay.png" width="150px" height="45px" />
-                                                    </div>
-                                                    <div class="radio" data-value="shopeepay" onclick="showPopup('assets/img/qr.jpg', 'Shopeepay: Pembayaran donasi dilakukan dengan cara Scan kode QR diatas pada aplikasi Shopeepay')">
-                                                        <img src="assets/img/shopeepay.png" width="150px" height="45px" />
-                                                    </div>
-                                                    <br />
+                                                    <label class="d-inline-block col-md-3">
+                                                        <input type="radio" name="payment_method" class="d-none" value="bca" onclick="showPopup('assets/img/bca.png', 'BCA Bank: Pembayaran donasi dilakukan dengan cara Transfer ke nomor rekening xxx-xxx-xxxx')">
+                                                        <img src="{{ asset('assets/Donasi/img/bca.png') }}" width="150px" height="45px" class='radio' >
+                                                    </label>
+                                                    <label class="d-inline-block col-md-3">
+                                                        <input type="radio" name="payment_method" value="bni" class="d-none" onclick="showPopup('assets/img/bni.png', 'BNI Bank: Pembayaran donasi dilakukan dengan cara Transfer ke nomor rekening xxx-xxx-xxxx')">
+                                                        <img src="{{ asset('assets/Donasi/img/bni.png') }}" width="150px" height="45px" class='radio'>
+                                                    </label>
+                                                    <label class="d-inline-block col-md-3">
+                                                        <input type="radio" name="payment_method" value="bri" class="d-none" onclick="showPopup('assets/img/bri.png', 'BRI Bank: Pembayaran donasi dilakukan dengan cara Transfer ke nomor rekening xxx-xxx-xxxx')">
+                                                        <img src="{{ asset('assets/Donasi/img/bri.png') }}" width="150px" height="45px" class='radio'>
+                                                    </label>
+                                                    <label class="d-inline-block col-md-3">
+                                                        <input type="radio" name="payment_method" value="dana" class="d-none" onclick="showPopup('assets/img/qr.jpg', 'DANA: Pembayaran donasi dilakukan dengan cara Scan kode QR diatas pada aplikasi DANA')">>
+                                                        <img src="{{ asset('assets/Donasi/img/dana.png') }}" width="150px" height="45px" class='radio'>
+                                                    </label>
+                                                    <label class="d-inline-block col-md-3">
+                                                        <input type="radio" name="payment_method" value="gopay" class="d-none" onclick="showPopup('assets/img/qr.jpg', 'Gopay: Pembayaran donasi dilakukan dengan cara Scan kode QR diatas pada aplikasi Gopay')">
+                                                        <img src="{{ asset('assets/Donasi/img/gopay.png') }}" width="150px" height="45px" class='radio'>
+                                                    </label>
+                                                    <label class="d-inline-block col-md-3">
+                                                        <input type="radio" name="payment_method" value="linkaja" class="d-none" onclick="showPopup('assets/img/qr.jpg', 'Shopeepay: Pembayaran donasi dilakukan dengan cara Scan kode QR diatas pada aplikasi Shopeepay')">
+                                                        <img src="{{ asset('assets/Donasi/img/shopeepay.png') }}" width="150px" height="45px" class='radio'>
+                                                    </label>
                                                 </div>
-                                                <label class="pay">Nominal Donasi</label>
-                                                <input type="text" name="holdername" placeholder="100000" />
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <label class="pay">Upload Bukti Pembayaran</label>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <input class="input-file" type="file" name="file_cv" id="file" />
+
+                                                <div class="mb-3">
+                                                    <label for="name" class="form-label" >
+                                                        Nama:
+                                                    </label>
+                                                    <input type="text" class="form-control" name="name" value="{{ auth()->user()->name }}">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="nominal" class="form-label">
+                                                        Nominal:
+                                                        <span class="text-danger vnumgf" id="i4" aria-label="Required question">*</span>
+                                                    </label> 
+                                                    <input type="number" class="form-control" name="nominal" value="{{ old('nominal') }}" required>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="file" class="form-label">
+                                                        Upload Bukti pembayaran:
+                                                        <span class="text-danger vnumgf" id="i4" aria-label="Required question">*</span>
+                                                    </label>
+                                                    <input type="file" class="form-control" name="file" accept=".jpg, .png, .jpeg">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="message" class="form-label">Message:</label>
+                                                    <textarea class="form-control" name="message" rows="4">{{ old('message') }}</textarea>
+                                                </div>
+
+                                                <button type="submit" class="btn btn-primary">Kirim</button>
+                                                <div class="overlay" id="overlay" onclick="hidePopup()">
+                                                    <div class="popup" id="popup">
+                                                        <img id="popupImg" src="" alt="Popup Image" />
+                                                        <p id="popupMessage"></p>
                                                     </div>
                                                 </div>
-                                                <label class="pay">Pesan untuk Donasi</label>
-                                                <input type="text" name="holdername" placeholder="Uang ini tidak banyak tapi semoga bermanfaat" />
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <input type="submit" value="DONASI &nbsp; &#xf178;" class="btn btn-info placeicon" />
-                                                    </div>
                                                 </div>
-                                                <div class="overlay" id="overlay" onclick="hidePopup()"></div>
-                                                <div class="popup" id="popup">
-                                                    <img id="popupImg" src="" alt="Popup Image" />
-                                                    <p id="popupMessage"></p>
-                                                </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -87,6 +110,16 @@
                     </div>
                 </div>
       </main>
+      <script>
+            function highlightRadio(radio) {
+                var radios = document.querySelectorAll('.radio-group label');
+                radios.forEach(function (label) {
+                    label.classList.remove('highlight');
+                });
+
+                radio.parentNode.classList.add('highlight');
+            }
+        </script>
     <script src="{{ asset('/assets/js/donasijs.js') }}"></script>
   </section>
 </x-index>

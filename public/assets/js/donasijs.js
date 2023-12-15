@@ -62,6 +62,10 @@ $(document).ready(function(){
         document.getElementById('popup').style.display = 'block';
     }
 
+
+    // Close the popup when the overlay is clicked
+    overlay.onclick = hidePopup;
+
     function hidePopup() {
         document.getElementById('overlay').style.display = 'none';
         document.getElementById('popup').style.display = 'none';

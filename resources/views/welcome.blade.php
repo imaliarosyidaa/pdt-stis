@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title>PDT STIS</title>
-    <link href="assets/img/logo pdt.png" rel="icon">
+    <link href="{{asset ('/assets/img/logo pdt.png') }}" rel="icon">
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -16,15 +16,15 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="{{asset ('/assets/vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{asset ('/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{asset ('/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{asset ('/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{asset ('/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{asset ('/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/welcome_style.css" rel="stylesheet">
+    <link href="{{asset ('/assets/css/welcome_style.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -41,7 +41,7 @@
                     <h2 data-aos="fade-up" data-aos-delay="400">untuk komunitas kita.</h2>
                     <div data-aos="fade-up" data-aos-delay="600">
                         <div class="text-center text-lg-start">
-                            <a href="#" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                            <a href="/daftar-volunteer" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                                 <span>Daftarkan Dirimu Sekarang!</span>
                                 <i class="bi bi-arrow-right"></i>
                             </a>
