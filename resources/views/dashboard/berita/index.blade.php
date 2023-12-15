@@ -234,7 +234,7 @@
                           <form action="/dashboard/berita/{{ $beritaTable->slug }}" method="post" class="d-inline">
                               @method('delete')
                               @csrf
-                              <button class="badge bg-danger border-0 p-1" onclick="return confirm('Apakah Anda ingin menghapus berita ini?')">
+                              <button class="badge bg-danger border-0 p-1" style="vertical-align: top;" onclick="return confirm('Apakah Anda ingin menghapus berita ini?')">
                                   <span data-feather="trash-2">delete</span>
                               </button>
                           </form>

@@ -33,7 +33,7 @@
               <ul>
                 <li class="d-flex align-items-center text-dark"><i class="bi bi-person"></i>{{ $berita->author }}</li>
                 <li class="d-flex align-items-center text-dark"><i class="bi bi-clock"></i><time datetime="2020-01-01">{{ $berita->created_at->diffForHumans() }}</time></li>
-                <li class="d-flex align-items-center text-dark"><i class="bi bi-clock"></i>=<time datetime="2020-01-01">{{ $berita->category->name }}</time></li>
+                <li class="d-flex align-items-center text-dark"><i class="bi bi-clock"></i><time datetime="2020-01-01">{{ $berita->category->name }}</time></li>
               </ul>
             </div>
            
