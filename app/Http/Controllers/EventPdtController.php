@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\EventPdt;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\DonationController;
+use Illuminate\Validation\ValidationException;
 
 class EventPdtController extends Controller
 {
@@ -13,36 +14,42 @@ class EventPdtController extends Controller
     {
         return view('events.createKegiatan');
     }
- 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'quota' => 'required|integer|min:0',
-            'lokasi' => 'required',
-            'waktu_mulai' => 'required|date|after_or_equal:'. Carbon::today(),
-            'waktu_akhir' => 'required|date|after:waktu_mulai|after_or_equal:'. Carbon::today(),
-        ]);
+        try {
+            $validatedData = $request->validate([
+                'title' => 'required',
+                'description' => 'required',
+                'quota' => 'required|integer|min:0',
+                'lokasi' => 'required',
+                'waktu_mulai' => 'required|date|after_or_equal:' . Carbon::today(),
+                'waktu_akhir' => 'required|date|after:waktu_mulai|after_or_equal:' . Carbon::today(),
+            ]);
 
-        $existingEvent = EventPdt::where(function($query) use ($validatedData) {
-            $query->where('waktu_mulai', $validatedData['waktu_mulai'])
-                ->orWhere('waktu_akhir', $validatedData['waktu_akhir']);
-        })
-        ->where(function($query) use ($validatedData) {
-            $query->where('lokasi', $validatedData['lokasi']);
-        })
-        ->first();
-        
-        if ($existingEvent) {
-            return redirect()->back()->withInput()->with('error', 'Error: Event with the same start or end time already exists.')->withErrors(['waktu_mulai' => 'Event already exists.']);
+            $existingEvent = EventPdt::where(function ($query) use ($validatedData) {
+                $query->where('waktu_mulai', $validatedData['waktu_mulai'])
+                    ->orWhere('waktu_akhir', $validatedData['waktu_akhir']);
+            })
+                ->where(function ($query) use ($validatedData) {
+                    $query->where('lokasi', $validatedData['lokasi']);
+                })
+                ->first();
+
+            if ($existingEvent) {
+                return redirect()->back()->withInput()->with('error', 'Error: Event with the same start or end time already exists.')->withErrors(['waktu_mulai' => 'Event already exists.']);
+            }
+
+            EventPdt::create($validatedData);
+
+            return redirect()->route('events.berhasil')
+                ->with('success', 'Kegiatan berhasil dibuat!');
+        } catch (ValidationException $e) {
+            return redirect()->back()->withInput()->withErrors($e->errors());
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->with('error', 'Error: ' . $e->getMessage());
         }
-
-        EventPdt::create($validatedData);
-
-        return redirect()->route('events.berhasil')
-            ->with('success', 'Kegiatan berhasil dibuat!');
     }
+
     
     public function berhasil()
     {

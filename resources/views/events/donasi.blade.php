@@ -1,12 +1,12 @@
 <x-index>
-<section>
+    <section>
         <!-- Favicons -->
         <link href="{{ asset('/assets/img/favicon.png') }}" rel="icon" />
         <link href="{{ asset('/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" />
-
+        
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
-
+        
         <!-- Vendor CSS Files -->
         <link href="{{ asset('/assets/vendor/aos/aos.css') }}" rel="stylesheet" />
         <link href="{{ asset('/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -21,6 +21,8 @@
         <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet" />
         <link href="{{ asset('/assets/css/donasi.css') }}" rel="stylesheet" />
         <main class="py-4">
+            @if ($events)
+                <script>console.log({{$events}})</script>
                 <div class="container-fluid">
                     <div class="row justify-content-center">
                         <div class="col-12 col-lg-11">
@@ -33,12 +35,22 @@
                                     </div>
                                     <div class="col-md-7 col-sm-12 p-0 box">
                                         <div class="card rounded-0 border-0 card2" id="paypage">
+                                             
                                             <form action="{{ route('donations.store') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
+                                                @if ($errors->any())
+                                                    <div class="alert alert-danger">
+                                                        <ul>
+                                                            @foreach ($errors->all() as $error)
+                                                                <li>{{ $error }}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                @endif
                                                 <div class="form-card">
                                                 <h2 id="heading2" class="text-danger">Metode Pembayaran</h2>
 
-                                                <div class="radio-group">
+                                                <div class="radio-group" id="paymentMethods">
                                                     <label class="d-inline-block col-md-3">
                                                         <input type="radio" name="payment_method" class="d-none" value="bca" onclick="showPopup('assets/img/bca.png', 'BCA Bank: Pembayaran donasi dilakukan dengan cara Transfer ke nomor rekening xxx-xxx-xxxx')">
                                                         <img src="{{ asset('assets/Donasi/img/bca.png') }}" width="150px" height="45px" class='radio' >
@@ -109,7 +121,16 @@
                         </div>
                     </div>
                 </div>
-      </main>
+            </main>
+            @else
+              <div class="container">
+                  <div class="alert alert-info mt-5" role="alert">
+                      <h4 class="alert-heading">Periode donasi belum dibuka.</h4>
+                      <p>Mohon maaf, saat ini tidak ada event yang tersedia untuk donasi.</p>
+                  </div>
+              </div>
+            @endif
+      
       <script>
             function highlightRadio(radio) {
                 var radios = document.querySelectorAll('.radio-group label');
@@ -120,6 +141,36 @@
                 radio.parentNode.classList.add('highlight');
             }
         </script>
+        <script>
+        function highlightRadio(radio) {
+            var radios = document.querySelectorAll('.radio-group label');
+            radios.forEach(function (label) {
+                label.classList.remove('highlight');
+            });
+
+            radio.parentNode.classList.add('highlight');
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var paymentMethods = document.getElementById('paymentMethods');
+            var radioButtons = paymentMethods.querySelectorAll('input[type="radio"]');
+
+            radioButtons.forEach(function (radio) {
+                radio.addEventListener('change', function () {
+                    highlightRadio(radio);
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .radio-group label.highlight {
+            border: 4px solid #d2f704; 
+            border-radius: 5px;
+        }
+    </style>
+
+
     <script src="{{ asset('/assets/js/donasijs.js') }}"></script>
   </section>
 </x-index>
