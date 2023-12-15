@@ -91,6 +91,16 @@
     <!--  Sidebar End -->
     <!--  Main wrapper -->
     <div class="body-wrapper">
+      <div class="ms-5 mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="/dashboard/galeri">Galeri</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tambah Galeri</li>
+            </ol>
+        </nav>
+    </div>
+    <!--End Breadcumb-->
       <!--  Header Start -->
       <header class="app-header">
         <nav class="navbar navbar-expand-lg navbar-light">
