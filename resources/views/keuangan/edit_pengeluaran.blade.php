@@ -1,6 +1,8 @@
-@extends('layouts.admin')
-
-@section('content')
+<x-app-layout>
+      <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <div class="body-wrapper">
+    <div class="container mt-5">
     <div class="container-fluid">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -32,4 +34,7 @@
             </div>
         </div>
     </div>
-@endsection
+    </div>
+    </div>
+      </div>
+</x-app-layout>

@@ -45,9 +45,12 @@ class PemasukanController extends Controller
 
     public function edit($id)
     {
-        $laporan = LaporanKeuangan::findOrFail($id);
-        $pemasukan = Pemasukan::where('id_lap', $id)->firstOrFail();
-        return view('keuangan.edit_pemasukan', compact('pemasukan', 'laporan'));
+        try {
+            $pemasukan = Pemasukan::where('id_lap', $id)->firstOrFail();
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return redirect()->route('laporan.viewLaporan')->with('error', 'Record not found.');
+        }
+        return view('keuangan.edit_pemasukan', compact('pemasukan'));
     }
 
     public function update(Request $request, $id)

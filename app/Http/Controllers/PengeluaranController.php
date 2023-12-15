@@ -44,9 +44,13 @@ class PengeluaranController extends Controller
 
     public function edit($id)
     {
-        $laporan = LaporanKeuangan::findOrFail($id);
-        $pengeluaran = Pengeluaran::where('id_lap', $id)->firstOrFail();
-        return view('keuangan.edit_pengeluaran', compact('pengeluaran', 'laporan'));
+        try {
+            $pengeluaran = Pengeluaran::where('id_lap', $id)->firstOrFail();
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return redirect()->route('laporan.viewLaporan')->with('error', 'Record not found.');
+        }
+
+        return view('keuangan.edit_pengeluaran', compact('pengeluaran'));
     }
 
     public function update(Request $request, $id)
