@@ -52,7 +52,7 @@
                                                         <img src="{{ asset('assets/Donasi/img/bri.png') }}" width="150px" height="45px" class='radio'>
                                                     </label>
                                                     <label class="d-inline-block col-md-3">
-                                                        <input type="radio" name="payment_method" value="dana" class="d-none" onclick="showPopup('assets/img/qr.jpg', 'DANA: Pembayaran donasi dilakukan dengan cara Scan kode QR diatas pada aplikasi DANA')">>
+                                                        <input type="radio" name="payment_method" value="dana" class="d-none" onclick="showPopup('assets/img/qr.jpg', 'DANA: Pembayaran donasi dilakukan dengan cara Scan kode QR diatas pada aplikasi DANA')">
                                                         <img src="{{ asset('assets/Donasi/img/dana.png') }}" width="150px" height="45px" class='radio'>
                                                     </label>
                                                     <label class="d-inline-block col-md-3">

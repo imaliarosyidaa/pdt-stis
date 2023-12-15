@@ -16,7 +16,6 @@
             </form>
         </div>
     </div>
-    <div class="table-responsive">
     <table class="table text-nowrap mb-0 align-middle">
         <thead class="text-dark fs-4">
             <tr>
@@ -119,8 +118,4 @@
             @endforeach
         </tbody>
     </table>
-    </div>
-    <div class="d-flex justify-content-end">
-        {{ $donations->links('livewire.custom-pagination-links') }}
-    </div>
 </div>
