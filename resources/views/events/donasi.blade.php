@@ -127,6 +127,7 @@
                   <div class="alert alert-info mt-5" role="alert">
                       <h4 class="alert-heading">Periode donasi belum dibuka.</h4>
                       <p>Mohon maaf, saat ini tidak ada event yang tersedia untuk donasi.</p>
+                      <a href="{{ route('welcome') }}" class="btn btn-primary">Kembali ke Halaman Utama</a>
                   </div>
               </div>
             @endif

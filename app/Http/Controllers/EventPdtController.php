@@ -75,13 +75,9 @@ class EventPdtController extends Controller
         $startOfDay = Carbon::today();
         $endOfDay = Carbon::tomorrow()->subSecond();
 
-        $events = EventPdt::whereBetween('waktu_mulai', [$startOfDay, $endOfDay])
-            ->orWhereBetween('waktu_akhir', [$startOfDay, $endOfDay])
-            ->orWhere(function ($query) use ($startOfDay, $endOfDay) {
-                $query->where('waktu_mulai', '<', $startOfDay)
-                    ->where('waktu_akhir', '>', $endOfDay);
-            })
-            ->get();
+        $events = EventPdt::whereDate('waktu_mulai', '<=', now())
+            ->whereDate('waktu_akhir', '>=', now())
+            ->exists();
 
         return view('events.donasi', compact('events'));
     }
