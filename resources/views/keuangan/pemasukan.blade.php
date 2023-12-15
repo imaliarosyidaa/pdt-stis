@@ -2,6 +2,17 @@
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <div class="body-wrapper">
+        <!--Breadcumb-->
+        <div class="ms-5 mt-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/keuangan">Keuangan</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Pemasukan</li>
+                </ol>
+            </nav>
+        </div>
+        <!--End Breadcumb-->
     <div class="container-fluid">
         <div class="card-body d-flex justify-content-center align-items-center">
             <div class="d-flex justify-content-between align-items-center mb-4">

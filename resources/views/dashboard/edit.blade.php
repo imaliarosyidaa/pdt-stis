@@ -2,6 +2,16 @@
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <div class="body-wrapper">
+        <div class="ms-5 mt-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/dashboard/galeri">Galeri</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Galeri</li>
+                </ol>
+            </nav>
+        </div>
+        <!--End Breadcumb-->
     <div class="container-fluid">
       <!--  Header End -->
       <div class="container-fluid">
