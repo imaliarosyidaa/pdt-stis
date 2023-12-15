@@ -1,7 +1,7 @@
 <div class="container" data-aos="fade-up">
     <header class="section-header">
         <h2>Testimonials</h2>
-        <p>What they are saying about us</p>
+        <p>Apa kata mereka tentang kita?</p>
     </header>
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="200">
             <div class="swiper-wrapper">

@@ -5,7 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'PDT-STIS') }}</title>
+
+        <!-- Google Fonts -->
+        <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -15,7 +20,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- Icons -->
-        <link rel="shortcut icon" type="image/png" href="{{ asset('/images/logos/favicon.png') }}" />
+        <link rel="shortcut icon" type="image/png" href="{{asset ('/assets/img/logo pdt.png') }}" />
         
         <!-- CSS -->
         <link rel="stylesheet" href="{{ asset('/css/styles.min.css') }}"/>
