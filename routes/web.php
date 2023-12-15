@@ -135,7 +135,7 @@ Route::post('/donations', [DonationController::class, 'store'])->middleware(['au
 Route::get('/donations', [DonationController::class, 'berhasilDonasi'])->middleware(['auth', 'verified'])->name('donations.berhasil'); //dasboard user
 Route::put('/donations/update-status/{id}', [DonationController::class, 'updateStatus'])
     ->middleware(['auth', 'verified'])->name('donations.updateStatus');
-Route::get('admin/donations', [DonationController::class, 'viewDonasi'])->middleware(['auth', 'verified'])->name('donations.viewDonasi'); //dashboard admin
+Route::get('/admin/donations', [DonationController::class, 'viewDonasi'])->middleware(['auth', 'verified'])->name('donations.viewDonasi'); //dashboard admin
 
 Route::get('/admin/donations/approved', [DonationController::class, 'approvedDonationSum'])
     ->middleware(['auth', 'verified'])->name('donations.approvedSum');
@@ -151,7 +151,7 @@ Route::get('/admin/keuangan/pemasukan', function () {
 Route::get('/admin/keuangan/pemasukan', [PemasukanController::class, 'create'])->middleware(['auth', 'verified'])->name('pemasukan.create'); //form tambah pemasukan
 Route::post('/admin/keuangan/pemasukan', [PemasukanController::class, 'store'])->middleware(['auth', 'verified'])->name('pemasukan.store');
 
-Route::get('/admin/keuangan/admin/keuangan/pemasukan/{id}/edit', [PemasukanController::class, 'edit'])->name('pemasukan.edit');
+Route::get('/admin/keuangan/pemasukan/{id}/edit', [PemasukanController::class, 'edit'])->name('pemasukan.edit');
 Route::patch('/admin/keuangan/pemasukan/{id}', [PemasukanController::class, 'update'])->name('pemasukan.update');
 Route::delete('/admin/keuangan/pemasukan/{id}', [PemasukanController::class, 'destroy'])->name('pemasukan.destroy');
 
