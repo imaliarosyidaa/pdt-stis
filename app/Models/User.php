@@ -25,6 +25,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
     ];
 
+    public function testimoni_feedback()
+    {
+        return $this->hasMany(testimoni_feedback::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

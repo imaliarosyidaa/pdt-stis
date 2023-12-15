@@ -1,4 +1,7 @@
 <x-app-layout>
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <div class="body-wrapper">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Profile') }}
@@ -25,5 +28,7 @@
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 </x-app-layout>

@@ -13,24 +13,61 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Icons -->
+        <link rel="shortcut icon" type="image/png" href="{{ asset('/images/logos/favicon.png') }}" />
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ asset('/css/styles.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('/css/custom.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('/admin/assets/css/form.css') }}">
+        <link rel="stylesheet" href="{{ asset('/admin/assets/css/styles.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/admin/assets/css/custom.css') }}" />
+        
+        {{-- trix editor --}}
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+        <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Z1mZlkCJg2ES+8FQECacuLpLHPeqZ3f+waFaG5BvBBcA5q5kDYWvXLjogp2fep5G" crossorigin="anonymous">
+
+        <style>
+            trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+            }
+        </style>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
+        <div class="min-h-screen bg-white">
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white shadow">
+                <header class="bg-white">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
             @endif
 
+            @include('components.dashboard.sidebar')
+            @include('layouts.navigation')
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                @if (isset($slot))
+                    {{ $slot }}
+                @else
+                    @yield('content')
+                @endif
             </main>
         </div>
+
+        <!-- JS -->
+        <script src="{{asset ('/libs/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{asset ('/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{asset ('/js/sidebarmenu.js') }}"></script>
+        <script src="{{asset ('/js/app.min.js') }}"></script>
+        <script src="{{asset ('/libs/simplebar/dist/simplebar.js') }}"></script>
+        <script src="{{asset ('/admin/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{asset ('/admin/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{asset ('/admin/assets/js/sidebarmenu.js') }}"></script>
+        <script src="{{asset ('/admin/assets/js/app.min.js') }}"></script>
+        <script src="{{asset ('/admin/assets/libs/simplebar/dist/simplebar.js') }}"></script>
     </body>
 </html>

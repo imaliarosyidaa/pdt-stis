@@ -468,14 +468,12 @@ section {
 }
 
 .hero h2 {
-    background-color: rgba(242, 216, 82, 0.5);
-    /* Warna latar belakang dengan opacity 70% */
-    color: #59360B;
+    color: #f1eebed7;
     /* Warna teks */
     margin: 3px 0 0 0;
     font-family: "Rubik", sans-serif;
-    font-weight: 550;
-    font-size: 20px;
+    font-weight: 200;
+    font-size: 14px;
     padding: 4px;
     /*Optional: Tambahkan padding untuk memberikan ruang di sekitar teks yang di-highlight */
 }
