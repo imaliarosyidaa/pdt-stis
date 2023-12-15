@@ -95,7 +95,9 @@ require __DIR__.'/auth.php';
 
 // Volunteers
 Route::resource('volunteers', VolunteerController::class);
+Route::post('/daftar-volunteers', [VolunteerController::class,'store'])->name('volunteers.store');
 Route::get('/daftar-volunteer', [VolunteerController::class,'daftarVolunteer']);
+
 
 // Galeri
 // Route::get('/admin/upload-galeri', [GalleryController::class, 'create']);
