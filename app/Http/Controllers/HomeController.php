@@ -42,12 +42,23 @@ class HomeController extends Controller
             'testimoni_feedback' => testimoni_feedback::where('status', 1)->orderBy('created_at', 'desc')->get(),
         ];
 
-       // $galleries = PostGallery::all();
-        $foto = PostGallery::where('urutan', '!=', null)
-            ->limit(3)
-            ->orderby('urutan', 'asc')
-            ->get();
+    //    $galleries = PostGallery::all();
+    $galleries = PostGallery::all()->take(9);
 
-        return view('welcome',$data, $berita, $foto);
+        // $galleries = PostGallery::where('urutan', '!=', null)
+        //     ->limit(3)
+        //     ->orderby('urutan', 'asc')
+        //     ->get();
+
+        $mergedData = array_merge($data, $berita, ['galleries' => $galleries]);
+        
+        return view('welcome',$mergedData);
     }
+
+    public function filterByYear($year)
+    {
+        $galleries = PostGallery::where('tahun', $year)->get();
+        return view('galeri-filter', compact('galleries'));
+    }
+
 }

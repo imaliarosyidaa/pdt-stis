@@ -18,7 +18,7 @@ class PostGalleryController extends Controller
         $galleries = PostGallery::all();
 
         //render view with posts
-        return view('welcome', compact('galleries'));
+        return view('gallery', compact('galleries'));
     }
 
     public function filterByYear($year)

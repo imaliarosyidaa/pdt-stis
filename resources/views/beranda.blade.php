@@ -194,22 +194,22 @@
         </div>
 
         <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
-        @foreach($galleries as $gallery)
-          <div class="col-lg-4 col-md-6 portfolio-item filter-{{ $gallery->tahun }}">
-            <div class="portfolio-wrap">
-                <img style="width: 100%; height:100%;" src="{{ asset('/storage/public/posts/'.$gallery->filename) }}">
-                <div class="portfolio-info">
-                  <h4>{{ $gallery->title }}</h4>
-                  <p>{{ $gallery->description }}</p>
-                <div class="portfolio-links">
-                  <a href="{{ asset('/storage/public/posts/'.$gallery->filename) }}" data-gallery="portfolioGallery" class="portfokio-lightbox" title="{{ $gallery->title }}"><i class="bi bi-plus"></i></a>
-                  <!-- <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a> -->
+                    @foreach($galleries as $gallery)
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-{{ $gallery->tahun }}">
+                        <div class="portfolio-wrap">
+                            <img style="width: 100%; height:100%;" src="{{ asset('/storage/public/posts/'.$gallery->filename) }}">
+                            <div class="portfolio-info">
+                                <h4>{{ $gallery->title }}</h4>
+                                <p>{{ $gallery->description }}</p>
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/storage/public/posts/'.$gallery->filename) }}" data-gallery="portfolioGallery" class="portfokio-lightbox" title="{{ $gallery->title }}"><i class="bi bi-plus"></i></a>
+                                    <!-- <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a> -->
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
-              </div> 
-            </div>
-          </div>
-        @endforeach
-        </div>
 
       </div>
 
