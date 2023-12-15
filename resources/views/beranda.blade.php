@@ -186,23 +186,23 @@
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">2021</li>
-              <li data-filter=".filter-card">2022</li>
-              <li data-filter=".filter-web">2023</li>
+              <li data-filter=".filter-2021">2021</li>
+              <li data-filter=".filter-2022">2022</li>
+              <li data-filter=".filter-2023">2023</li>
             </ul>
           </div>
         </div>
 
         <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">  
-        @foreach($galleries as $gallery)
+        @foreach($galleries->sortByDesc('created_at')->take(9) as $gallery)
           <div class="col-lg-4 col-md-6 portfolio-item filter-{{ $gallery->tahun }}">
             <div class="portfolio-wrap">
-              <img style="width: 100%; height:100%;" src="{{ asset('/storage/posts/'.$gallery->filename) }}">
+              <img style="width: 100%; height:100%;" src="{{ asset('/storage/public/posts/'.$gallery->filename) }}">
               <div class="portfolio-info">
                 <h4>{{ $gallery->title }}</h4>
                 <p>{{ $gallery->description }}</p>
                 <div class="portfolio-links">
-                  <a href="{{ asset('/storage/posts/'.$gallery->filename) }}" data-gallery="portfolioGallery" class="portfokio-lightbox" title="{{ $gallery->description }}"><i class="bi bi-plus"></i></a>
+                  <a href="{{ asset('/storage/public/posts/'.$gallery->filename) }}" data-gallery="portfolioGallery" class="portfokio-lightbox" title="{{ $gallery->description }}"><i class="bi bi-plus"></i></a>
                   <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
                 </div>
               </div>
@@ -210,6 +210,7 @@
           </div>
           @endforeach
         </div>
+
 
       </div>
 
