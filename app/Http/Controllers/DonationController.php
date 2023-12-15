@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
 use App\Jobs\UpdatePemasukanJob;
 use App\Jobs\UpdateLaporanJob;
+use App\Models\EventPdt;
 
 class DonationController extends Controller
 {
@@ -23,51 +24,53 @@ class DonationController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'user_id' => 'nullable',
-            'nominal' => 'required|integer|min:0',
-            'file' => 'required|mimes:jpg,png,jpeg|max:2048',
-            'message' => 'nullable|string|max:500',
-            'name' => 'nullable|string|max:500',
-            'payment_method'=>'required'
-        ]);
+        try {
+            $request->validate([
+                'user_id' => 'nullable',
+                'nominal' => 'required|integer|min:0',
+                'file' => 'required|mimes:jpg,png,jpeg|max:2048',
+                'message' => 'nullable|string|max:500',
+                'name' => 'nullable|string|max:500',
+                'payment_method' => 'required'
+            ]);
 
-        $file = $request->file('file'); 
-        $fileName = time() . '_' . $file->getClientOriginalName();
+            $allowedExtensions = ['jpg', 'jpeg', 'png'];
+            $file = $request->file('file');
+            $fileExtension = $file->getClientOriginalExtension();
 
-        $destinationPath = public_path('uploads');
-        if (!file_exists($destinationPath)) {
-            mkdir($destinationPath, 0755, true);
+            if (!in_array($fileExtension, $allowedExtensions)) {
+                throw new \Exception('Invalid file extension. Only JPG, JPEG, and PNG are allowed.');
+            }
+
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $destinationPath = public_path('uploads');
+
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $file->move($destinationPath, $fileName);
+            $filePath = 'uploads/' . $fileName;
+
+            $status = 'belum dikonfirmasi';
+            $userId = Auth::id();
+
+            Donations::create([
+                'user_id' => $userId,
+                'nominal' => $request->nominal,
+                'link' => $filePath,
+                'message' => $request->message,
+                'nama' => $request->name,
+                'status' => $status,
+                'metode' => $request->payment_method
+            ]);
+
+            return redirect()->route('donations.berhasil')->with('success', 'Donation created successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['file' => $e->getMessage()])->withInput();
         }
-        $file->move($destinationPath, $fileName);
-        $filePath = 'uploads/' . $fileName;
-
-        $status = 'belum dikonfimasi';
-
-        $userid = Auth::id();;
-
-        Donations::create([
-            'user_id' => $userid,
-            'nominal' => $request->nominal,
-            'link' => $filePath,
-            'message' => $request->message,
-            'nama' => $request->name,
-            'status' => $status,
-            'metode'=>$request->payment_method
-        ]);
-
-
-        $allowedExtensions = ['jpg', 'jpeg', 'png'];
-        $fileExtension = $file->getClientOriginalExtension();
-
-        if (!in_array($fileExtension, $allowedExtensions)) {
-            return redirect()->back()->withErrors(['file' => 'Invalid file extension. Only JPG, JPEG, and PNG are allowed.'])->withInput();
-        }
-        
-
-        return redirect()->route('donations.berhasil')
-            ->with('success', 'Donation created successfully.');
     }
+
 
     public function berhasilDonasi()
     {
