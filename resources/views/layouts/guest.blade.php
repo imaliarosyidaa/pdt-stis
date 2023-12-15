@@ -19,6 +19,7 @@
 <body class="font-sans text-gray-900 antialiased">
     <div class="min-h-screen flex flex-col sm:justify-center items-right pt-6 sm:pt-0 bg-hijau-gradasi-pattern">
         <div class=" bg-white overflow-hidden w-1/2 min-h-screen flex flex-col justify-center items-center">
+            {{-- text for login/register --}}
             <div class="w-full h-full text-center text-yellow-900 text-[34px] pb-3 font-extrabold font-['Poppins']">
                 @if (request()->is('login'))
                     Login
