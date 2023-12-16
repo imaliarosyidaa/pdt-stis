@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\testimoni_feedback;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class feedbackController extends Controller
 {
@@ -41,15 +42,39 @@ class feedbackController extends Controller
         // Pastikan data ditemukan sebelum mengakses properti
         if ($feedback) {
             // Lakukan operasi pada $feedback
-            $newStatus = $request->input('status') == 0 ? 1 : 1;
+            $currentStatus = $feedback->status;
+            $newStatus = ($currentStatus == 1) ? 0 : 1;
 
             // Update status pada testimoni_feedback
-            $feedback->update(['status' => $newStatus]);
+            $updateResult = $feedback->update(['status' => $newStatus]);
 
-            return redirect(route('feedback.view'))->with('success', 'Berhasil mengubah status');
+            // Teks untuk tombol
+            $buttonText = ($newStatus == 1) ? 'Hide' : 'Show';
+
+            if ($updateResult) {
+                return redirect(route('feedback.view'))->with('success', "Berhasil mengubah status menjadi $buttonText");
+            } else {
+                return redirect(route('feedback.view'))->with('error', 'Gagal mengubah status. Silakan coba lagi.');
+            }
         } else {
             // Handle jika data tidak ditemukan
             return redirect(route('admin'))->with('error', 'Data tidak ditemukan');
         }
+    }
+
+    public function hapusTestimoni($id)
+    {
+        // Temukan testimoni berdasarkan ID
+        $feedback = testimoni_feedback::find($id);
+
+        // Periksa apakah testimoni ditemukan
+        if (!$feedback) {
+            return response()->json(['message' => 'Testimoni tidak ditemukan'], 404);
+        }
+
+        // Hapus testimoni
+        $feedback->delete();
+
+        return Redirect::back()->with(['message' => 'Testimoni berhasil dihapus']);
     }
 }

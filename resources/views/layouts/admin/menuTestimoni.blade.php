@@ -137,12 +137,6 @@
                           <h6 class="fw-semibold mb-0">Feedback</h6>
                         </th>
                         <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Created at</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Update at</h6>
-                        </th>
-                        <th class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Action</h6>
                         </th>
                       </tr>
@@ -154,13 +148,29 @@
                         <td class="border-bottom-0">{{ $f->id_user}}</td>
                         <td class="border-bottom-0">{{ $f->testimoni}}</td>
                         <td class="border-bottom-0">{{ $f->feedback}}</td>
-                        <td class="border-bottom-0">{{ $f->created_at}}</td>
-                        <td class="border-bottom-0">{{ $f->updated_at}}</td>
                         <td class="border-bottom-0">
                           <form method="post" action="{{ route('feedback.editview', ['id' => $f->id]) }}">
                             @csrf
+                            @method('POST') {{-- Tambahkan method POST agar rute dapat menangkap aksi POST --}}
+
+                            <?php
+                            // Teks untuk tombol
+                            $buttonText = ($f->status == 1) ? 'Hide' : 'Show';
+                            $newStatus = ($f->status == 1) ? 0 : 1;
+                            ?>
+
+                            <input type="hidden" name="status" value="{{ $newStatus }}">
+
+                            <button type="submit" name="tampilkan" class="btn btn-{{ $f->status == 1 ? 'danger' : 'success' }}" onclick="return confirm('Apakah Anda yakin ingin menampilkan testimoni ini?')">
+                              {{ $buttonText }}
+                            </button>
+                          </form>
+
+                        <td class="border-bottom-0">
+                          <form id="hapusTestimoniForm" method="post" action="{{ route('feedback.hapusTestimoni', ['id' => $f->id]) }}">
+                            @csrf
                             <input type="hidden" name="status" value="{{ $f->status }}">
-                            <button type="submit" name="tampilkan" class="btn btn-primary mr-2">Tampilkan</button>
+                            <button type="submit" name="tampilkan" class="btn btn-primary mr-2" id="tampilkanButton" onclick="return confirm('Apakah Anda ingin menghapus testimoni ini?')">Hapus</button>
                           </form>
                         </td>
 

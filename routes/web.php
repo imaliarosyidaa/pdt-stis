@@ -21,6 +21,8 @@ Route::get('/layouts.user.testimoni', [feedbackController::class, 'create'])->na
 
 Route::get('/admin/testimoni', [feedbackController::class, 'view'])->name('feedback.view');
 
+Route::post('/feedback/hapusTestimoni/{id}', [FeedbackController::class, 'hapusTestimoni'])->name('feedback.hapusTestimoni');
+
 Route::post('/feedback/editview/{id}', [FeedbackController::class, 'editview'])->name('feedback.editview');
 
 Route::get('/layouts.user.HalamanUtama', [feedbackController::class, 'view'])->name('feedback.home');
