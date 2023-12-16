@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\testimoni_feedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Cookie;
 
 class feedbackController extends Controller
 {
@@ -29,7 +28,7 @@ class feedbackController extends Controller
 
     public function view()
     {
-        $newView = testimoni_feedback::all();
+        $newView = testimoni_feedback::latest()->paginate(5);
         return view('layouts.admin.menuTestimoni', [
             'feedback' => $newView
         ]);
@@ -43,14 +42,20 @@ class feedbackController extends Controller
         // Pastikan data ditemukan sebelum mengakses properti
         if ($feedback) {
             // Lakukan operasi pada $feedback
-            $newStatus = $request->input('status') == 0 ? 1 : 0;
+            $currentStatus = $feedback->status;
+            $newStatus = ($currentStatus == 1) ? 0 : 1;
 
             // Update status pada testimoni_feedback
-            $feedback->update(['status' => $newStatus]);
-            // Store $newStatus in a cookie
-            Cookie::queue('newStatus', $newStatus, 60); // The third parameter is the number of minutes the cookie should be valid
+            $updateResult = $feedback->update(['status' => $newStatus]);
 
-            return redirect(route('feedback.view'))->with('success', 'Berhasil mengubah status');
+            // Teks untuk tombol
+            $buttonText = ($newStatus == 1) ? 'Hide' : 'Show';
+
+            if ($updateResult) {
+                return redirect(route('feedback.view'))->with('success', "Berhasil mengubah status menjadi $buttonText");
+            } else {
+                return redirect(route('feedback.view'))->with('error', 'Gagal mengubah status. Silakan coba lagi.');
+            }
         } else {
             // Handle jika data tidak ditemukan
             return redirect(route('admin'))->with('error', 'Data tidak ditemukan');
