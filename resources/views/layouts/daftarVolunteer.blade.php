@@ -21,7 +21,11 @@
 
 <body>
     <div>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
     </div>
     <div class="page-wrapper bg-latar p-t-45 p-b-50">
         <div class="wrapper wrapper--w900">
@@ -41,9 +45,15 @@
                             </div>
                             <!-- error message untuk nim -->
                             @error('user_id')
+<<<<<<< HEAD
                             <div class="alert alert-danger mt-2">
                                 {{ $message }}
                             </div>
+=======
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
                             @enderror
                         </div>
                         <div class="form-row">
@@ -55,9 +65,15 @@
                             </div>
                             <!-- error message untuk nim -->
                             @error('created_at')
+<<<<<<< HEAD
                             <div class="alert alert-danger mt-2">
                                 {{ $message }}
                             </div>
+=======
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
                             @enderror
                         </div>
                         <div class="form-row">
@@ -69,9 +85,15 @@
                             </div>
                             <!-- error message untuk nim -->
                             @error('nim')
+<<<<<<< HEAD
                             <div class="alert alert-danger mt-2">
                                 {{ $message }}
                             </div>
+=======
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
                             @enderror
                         </div>
                         <div class="form-row">
@@ -83,9 +105,15 @@
                             </div>
                             <!-- error message untuk No Wa -->
                             @error('no_wa')
+<<<<<<< HEAD
                             <div class="alert alert-danger mt-2">
                                 {{ $message }}
                             </div>
+=======
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
                             @enderror
                         </div>
                         <div class="form-row">
@@ -97,18 +125,28 @@
                             </div>
                             <!-- error message untuk Devisi -->
                             @error('devisi')
+<<<<<<< HEAD
                             <div class="alert alert-danger mt-2">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
 
+=======
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
                         <div class="form-row">
                             <div class="name">Upload CV</div>
                             <div class="value">
                                 <input type="file" class="form-control @error('link') is-invalid @enderror" name="link">
                                 <div class="label--desc">Upload CV Anda. Max ukuran file 50 MB</div>
                             </div>
+<<<<<<< HEAD
 
                             <!-- error message untuk Upload CV -->
                             @error('link')
@@ -119,6 +157,18 @@
                         </div>
                         <div class="card-footer">
                             <button class="btn btn--radius-2 btn--blue-2" type="submit" onclick="return confirm('Apakah Anda yakin ingin mengirim formulir ini?')">Kirim Formulir</button>
+=======
+                            
+                            <!-- error message untuk Upload CV -->
+                            @error('link')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn--radius-2 btn--blue-2" type="submit">Kirim Formulir</button>
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
                         </div>
                     </form>
                 </div>

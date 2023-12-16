@@ -1,7 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
 @endsection
 <div class="container-fluid">
     <div class="container-fluid">
@@ -26,7 +30,11 @@
                                 <label for="nominal" class="form-label">Nominal</label>
                                 <input type="text" class="form-control" id="nominal" name="nominal">
                             </div>
+<<<<<<< HEAD
                             <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin submit?')">Submit</button>
+=======
+                            <button type="submit" class="btn btn-primary">Submit</button>
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
                         </form>
                     </div>
                 </div>

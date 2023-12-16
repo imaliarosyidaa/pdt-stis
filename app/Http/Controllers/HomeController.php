@@ -42,6 +42,7 @@ class HomeController extends Controller
             'testimoni_feedback' => testimoni_feedback::where('status', 1)->orderBy('created_at', 'desc')->get(),
         ];
 
+<<<<<<< HEAD
        // $galleries = PostGallery::all();
         $foto = PostGallery::where('urutan', '!=', null)
             ->limit(3)
@@ -50,4 +51,25 @@ class HomeController extends Controller
 
         return view('welcome',$data, $berita, $foto);
     }
+=======
+    //    $galleries = PostGallery::all();
+    $galleries = PostGallery::all()->take(9);
+
+        // $galleries = PostGallery::where('urutan', '!=', null)
+        //     ->limit(3)
+        //     ->orderby('urutan', 'asc')
+        //     ->get();
+
+        $mergedData = array_merge($data, $berita, ['galleries' => $galleries]);
+        
+        return view('welcome',$mergedData);
+    }
+
+    public function filterByYear($year)
+    {
+        $galleries = PostGallery::where('tahun', $year)->get();
+        return view('galeri-filter', compact('galleries'));
+    }
+
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
 }

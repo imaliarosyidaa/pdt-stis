@@ -1,5 +1,9 @@
 <x-index>
+<<<<<<< HEAD
   <!-- ======= Testimonial Form ======= -->
+=======
+<!-- ======= Testimonial Form ======= -->
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
   <section id="testimonial-form" class="testimonial-form">
     <div class="container">
 
@@ -29,7 +33,11 @@
 
               <!-- Tombol Submit -->
               <div class="col-md-12 mt-3 text-center">
+<<<<<<< HEAD
                 <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin mengirim testimoni ini?')">Kirim</button>
+=======
+                <button type="submit" class="btn btn-primary" onclick="showModal()">Kirim</button>
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
               </div>
             </div>
           </form>

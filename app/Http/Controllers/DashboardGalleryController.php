@@ -50,10 +50,18 @@ class DashboardGalleryController extends Controller
 
         if ($request->hasFile('filename')) {
             foreach ($request->file('filename') as $gallery) {
+<<<<<<< HEAD
                 $gallery->storeAs('public/posts', $gallery->hashName());
     
                 PostGallery::create([
                     'filename' =>  $gallery->hashName(),
+=======
+                $filenames = $gallery->hashName();
+                $gallery->move('storage/posts', $filenames);
+    
+                PostGallery::create([
+                    'filename' =>  $filenames,
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
                     'tahun' => $tahun,
                     'title' => $title,
                     'caption' => $caption,

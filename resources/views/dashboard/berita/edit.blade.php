@@ -2,6 +2,19 @@
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
 <div class="body-wrapper">
+<<<<<<< HEAD
+=======
+    <div class="ms-5 mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="/dashboard/berita">Berita</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Berita</li>
+            </ol>
+        </nav>
+    </div>
+    <!--End Breadcumb-->
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1>Edit Berita</h1>
 </div>

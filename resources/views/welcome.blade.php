@@ -11,7 +11,13 @@
     <meta content="" name="keywords">
 
     <!-- Google Fonts -->
+<<<<<<< HEAD
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+=======
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
 
     <!-- Vendor CSS Files -->
     <link href="{{asset ('/assets/vendor/aos/aos.css') }}" rel="stylesheet">
@@ -109,8 +115,13 @@
                             <h3>Siapa kami?</h3>
                             <h2>Pengembangan Desa Tertinggal (PDT) STITS</h2>
                             <p>
+<<<<<<< HEAD
                                 Pengembangan Desa Tertinggal (PDT) merupakan kegiatan bakti sosial yang diadakan oleh UKM PMKL
                                 (Pengabdian Masyarakat dan Kepedulian Lingkungan) Politeknik Statistika STIS
+=======
+                            Pengembangan Desa Tertinggal (PDT) merupakan kegiatan bakti sosial yang diadakan oleh UKM PMKL 
+                           (Pengabdian Masyarakat dan Kepedulian Lingkungan) Politeknik Statistika STIS
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
                             </p>
                         </div>
                     </div>
@@ -127,6 +138,7 @@
         <!-- ======= Portfolio Section ======= -->
         <section id="portfolio" class="portfolio">
 
+<<<<<<< HEAD
             <div class="container" data-aos="fade-up">
 
                 <header class="section-header">
@@ -153,6 +165,46 @@
             </div>
 
         </section><!-- End Portfolio Section -->
+=======
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>Galeri</h2>
+          <p>Galeri Kegiatan PDT</p>
+        </header>
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-2021">2021</li>
+            <li data-filter=".filter-2022">2022</li>
+            <li data-filter=".filter-2023">2023</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                    @foreach($galleries as $gallery)
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-{{ $gallery->tahun }}">
+                        <div class="portfolio-wrap"> 
+                            <img style="width: 100%; height:100%;" src="{{ asset('/storage/posts/'.$gallery->filename) }}">
+                            <div class="portfolio-info">
+                                <h4>{{ $gallery->title }}</h4>
+                                <p>{{ $gallery->description }}</p>
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/storage/posts/'.$gallery->filename) }}" data-gallery="portfolioGallery" class="portfokio-lightbox" title="{{ $gallery->title }}"><i class="bi bi-plus"></i></a>
+                                    <!-- <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a> -->
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+
+      </div>
+
+    </section><!-- End Portfolio Section -->
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
 
         <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials">
@@ -194,11 +246,16 @@
         </section><!-- End Testimonials Section -->
 
 
+<<<<<<< HEAD
         <!-- ======= Recent Blog Posts Section ======= -->
+=======
+            <!-- ======= Recent Blog Posts Section ======= -->
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
         <section id="recent-blog-posts" class="recent-blog-posts">
 
             <div class="container" data-aos="fade-up">
 
+<<<<<<< HEAD
                 <header class="section-header">
                     <h2>Blog</h2>
                     <p>Recent posts form our Blog</p>
@@ -225,6 +282,34 @@
                     @endforeach
 
                 </div>
+=======
+            <header class="section-header">
+                <h2>Blog</h2>
+                <p>Recent posts form our Blog</p>
+            </header>
+
+            <div class="row">
+
+                @foreach($recentPost as $beritaTerbaru)
+                <div class="col-lg-4">
+                <div class="post-box">
+                    <div class="post-img">
+                        @if($beritaTerbaru->image)
+                            <img src="{{ asset('storage/' . $beritaTerbaru->image) }}" alt="" class="img-fluid">
+                        @else
+                            <img src="https://source.unsplash.com/1000x600?{{ $beritaTerbaru->category->name }}" alt="" class="img-fluid">
+                        @endif
+                    </div>
+                    <span class="post-date"><time datetime="2020-01-01">{{ $beritaTerbaru->created_at->diffForHumans() }}</time></span>
+                    <h3 class="post-title">{{ $beritaTerbaru->title }}</h3>
+                    <p>{{ $beritaTerbaru->excerpt }}</p>
+                    <a href="/berita/{{ $beritaTerbaru->slug }}"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                </div>
+                </div>
+            @endforeach
+
+            </div>
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
 
             </div>
 
@@ -243,6 +328,7 @@
                 <div class="row gy-4">
                     <div class="col-lg-6">
                         <form action="{{route('send.email')}}" method="POST" class="php-email-form">
+<<<<<<< HEAD
                             @csrf
                             <div class="row gy-4">
 
@@ -284,6 +370,49 @@
 
                             </div>
                         </form>
+=======
+            @csrf  
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                  @error('name')
+                    <span class="text-danger">{{ $message }} </span>
+                  @enderror
+                </div>
+
+                <div class="col-md-6 ">
+                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                  @error('email')
+                    <span class="text-danger">{{ $message }} </span>
+                  @enderror
+                </div>
+
+                <div class="col-md-12">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                  @error('subject')
+                    <span class="text-danger">{{ $message }} </span>
+                  @enderror
+                </div>
+
+                <div class="col-md-12">
+                  <textarea class="form-control" name="content" rows="6" placeholder="Message" required></textarea>
+                  @error('content')
+                    <span class="text-danger">{{ $message }} </span>
+                  @enderror
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                  <button type="submit">Send Message</button>
+                </div>
+
+              </div>
+            </form>
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
 
                     </div>
 
@@ -368,6 +497,15 @@
     <script src="{{asset ('/assets/mahasiswa/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
     <script src="{{asset ('/assets/mahasiswa/vendor/swiper/swiper-bundle.min.js') }}"></script>
     <script src="{{asset ('/assets/mahasiswa/vendor/php-email-form/validate.js') }}"></script>
+<<<<<<< HEAD
+=======
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="assets/vendor/filter-gallery/filter-year.js"></script>
+
+    <!-- Isotope JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
 
     <!-- Template Main JS File -->
     <script src="{{asset ('/assets/mahasiswa/js/main.js') }}"></script>

@@ -13,7 +13,12 @@
 
 <body>
   <!--  Body Wrapper -->
+<<<<<<< HEAD
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+=======
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
     <!-- Sidebar Start -->
     <aside class="left-sidebar">
       <!-- Sidebar scroll-->
@@ -42,6 +47,7 @@
               </a>
             </li>
             <li class="sidebar-item">
+<<<<<<< HEAD
               <a class="sidebar-link" href="./ui-keuangan.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-moneybag"></i>
@@ -84,12 +90,69 @@
 
 
             <!-- End Sidebar navigation -->
+=======
+                <a class="sidebar-link" href="./ui-keuangan.html" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-moneybag"></i>
+                  </span>
+                  <span class="hide-menu">Keuangan</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="./ui-volunteer.html" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-users"></i>
+                  </span>
+                  <span class="hide-menu">Volunteer</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link" href="./ui-donasi.html" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-wallet"></i>
+                  </span>
+                  <span class="hide-menu">Donasi</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link" href="./ui-galeri.html" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-photo"></i>
+                  </span>
+                  <span class="hide-menu">Galeri</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link" href="./ui-publikasi.html" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-news"></i>
+                  </span>
+                  <span class="hide-menu">Berita</span>
+                </a>
+              </li>
+            
+            
+        <!-- End Sidebar navigation -->
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
       </div>
       <!-- End Sidebar scroll-->
     </aside>
     <!--  Sidebar End -->
     <!--  Main wrapper -->
     <div class="body-wrapper">
+<<<<<<< HEAD
+=======
+      <div class="ms-5 mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="/dashboard/galeri">Galeri</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tambah Galeri</li>
+            </ol>
+        </nav>
+    </div>
+    <!--End Breadcumb-->
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
       <!--  Header Start -->
       <header class="app-header">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -109,7 +172,12 @@
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
               <li class="nav-item dropdown">
+<<<<<<< HEAD
                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+=======
+                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
                   <img src="../admin.assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
@@ -136,6 +204,7 @@
       </header>
       <!--  Header End -->
 
+<<<<<<< HEAD
 
 
       <div class="container-fluid">
@@ -191,6 +260,63 @@
                       @enderror
                     </div>
                     <!-- <div class="mb-3">
+=======
+      
+
+      <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <form enctype="multipart/form-data" method="post" action="/dashboard/galeri">
+                            @csrf 
+                                <div class="mb-3">
+                                    <label for="filename" class="form-label">Upload Foto</label>
+                                    <input type="file" class="form-control @error('filename') is-invalid @enderror" id="filename" name="filename[]" accept="image/*" multiple>
+                                    @error('filename')
+                                      <div class="invalid-feedback">
+                                        {{ $message }}
+                                      </div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">Title Foto</label>
+                                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title">
+                                    @error('title')
+                                      <div class="invalid-feedback">
+                                        {{ $message }}
+                                      </div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="caption" class="form-label">Deskripsi Foto</label>
+                                    <textarea class="form-control @error('caption') is-invalid @enderror" id="caption" name="caption" rows="3"></textarea>
+                                    @error('caption')
+                                      <div class="invalid-feedback">
+                                        {{ $message }}
+                                      </div>
+                                    @enderror
+                                  </div>
+
+                                  <div class="mb-3">
+                                    <label for="tahun" class="form-label">Tahun Foto</label>
+                                    <select class="form-select" id="tahun" name="tahun">
+                                        <?php
+                                                  $currentYear = date("Y");
+                                            for ($tahun = 2019; $tahun <= 2025; $tahun++) {
+                                                echo "<option value=\"$tahun\">$tahun</option>";
+                                            }
+                                        ?>
+                                    </select>
+                                    @error('tahun')
+                                      <div class="invalid-feedback">
+                                        {{ $message }}
+                                      </div>
+                                    @enderror
+                                </div>
+                                <!-- <div class="mb-3">
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
                                     <label for="tahun" class="form-label">Tahun Foto</label>
                                     <input type="text" class="form-control @error('tahun') is-invalid @enderror" id="tahun" name="tahun">
                                     @error('tahun')
@@ -199,6 +325,7 @@
                                       </div>
                                     @enderror
                                 </div> -->
+<<<<<<< HEAD
                     <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin submit?')">Submit</button>
                   </form>
                 </div>
@@ -215,6 +342,24 @@
     <script src="{{asset('../admin.assets/js/app.min.js')}}"></script>
     <script src="{{asset('../admin.assets/libs/simplebar/dist/simplebar.js')}}"></script>
 
+=======
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  </div>
+  <script src="{{asset('../admin.assets/libs/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{asset('../admin.assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('../admin.assets/js/sidebarmenu.js')}}"></script>
+  <script src="{{asset('../admin.assets/js/app.min.js')}}"></script>
+  <script src="{{asset('../admin.assets/libs/simplebar/dist/simplebar.js')}}"></script>
+ 
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
 </body>
 
 </html>

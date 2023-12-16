@@ -151,7 +151,11 @@ Route::get('/admin/keuangan/pemasukan', function () {
 Route::get('/admin/keuangan/pemasukan', [PemasukanController::class, 'create'])->middleware(['auth', 'verified'])->name('pemasukan.create'); //form tambah pemasukan
 Route::post('/admin/keuangan/pemasukan', [PemasukanController::class, 'store'])->middleware(['auth', 'verified'])->name('pemasukan.store');
 
+<<<<<<< HEAD
 Route::get('/admin/keuangan/pemasukan/{id}/edit', [PemasukanController::class, 'edit'])->name('pemasukan.edit');
+=======
+Route::get('/admin/keuangan/pemasukan/edit/{id}', [PemasukanController::class, 'edit'])->name('pemasukan.edit');
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
 Route::patch('/admin/keuangan/pemasukan/{id}', [PemasukanController::class, 'update'])->name('pemasukan.update');
 Route::delete('/admin/keuangan/pemasukan/{id}', [PemasukanController::class, 'destroy'])->name('pemasukan.destroy');
 
@@ -161,7 +165,11 @@ Route::get('/admin/keuangan/pengeluaran', function () {
 
 Route::get('/admin/keuangan/pengeluaran', [PengeluaranController::class, 'create'])->middleware(['auth', 'verified'])->name('pengeluaran.create');
 Route::post('/admin/keuangan/pengeluaran', [PengeluaranController::class, 'store'])->middleware(['auth', 'verified'])->name('pengeluaran.store');
+<<<<<<< HEAD
 Route::get('/admin/keuangan/pengeluaran/{id}/edit', [PengeluaranController::class, 'edit'])->name('pengeluaran.edit');
+=======
+Route::get('/admin/keuangan/pengeluaran/edit/{id}', [PengeluaranController::class, 'edit'])->name('pengeluaran.edit');
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
 Route::patch('/admin/keuangan/pengeluaran/{id}', [PengeluaranController::class, 'update'])->name('pengeluaran.update');
 Route::delete('/admin/keuangan/pengeluaran/{id}', [PengeluaranController::class, 'destroy'])->name('pengeluaran.destroy');
 

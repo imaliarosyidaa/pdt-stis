@@ -91,7 +91,11 @@
                     </div>
                     <br>
                     <div class="form-group text-right p-2">
+<<<<<<< HEAD
                         <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin membuat event?')">Create Event</button>
+=======
+                        <button type="submit" class="btn btn-primary">Create Event</button>
+>>>>>>> a3e262417d964660bea319c3c3519a212a2c76d4
                     </div>
                 </form>
                 <!--End Table Events -->
