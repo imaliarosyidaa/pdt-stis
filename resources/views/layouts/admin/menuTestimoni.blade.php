@@ -201,12 +201,29 @@
                         <td class="border-bottom-0">{{ $f->id_user}}</td>
                         <td class="border-bottom-0">{{ $f->testimoni}}</td>
                         <td class="border-bottom-0">{{ $f->feedback}}</td>
-                        <!-- <td class="border-bottom-0">{{ $f->status}}</td> -->
                         <td class="border-bottom-0">
-                          <form id="editViewForm" method="post" action="{{ route('feedback.editview', ['id' => $f->id]) }}">
+                          <form method="post" action="{{ route('feedback.editview', ['id' => $f->id]) }}">
+                            @csrf
+                            @method('POST') {{-- Tambahkan method POST agar rute dapat menangkap aksi POST --}}
+
+                            <?php
+                            // Teks untuk tombol
+                            $buttonText = ($f->status == 1) ? 'Hide' : 'Show';
+                            $newStatus = ($f->status == 1) ? 0 : 1;
+                            ?>
+
+                            <input type="hidden" name="status" value="{{ $newStatus }}">
+
+                            <button type="submit" name="tampilkan" class="btn btn-{{ $f->status == 1 ? 'danger' : 'success' }}" onclick="return confirm('Apakah Anda yakin ingin menampilkan testimoni ini?')">
+                              {{ $buttonText }}
+                            </button>
+                          </form>
+
+                        <td class="border-bottom-0">
+                          <form id="hapusTestimoniForm" method="post" action="{{ route('feedback.hapusTestimoni', ['id' => $f->id]) }}">
                             @csrf
                             <input type="hidden" name="status" value="{{ $f->status }}">
-                            <button type="submit" name="tampilkan" class="btn btn-primary mr-2" id="tampilkanButton" onclick="showModal()">Tampilkan</button>
+                            <button type="submit" name="tampilkan" class="btn btn-primary mr-2" id="tampilkanButton" onclick="return confirm('Apakah Anda ingin menghapus testimoni ini?')">Hapus</button>
                           </form>
                         </td>
 
