@@ -18,6 +18,8 @@
           <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
           <span class="hide-menu"></span>
         </li>
+
+        @can('akses-menu-dashboard')
         <li class="sidebar-item">
           <a class="sidebar-link" href="/dashboard" aria-expanded="false">
             <span>
@@ -26,6 +28,9 @@
             <span class="hide-menu">Dashboard</span>
           </a>
         </li>
+        @endcan
+
+        @can('akses-menu-keuangan')
         <li class="sidebar-item">
           <a class="sidebar-link" href="/admin/keuangan" aria-expanded="false">
             <span>
@@ -34,6 +39,9 @@
             <span class="hide-menu">Keuangan</span>
           </a>
         </li>
+        @endcan
+
+        @can('akses-menu-events')
         <li class="sidebar-item">
           <a class="sidebar-link" href="/events" aria-expanded="false">
             <span>
@@ -42,6 +50,9 @@
             <span class="hide-menu">Events</span>
           </a>
         </li>
+        @endcan
+
+        @can('akses-menu-volunteer')
         <li class="sidebar-item">
           <a class="sidebar-link" href="/admin/volunteer" aria-expanded="false">
             <span>
@@ -50,6 +61,9 @@
             <span class="hide-menu">Volunteer</span>
           </a>
         </li>
+        @endcan
+
+        @can('akses-menu-donasi')
         <li class="sidebar-item">
           <a class="sidebar-link" href="/admin/donations" aria-expanded="false">
             <span>
@@ -58,6 +72,9 @@
             <span class="hide-menu">Donasi</span>
           </a>
         </li>
+        @endcan
+
+        @can('akses-menu-galeri')
         <li class="sidebar-item">
           <a class="sidebar-link" href="/dashboard/galeri" aria-expanded="false">
             <span>
@@ -66,6 +83,9 @@
             <span class="hide-menu">Galeri</span>
           </a>
         </li>
+        @endcan
+
+        @can('akses-menu-berita')
         <li class="sidebar-item">
           <a class="sidebar-link" href="/dashboard/berita" aria-expanded="false">
             <span>
@@ -74,6 +94,9 @@
             <span class="hide-menu">Berita</span>
           </a>
         </li>
+        @endcan
+
+        @can('akses-menu-testimoni-feedback')
         <li class="sidebar-item">
           <a class="sidebar-link" href="/admin/testimoni" aria-expanded="false">
             <span>
@@ -82,6 +105,7 @@
             <span class="hide-menu">Testimoni dan Feedback</span>
           </a>
         </li>
+        @endcan
       </ul>
     </nav>
   </div>

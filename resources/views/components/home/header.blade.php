@@ -13,10 +13,10 @@
                     <li><a class="nav-link scrollto active" href="/">Home</a></li>
                     <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="#">Tentang Kami</a></li>
+                            <li><a href="#about">Tentang Kami</a></li>
                             <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
                             <li><a href="/layouts.user.testimoni">Testimoni</a></li>
-                            <li><a href="#">Kemitraan</a></li>
+                            <li><a href="#clients">Kemitraan</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#"><span>Mari Bergabung</span> <i
@@ -38,8 +38,6 @@
                             @endif
                         @endauth
                     @endif
-                    {{-- <li><a class="signup" href="#">Sign Up</a></li> --}}
-                    {{-- <li><a class="getstarted scrollto" href="#about">Log In</a></li> --}}
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->

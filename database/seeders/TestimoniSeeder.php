@@ -24,7 +24,8 @@ class TestimoniSeeder extends Seeder
                             Saya mengapresiasi pendekatan interaktif dalam menyajikan materi 
                             yang membuat pembelajaran lebih menarik. Fasilitator berkompeten 
                             dan ramah, memberikan jawaban yang memadai terhadap pertanyaan 
-                            peserta.'
+                            peserta.',
+            'status' => '1'
         ]);
 
         testimoni_feedback::create([
@@ -37,7 +38,8 @@ class TestimoniSeeder extends Seeder
                             dalam konteks pekerjaan sehari-hari. Sesi diskusi kelompok memberikan peluang 
                             untuk berbagi pengalaman dan belajar dari rekan-rekan sejawat. Penekanan pada 
                             aspek kesejahteraan mental dan emosional juga memberikan nilai tambah yang 
-                            signifikan.'
+                            signifikan.',
+            'status' => '1'
         ]);
 
         testimoni_feedback::create([
@@ -48,7 +50,8 @@ class TestimoniSeeder extends Seeder
                             dan profesional saya.',
             'feedback' => 'PDT STIS memberikan pengalaman pelatihan yang sangat bermanfaat. Saya mengapresiasi 
                             pendekatan interaktif dalam menyajikan materi yang membuat pembelajaran lebih menarik. Fasilitator 
-                            berkompeten dan ramah, memberikan jawaban yang memadai terhadap pertanyaan peserta.'
+                            berkompeten dan ramah, memberikan jawaban yang memadai terhadap pertanyaan peserta.',
+            'status' => '1'
         ]);
     }
 }

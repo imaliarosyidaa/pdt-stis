@@ -32,7 +32,7 @@
                                   <label for="filename" class="form-label"> Foto</label>
                                   <input type="hidden" name="oldFilename" value="{{ $gallery->filename }}">
                                   @if($gallery->filename)
-                                  <img src="{{ asset('storage/' . $gallery->filename) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                                  <img src="{{ asset('/storage/posts/'.$gallery->filename) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
                                   @else
                                       <img class="img-preview img-fluid mb-3 col-sm-5">
                                   @endif

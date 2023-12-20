@@ -94,7 +94,7 @@
                                 <form action="/dashboard/galeri/{{ $gallery->id }}" method="post" class="d-inline">
                                     @method('delete')
                                     @csrf
-                                    <button class="badge bg-danger border-0 p-1" onclick="return confirm('Apakah Anda ingin menghapus foto ini?')">
+                                    <button class="badge bg-danger border-0 p-1" style="vertical-align: top;" onclick="return confirm('Apakah Anda ingin menghapus foto ini?')">
                                         <span data-feather="trash-2">delete</span>
                                     </button>
                                 </form>
@@ -117,4 +117,8 @@
                   {{ $galleries->links() }}
                 </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+<script>
+  feather.replace();
+</script>
 </x-app-layout>

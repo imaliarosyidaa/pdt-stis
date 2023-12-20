@@ -15,7 +15,14 @@ class RolePermissionSeeder extends Seeder
     public function run(): void
     {
         //Daftar Permission
-        Permission::create(['name' => 'akses-menu-admin']);
+        Permission::create(['name' => 'akses-menu-dashboard']);
+        Permission::create(['name' => 'akses-menu-keuangan']);
+        Permission::create(['name' => 'akses-menu-events']);
+        Permission::create(['name' => 'akses-menu-volunteer']);
+        Permission::create(['name' => 'akses-menu-donasi']);
+        Permission::create(['name' => 'akses-menu-galeri']);
+        Permission::create(['name' => 'akses-menu-berita']);
+        Permission::create(['name' => 'akses-menu-testimoni-feedback']);
         Permission::create(['name' => 'create-donasi']);
         Permission::create(['name' => 'daftar-volunter']);
 
@@ -26,12 +33,28 @@ class RolePermissionSeeder extends Seeder
 
         //Atur permisssion
         $roleAdmin = Role::findByName('admin');
-        $roleAdmin->givePermissionTo('akses-menu-admin');
+        $roleAdmin->givePermissionTo([
+            'akses-menu-dashboard',
+            'akses-menu-keuangan',
+            'akses-menu-events',
+            'akses-menu-volunteer',
+            'akses-menu-donasi',
+            'akses-menu-galeri',
+            'akses-menu-berita',
+            'akses-menu-testimoni-feedback'
+        ]);
         
         $roleUmum = Role::findByName('umum');
-        $roleUmum->givePermissionTo('create-donasi');
+        $roleUmum->givePermissionTo([
+            'akses-menu-dashboard',
+            'akses-menu-donasi',
+        ]);
 
         $roleMahasiswa = Role::findByName('mahasiswa');
-        $roleMahasiswa->givePermissionTo('daftar-volunter');
+        $roleMahasiswa->givePermissionTo([
+            'akses-menu-dashboard',
+            'akses-menu-volunteer',
+            'akses-menu-donasi',
+        ]);
     }
 }

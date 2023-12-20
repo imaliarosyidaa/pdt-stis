@@ -39,7 +39,7 @@
 
                         <!-- {{-- Menampilkan foto --}} -->
                         <div class="entry-img mb-3">
-                            <img src="{{ asset('/storage/public/posts/'.$gallery->filename) }}" alt="" class="img-fluid">
+                            <img src="{{ asset('/storage/posts/'.$gallery->filename) }}" alt="" class="img-fluid">
                         </div>
 
                         <!-- {{-- Menampilkan title, deskripsi, dan tahun foto --}} -->
