@@ -131,6 +131,6 @@ class DashboardGalleryController extends Controller
             Storage::delete($gallery->filename);
         }
         PostGallery::destroy($gallery->id);
-        return redirect('/dashboard/galeri')->with('error', 'Berita berhasil dihapus.');
+        return redirect('/dashboard/galeri')->with('error', 'Foto berhasil dihapus.');
     }
 }

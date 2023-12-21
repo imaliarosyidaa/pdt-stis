@@ -1,4 +1,13 @@
 <link rel="stylesheet" href="{{ ('/assets/css/styles.min.css') }}" />
+
+<link rel="shortcut icon" type="image/png" href="{{ asset('/admin/assets/images/logos/favicon.png') }}" />
+  <link rel="stylesheet" href="{{ asset('/admin/assets/css/styles.min.css') }}" />
+  <link rel="stylesheet" href="{{ asset('/admin/assets/css/custom.css') }}"/>
+
+  {{-- Feather icon --}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+
+
 <aside class="left-sidebar">
   <div class="mt-4">
     <div class="brand-logo d-flex align-items-center justify-content-between">
@@ -116,3 +125,9 @@
   <script src="{{ asset ('/assets/js/sidebarmenu.js') }}"></script>
   <script src="{{ asset ('/assets/js/app.min.js') }}"></script>
   <script src="{{ asset ('/assets/libs/simplebar/dist/simplebar.js') }}"></script>
+
+  <script src="{{ asset('/admin/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{ asset('/admin/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('/admin/assets/js/sidebarmenu.js') }}"></script>
+  <script src="{{ asset('/admin/assets/js/app.min.js') }}"></script>
+  <script src="{{ asset('/admin/assets/libs/simplebar/dist/simplebar.js') }}"></script>

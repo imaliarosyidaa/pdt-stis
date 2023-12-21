@@ -80,7 +80,8 @@ class DonationController extends Controller
 
     public function viewDonasi()
     {
-        return view('donasi.viewDonasi');
+        $donasiData = Donations::latest()->paginate(1); // Ubah 10 sesuai dengan jumlah item yang diinginkan per halaman
+    return view('donasi.viewDonasi', ['donasiData' => $donasiData]);
     }
 
     public function updateStatus(Request $request, $id)

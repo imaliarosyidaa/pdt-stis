@@ -49,14 +49,21 @@
                                 @endif
                             </div>
     
-                            {{-- Menampilkan nama penulis, waktu publish, dan kategori berita --}}
-                            <div class="entry-meta mb-3">
-                                <ul class="list-inline">
-                                    <li class="d-flex align-items-center text-dark"><i class="bi bi-person"></i>Author: {{ $berita->author }}</li>
-                                    <li class="d-flex align-items-center text-dark"><i class="bi bi-clock"></i><time datetime="2020-01-01">Created at: {{ $berita->created_at->diffForHumans() }}</time></li>
-                                    <li class="d-flex align-items-center text-dark"><i class="bi bi-clock"></i><time datetime="2020-01-01">Kategori: {{ $berita->category->name }}</time></li>
-                                </ul>
-                            </div>
+{{-- Menampilkan nama penulis, waktu publish, dan kategori berita --}}
+<div class="entry-meta mb-3">
+    <dl class="row col-6">
+        <dt class="col-sm-2 text-dark fw-bold">Penulis</dt>
+        <dd class="col-sm-9 text-dark">: {{ $berita->author }}</dd>
+
+        <dt class="col-sm-2 text-dark fw-bold">Waktu</dt>
+        <dd class="col-sm-9 text-dark"><time datetime="2020-01-01">: {{ $berita->created_at->format('l') }}</time></dd>
+
+        <dt class="col-sm-2 text-dark fw-bold">Kategori</dt>
+        <dd class="col-sm-9 text-dark">: {{ $berita->category->name }}</dd>
+    </dl>
+</div>
+
+
     
                             {{-- Menampilkan isi berita --}}
                             <div class="entry-content">

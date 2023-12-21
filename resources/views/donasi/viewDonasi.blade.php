@@ -19,4 +19,5 @@
                    
         </div>
     </div>
+    {{ $donasiData->links() }}
 </x-app-layout>
