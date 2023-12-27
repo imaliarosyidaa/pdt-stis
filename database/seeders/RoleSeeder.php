@@ -25,7 +25,14 @@ class RoleSeeder extends Seeder
             'updated_at' => now()
         ]);
         $role -> givePermissionTo([
-            'akses-menu-admin'
+            'akses-menu-dashboard',
+            'akses-menu-keuangan',
+            'akses-menu-events',
+            'akses-menu-volunteer',
+            'akses-menu-donasi',
+            'akses-menu-galeri',
+            'akses-menu-berita',
+            'akses-menu-testimoni-feedback'
         ]);
 
         // Role Umum
@@ -36,7 +43,8 @@ class RoleSeeder extends Seeder
             'updated_at' => now()
         ]);
         $role -> givePermissionTo([
-            'create-donasi'
+            'akses-menu-dashboard',
+            'akses-menu-donasi',
         ]);
 
         // Role Mahasiswa
@@ -47,7 +55,9 @@ class RoleSeeder extends Seeder
             'updated_at' => now()
         ]);
         $role -> givePermissionTo([
-            'daftar-volunter'
+            'akses-menu-dashboard',
+            'akses-menu-volunteer',
+            'akses-menu-donasi',
         ]);
     }
 }
